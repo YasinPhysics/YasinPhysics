@@ -8,16 +8,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   
-  <!-- tsParticles for floating particles / dots effect -->
   <script src="https://cdn.jsdelivr.net/npm/tsparticles@3.5.0/tsparticles.min.js"></script>
 
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
+    * { margin:0; padding:0; box-sizing:border-box; }
     body {
       font-family: 'Inter', sans-serif;
       background: #0d001f;
@@ -25,87 +19,93 @@
       min-height: 100vh;
       overflow-x: hidden;
     }
-
-    #tsparticles {
-      position: fixed;
-      inset: 0;
-      z-index: -1;
-    }
+    #tsparticles { position:fixed; inset:0; z-index:-1; }
 
     header {
       position: fixed;
-      top: 0;
-      width: 100%;
-      padding: 1.5rem 5%;
+      top:0; left:0; width:100%;
+      padding: 1.2rem 6%;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: rgba(30, 10, 60, 0.5);
+      background: rgba(30,10,60,0.55);
       backdrop-filter: blur(10px);
       z-index: 1000;
-      border-bottom: 1px solid rgba(167, 139, 250, 0.2);
+      border-bottom: 1px solid rgba(192,132,252,0.2);
     }
 
-    .nav-links {
-      display: flex;
-      gap: 2.2rem;
-    }
+    .logo { font-size: 1.6rem; font-weight:700; color: #c084fc; }
 
-    .nav-links a {
+    nav a {
       color: #d1d5ff;
       text-decoration: none;
+      margin-left: 2rem;
       font-weight: 500;
-      font-size: 1.05rem;
       transition: color 0.3s;
     }
-
-    .nav-links a:hover {
-      color: #c084fc;
-    }
+    nav a:hover { color: #c084fc; }
 
     .hero {
       min-height: 100vh;
       display: flex;
-      flex-direction: column;
-      justify-content: center;
       align-items: center;
-      text-align: center;
-      padding: 0 5%;
-      position: relative;
+      padding: 0 6%;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .hero-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      gap: 4rem;
+      flex-wrap: wrap;
+    }
+
+    .left {
+      flex: 1;
+      min-width: 320px;
     }
 
     .intro {
-      font-size: 1.4rem;
+      font-size: 1.5rem;
       color: #c084fc;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.8rem;
       font-weight: 500;
     }
 
     .name {
-      font-size: clamp(3.5rem, 8vw, 6.5rem);
+      font-size: clamp(3.5rem, 9vw, 6.5rem);
       font-weight: 800;
+      line-height: 1.05;
       background: linear-gradient(90deg, #a78bfa, #c084fc, #7c3aed);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      margin: 0.5rem 0;
+      margin-bottom: 0.8rem;
     }
 
-    .typing-container {
-      font-size: clamp(2.2rem, 6vw, 4rem);
+    .tagline-wrapper {
+      font-size: clamp(1.9rem, 5.5vw, 3.2rem);
       font-weight: 700;
-      color: #ddd6fe;
-      margin: 1rem 0 2rem;
+      color: #c084fc;
+      min-height: 70px;
       display: flex;
       align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
+    }
+
+    .tagline-text {
+      position: relative;
     }
 
     .cursor {
+      display: inline-block;
       width: 4px;
-      height: 1.1em;
+      height: 1.2em;
       background: #c084fc;
-      animation: blink 0.8s infinite;
+      vertical-align: middle;
+      margin-left: 4px;
+      animation: blink 0.75s step-end infinite;
     }
 
     @keyframes blink {
@@ -113,11 +113,17 @@
       50% { opacity: 0; }
     }
 
-    .profile-circle {
+    .right {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      min-width: 300px;
+    }
+
+    .profile-container {
       position: relative;
-      width: clamp(220px, 45vw, 320px);
-      height: clamp(220px, 45vw, 320px);
-      margin: 1.5rem 0 2.5rem;
+      width: clamp(260px, 50vw, 380px);
+      height: clamp(260px, 50vw, 380px);
     }
 
     .profile-img {
@@ -125,127 +131,37 @@
       height: 100%;
       border-radius: 50%;
       object-fit: cover;
-      border: 5px solid rgba(192, 132, 252, 0.6);
-      box-shadow: 0 0 60px rgba(167, 139, 250, 0.5);
+      border: 6px solid rgba(192,132,252,0.6);
+      box-shadow: 0 0 70px rgba(192,132,252,0.45);
+      transition: transform 0.4s ease;
     }
 
-    .floating-icons {
+    .profile-img:hover { transform: scale(1.05); }
+
+    .float-symbol {
       position: absolute;
-      inset: 0;
+      font-size: 2.2rem;
+      color: #c084fc;
+      opacity: 0.65;
       pointer-events: none;
+      animation: floatSym 10s infinite ease-in-out;
     }
 
-    .icon {
-      position: absolute;
-      font-size: 1.8rem;
-      color: #c084fc;
-      opacity: 0.7;
-      animation: float 8s infinite ease-in-out;
+    @keyframes floatSym {
+      0%,100% { transform: translate(0,0) rotate(0deg); }
+      50% { transform: translate(var(--dx), var(--dy)) rotate(360deg); }
     }
 
-    @keyframes float {
-      0%, 100% { transform: translate(0, 0) rotate(0deg); }
-      50% { transform: translate(var(--x), var(--y)) rotate(180deg); }
-    }
-
-    .description {
-      font-size: clamp(1.2rem, 4vw, 1.5rem);
-      color: #b0b0ff;
-      max-width: 700px;
-      margin: 1.5rem 0 3rem;
-      line-height: 1.6;
-    }
-
-    .buttons {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1.5rem;
-    }
-
-    .btn {
-      padding: 0.9rem 2.2rem;
-      border-radius: 50px;
-      font-weight: 600;
-      font-size: 1.1rem;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      cursor: pointer;
-    }
-
-    .btn-primary {
-      background: linear-gradient(45deg, #7c3aed, #c084fc);
-      color: white;
-      border: none;
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 15px 40px rgba(192, 132, 252, 0.4);
-    }
-
-    .btn-outline {
-      background: transparent;
-      border: 2px solid #c084fc;
-      color: #c084fc;
-    }
-
-    .btn-outline:hover {
-      background: rgba(192, 132, 252, 0.1);
-    }
-
-    .social-dots {
-      position: fixed;
-      right: 2rem;
-      top: 50%;
-      transform: translateY(-50%);
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-      z-index: 999;
-    }
-
-    .dot {
-      width: 14px;
-      height: 14px;
-      background: #c084fc;
-      border-radius: 50%;
-      box-shadow: 0 0 15px #c084fc;
-      transition: all 0.3s;
-    }
-
-    .dot:hover {
-      transform: scale(1.4);
-    }
-
-    footer {
-      text-align: center;
-      padding: 3rem 1rem;
-      color: #b0b0ff;
-      font-size: 0.95rem;
+    @media (max-width: 1024px) {
+      .hero-content { flex-direction: column-reverse; text-align: center; }
+      .right { margin-bottom: 3rem; }
+      .left { padding: 0 1rem; }
     }
 
     @media (max-width: 768px) {
-      header {
-        padding: 1rem 5%;
-        flex-direction: column;
-        gap: 1rem;
-      }
-      .nav-links {
-        gap: 1.2rem;
-        font-size: 0.95rem;
-      }
-      .profile-circle {
-        width: 220px;
-        height: 220px;
-      }
-      .buttons {
-        flex-direction: column;
-        gap: 1rem;
-      }
-      .social-dots {
-        right: 1rem;
-      }
+      header { padding: 1rem 5%; flex-direction: column; gap: 1rem; }
+      nav a { margin: 0 0.8rem; font-size: 0.95rem; }
+      .profile-container { width: 240px; height: 240px; }
     }
   </style>
 </head>
@@ -254,103 +170,99 @@
   <div id="tsparticles"></div>
 
   <header>
-    <div class="nav-links">
-      <a href="#home">Home</a>
-      <a href="#about">About</a>
-      <a href="#skills">Skills</a>
-      <a href="#projects">Projects</a>
-      <a href="#publications">Publications</a>
-      <a href="#contact">Contact</a>
-    </div>
+    <div class="logo">Yasin</div>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Skills</a>
+      <a href="#">Projects</a>
+      <a href="#">Publications</a>
+      <a href="#">Contact</a>
+    </nav>
   </header>
 
   <section class="hero">
-    <p class="intro">Hello, I'm</p>
-    <h1 class="name">Mohammad Yasin</h1>
-
-    <div class="typing-container">
-      <span>Future Physicist</span>
-      <span class="cursor">|</span>
-    </div>
-
-    <div class="profile-circle">
-      <img 
-        src="https://i.postimg.cc/9fL37KH6/Untitled-design-31.png" 
-        alt="Mohammad Yasin" 
-        class="profile-img"
-      />
-      <div class="floating-icons">
-        <div class="icon" style="--x: -60px; --y: -80px; animation-delay: 0s;">⚛️</div>
-        <div class="icon" style="--x: 70px; --y: -50px; animation-delay: 2s;">🌌</div>
-        <div class="icon" style="--x: -40px; --y: 60px; animation-delay: 4s;">γ</div>
-        <div class="icon" style="--x: 80px; --y: 40px; animation-delay: 6s;">λ</div>
+    <div class="hero-content">
+      <div class="left">
+        <p class="intro">Hello, I'm</p>
+        <h1 class="name">Mohammad Yasin</h1>
+        <div class="tagline-wrapper">
+          <span class="tagline-text" id="tagline"></span>
+          <span class="cursor"></span>
+        </div>
       </div>
-    </div>
 
-    <p class="description">
-      I explore the mysteries of the universe through theoretical physics, quantum mechanics, astrophysics, 
-      and computational simulations. Passionate about turning equations into understanding.
-    </p>
-
-    <div class="buttons">
-      <a href="#projects" class="btn btn-primary">View Projects</a>
-      <a href="#contact" class="btn btn-outline">Contact Me</a>
-      <a href="#" class="btn btn-outline">Resume ↓</a>
+      <div class="right">
+        <div class="profile-container">
+          <img 
+            src="https://i.postimg.cc/9fL37KH6/Untitled-design-31.png" 
+            alt="Mohammad Yasin" 
+            class="profile-img"
+          />
+          <div class="float-symbol" style="--dx:-90px; --dy:-110px; animation-delay:0s;">⚛️</div>
+          <div class="float-symbol" style="--dx:100px; --dy:-70px; animation-delay:2s;">🌌</div>
+          <div class="float-symbol" style="--dx:-60px; --dy:90px; animation-delay:4s;">∞</div>
+          <div class="float-symbol" style="--dx:110px; --dy:60px; animation-delay:6s;">∇</div>
+          <div class="float-symbol" style="--dx:40px; --dy:-120px; animation-delay:1s;">ħ</div>
+          <div class="float-symbol" style="--dx:-80px; --dy:80px; animation-delay:3s;">λ</div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- Add other sections here if needed (About, Skills, etc.) -->
-
-  <div class="social-dots">
-    <div class="dot"></div>
-    <div class="dot"></div>
-    <div class="dot"></div>
-    <div class="dot"></div>
-  </div>
-
-  <footer>
-    © 2026 Mohammad Yasin • Exploring the Cosmos One Equation at a Time
-  </footer>
-
   <script>
-    // tsParticles - floating dots / particles like in the example
     tsParticles.load("tsparticles", {
       particles: {
-        number: { value: 60 },
-        color: { value: ["#a78bfa", "#c084fc", "#7c3aed", "#ffffff"] },
+        number: { value: 70 },
+        color: { value: ["#a78bfa","#c084fc","#7c3aed","#ffffff"] },
         shape: { type: "circle" },
-        opacity: { value: 0.6, random: true },
-        size: { value: { min: 1, max: 4 } },
-        move: {
-          enable: true,
-          speed: 0.8,
-          direction: "none",
-          random: true,
-          outModes: "out"
-        },
-        links: {
-          enable: true,
-          distance: 150,
-          color: "#c084fc",
-          opacity: 0.4,
-          width: 1
-        }
+        opacity: { value: 0.55, random: true },
+        size: { value: { min:1, max:4 } },
+        move: { enable:true, speed:0.7, random:true, outModes:"out" },
+        links: { enable:true, distance:140, color:"#c084fc", opacity:0.35, width:1 }
       },
       interactivity: {
-        events: {
-          onhover: { enable: true, mode: "grab" },
-          onclick: { enable: true, mode: "push" }
-        },
-        modes: {
-          grab: { distance: 180, links: { opacity: 0.7 } },
-          push: { quantity: 3 }
-        }
-      },
-      detectRetina: true
+        events: { onhover:{enable:true,mode:"grab"}, onclick:{enable:true,mode:"push"} },
+        modes: { grab:{distance:180,links:{opacity:0.6}}, push:{quantity:3} }
+      }
     });
 
-    // Simple typing effect variation (you can use Typed.js CDN for full typing if wanted)
-    // Here just blinking cursor for simplicity matching the screenshot
+    // Tagline animation - exactly your requested phrases
+    const phrases = [
+      "I'm Science Enthusiast",
+      "I will become scientist"
+    ];
+
+    let phraseIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    const tagline = document.getElementById("tagline");
+
+    function typeWriter() {
+      const currentPhrase = phrases[phraseIndex];
+      tagline.textContent = currentPhrase.substring(0, charIndex);
+
+      if (!isDeleting && charIndex < currentPhrase.length) {
+        charIndex++;
+        setTimeout(typeWriter, 80); // typing speed
+      } 
+      else if (isDeleting && charIndex > 0) {
+        charIndex--;
+        setTimeout(typeWriter, 40); // deleting speed
+      } 
+      else if (!isDeleting && charIndex === currentPhrase.length) {
+        isDeleting = true;
+        setTimeout(typeWriter, 2000); // pause before delete
+      } 
+      else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        phraseIndex = (phraseIndex + 1) % phrases.length;
+        setTimeout(typeWriter, 500); // small pause before next phrase
+      }
+    }
+
+    // Start the animation
+    typeWriter();
   </script>
 
 </body>
