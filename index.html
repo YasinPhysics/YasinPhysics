@@ -8,7 +8,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   
-  <!-- tsParticles CDN - body শেষে রাখা হয়েছে -->
   <script src="https://cdn.jsdelivr.net/npm/tsparticles@3.5.0/tsparticles.min.js"></script>
 </head>
 <body>
@@ -57,8 +56,7 @@
   </section>
 
   <style>
-    /* আগের সব স্টাইল অপরিবর্তিত রাখা হয়েছে - শুধু প্রয়োজনীয় অংশ দেখানো */
-    body { font-family: 'Inter', sans-serif; background: #0d001f; color: #e0e0ff; }
+    body { font-family: 'Inter', sans-serif; background: #0d001f; color: #e0e0ff; min-height:100vh; overflow-x:hidden; }
     #tsparticles { position:fixed; inset:0; z-index:-1; }
     header { position:fixed; top:0; width:100%; padding:1.2rem 6%; display:flex; justify-content:space-between; align-items:center; background:rgba(30,10,60,0.55); backdrop-filter:blur(10px); z-index:1000; border-bottom:1px solid rgba(192,132,252,0.2); }
     .logo { font-size:1.6rem; font-weight:700; color:#c084fc; }
@@ -68,23 +66,58 @@
     .hero-content { display:flex; align-items:center; justify-content:space-between; width:100%; gap:4rem; flex-wrap:wrap; }
     .left { flex:1; min-width:320px; }
     .intro { font-size:1.5rem; color:#c084fc; margin-bottom:0.8rem; font-weight:500; }
-    .name { font-size: clamp(3.8rem, 8.5vw, 6rem); font-weight:800; line-height:1.05; background:linear-gradient(90deg, #a78bfa, #c084fc, #7c3aed); -webkit-background-clip:text; -webkit-text-fill-color:transparent; margin-bottom:0.8rem; }
-    .tagline-wrapper { font-size: clamp(1.9rem, 5.5vw, 3.2rem); font-weight:700; color:#c084fc; min-height:70px; display:flex; align-items:center; }
-    .cursor { display:inline-block; width:4px; height:1.2em; background:#c084fc; vertical-align:middle; margin-left:4px; animation:blink 0.75s step-end infinite; }
+    
+    /* নামের সাইজ কমানো + হালকা করা */
+    .name { 
+      font-size: clamp(3.2rem, 7.5vw, 5.2rem); 
+      font-weight: 800; 
+      line-height:1.05; 
+      background: linear-gradient(90deg, #a78bfa, #c084fc, #7c3aed); 
+      -webkit-background-clip:text; 
+      -webkit-text-fill-color:transparent; 
+      margin-bottom:0.8rem; 
+    }
+
+    .tagline-wrapper { 
+      font-size: clamp(1.9rem, 5.5vw, 3.2rem); 
+      font-weight:700; 
+      min-height:70px; 
+      display:flex; 
+      align-items:center; 
+    }
+
+    .tagline-text { 
+      background: linear-gradient(90deg, #ff79c6, #e0aaff); 
+      -webkit-background-clip: text; 
+      -webkit-text-fill-color: transparent; 
+    }
+
+    .cursor { 
+      display:inline-block; 
+      width:4px; 
+      height:1.2em; 
+      background:#ff79c6; 
+      vertical-align:middle; 
+      margin-left:4px; 
+      animation:blink 0.75s step-end infinite; 
+    }
+
     @keyframes blink { 0%,100% {opacity:1;} 50% {opacity:0;} }
+
     .right { flex:1; display:flex; justify-content:center; min-width:300px; }
-    .profile-container { position:relative; width: clamp(260px, 50vw, 380px); height: clamp(260px, 50vw, 380px); }
+    .profile-container { position:relative; width:clamp(260px,50vw,380px); height:clamp(260px,50vw,380px); }
     .profile-img { width:100%; height:100%; border-radius:50%; object-fit:cover; border:6px solid rgba(192,132,252,0.6); box-shadow:0 0 70px rgba(192,132,252,0.45); transition:transform 0.4s ease; }
     .profile-img:hover { transform:scale(1.05); }
     .float-symbol { position:absolute; font-size:2.2rem; color:#c084fc; opacity:0.65; pointer-events:none; animation:floatSym 10s infinite ease-in-out; }
-    @keyframes floatSym { 0%,100% {transform:translate(0,0) rotate(0deg);} 50% {transform:translate(var(--dx), var(--dy)) rotate(360deg);} }
+    @keyframes floatSym { 0%,100% {transform:translate(0,0) rotate(0deg);} 50% {transform:translate(var(--dx),var(--dy)) rotate(360deg);} }
+
     @media (max-width:1024px) { .hero-content {flex-direction:column-reverse; text-align:center;} .right {margin-bottom:3rem;} .left {padding:0 1rem;} }
     @media (max-width:768px) { header {padding:1rem 5%; flex-direction:column; gap:1rem;} nav a {margin:0 0.8rem; font-size:0.95rem;} .profile-container {width:240px; height:240px;} }
   </style>
 
   <script>
-    // tsParticles লোড নিশ্চিত করা + fallback
-    function initParticles() {
+    // tsParticles লোড নিশ্চিত করা
+    document.addEventListener("DOMContentLoaded", function() {
       if (typeof tsParticles !== 'undefined') {
         tsParticles.load("tsparticles", {
           particles: {
@@ -100,47 +133,41 @@
             events: { onhover:{enable:true,mode:"grab"}, onclick:{enable:true,mode:"push"} },
             modes: { grab:{distance:180,links:{opacity:0.6}}, push:{quantity:3} }
           }
-        }).catch(err => console.error("Particles load failed:", err));
-      } else {
-        console.warn("tsParticles library not loaded yet.");
+        }).catch(err => console.log("Particles load error:", err));
       }
-    }
 
-    // Tagline animation - তোমার চাওয়া টেক্সট
-    const phrases = [
-      "I'm science enthusiast",
-      "I will become scientist"
-    ];
+      // Tagline animation
+      const phrases = [
+        "I'm science enthusiast",
+        "I will become scientist"
+      ];
 
-    let phraseIndex = 0;
-    let charIndex = 0;
-    let isDeleting = false;
-    const tagline = document.getElementById("tagline");
+      let phraseIndex = 0;
+      let charIndex = 0;
+      let isDeleting = false;
+      const tagline = document.getElementById("tagline");
 
-    function animateTagline() {
-      const current = phrases[phraseIndex];
-      tagline.textContent = current.substring(0, charIndex);
+      function animate() {
+        const current = phrases[phraseIndex];
+        tagline.textContent = current.substring(0, charIndex);
 
-      if (!isDeleting && charIndex < current.length) {
-        charIndex++;
-        setTimeout(animateTagline, 80);
-      } else if (isDeleting && charIndex > 0) {
-        charIndex--;
-        setTimeout(animateTagline, 40);
-      } else if (!isDeleting && charIndex === current.length) {
-        isDeleting = true;
-        setTimeout(animateTagline, 2000); // ২ সেকেন্ড পজ
-      } else if (isDeleting && charIndex === 0) {
-        isDeleting = false;
-        phraseIndex = (phraseIndex + 1) % phrases.length;
-        setTimeout(animateTagline, 600);
+        if (!isDeleting && charIndex < current.length) {
+          charIndex++;
+          setTimeout(animate, 80);
+        } else if (isDeleting && charIndex > 0) {
+          charIndex--;
+          setTimeout(animate, 40);
+        } else if (!isDeleting && charIndex === current.length) {
+          isDeleting = true;
+          setTimeout(animate, 2000);
+        } else if (isDeleting && charIndex === 0) {
+          isDeleting = false;
+          phraseIndex = (phraseIndex + 1) % phrases.length;
+          setTimeout(animate, 600);
+        }
       }
-    }
 
-    // সব লোড হওয়ার পর চালানো
-    document.addEventListener("DOMContentLoaded", function() {
-      animateTagline();              // tagline শুরু
-      initParticles();               // particles শুরু (নিরাপদে)
+      animate();  // শুরু করা
     });
   </script>
 
