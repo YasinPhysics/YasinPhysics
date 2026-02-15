@@ -176,3 +176,11 @@
 }
 
 /* বাকি publications-section, books-grid, book-card, book-cover স্টাইল আগের মতোই রাখো */
+
+.pub-year {
+  font-size: 0.95rem;
+  color: #b0b0ff;
+  margin: 0.5rem 0 1rem;
+  font-weight: 500;
+  display: block;
+}
