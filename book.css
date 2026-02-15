@@ -159,3 +159,20 @@
   font-size: 1rem;
   line-height: 1.6;
 }
+
+
+/* Brief Intro (ছোট ব্রিফ) */
+.brief-intro {
+  max-width: 800px;
+  margin: 0 auto 3rem;
+  text-align: center;
+}
+
+.brief-intro p {
+  font-size: 1.05rem;
+  color: #d1d5ff;
+  line-height: 1.7;
+  opacity: 0.95;
+}
+
+/* বাকি publications-section, books-grid, book-card, book-cover স্টাইল আগের মতোই রাখো */
