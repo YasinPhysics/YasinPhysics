@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mohammad Yasin | Physics Enthusiast</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- tsParticles for science/galaxy background -->
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@3.5.0/tsparticles.min.js"></script>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0b001f;
+      color: #e0e0ff;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    #tsparticles {
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+    }
+
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(10,5,40,0.75), rgba(20,10,60,0.8));
+      z-index: -1;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: 1rem 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 100;
+      background: rgba(10,5,40,0.55);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(167,139,250,0.2);
+    }
+
+    .logo {
+      font-size: clamp(1.4rem, 5vw, 1.7rem);
+      font-weight: 700;
+      color: #c4b5fd;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+    }
+
+    nav a {
+      color: #d1d5ff;
+      text-decoration: none;
+      font-size: clamp(0.9rem, 3.5vw, 1rem);
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    nav a:hover, nav a:active {
+      color: #a78bfa;
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 1rem 5%;
+    }
+
+    .profile-img {
+      width: clamp(110px, 30vw, 170px);
+      height: clamp(110px, 30vw, 170px);
+      border-radius: 50%;
+      object-fit: cover;
+      border: 5px solid rgba(167,139,250,0.7);
+      box-shadow: 0 0 40px rgba(167,139,250,0.5);
+      margin-bottom: 1.5rem;
+      transition: transform 0.4s ease;
+    }
+
+    .profile-img:hover, .profile-img:active {
+      transform: scale(1.1);
+    }
+
+    .hero h1 {
+      font-size: clamp(2.8rem, 12vw, 6.5rem);
+      font-weight: 800;
+      background: linear-gradient(90deg, #a78bfa, #c084fc, #7c3aed);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.6rem;
+      line-height: 1.1;
+    }
+
+    .hero .tagline {
+      font-size: clamp(1.2rem, 5.5vw, 2rem);
+      color: #b0b0ff;
+      margin-bottom: 1rem;
+    }
+
+    #typed {
+      font-size: clamp(1.4rem, 6.5vw, 2.5rem);
+      font-weight: 600;
+      color: #ddd6fe;
+      min-height: 50px;
+      border-right: 3px solid #a78bfa;
+      white-space: nowrap;
+      overflow: hidden;
+      animation: blink 0.8s step-end infinite;
+    }
+
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
+
+    .btn-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 2rem;
+      width: 100%;
+      max-width: 500px;
+    }
+
+    .btn {
+      padding: 0.8rem 1.8rem;
+      background: linear-gradient(45deg, #7c3aed, #a78bfa);
+      color: white;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: clamp(0.95rem, 4vw, 1.1rem);
+      transition: all 0.3s;
+      min-width: 160px;
+      text-align: center;
+    }
+
+    .btn:hover, .btn:active {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 30px rgba(124,58,237,0.4);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid #a78bfa;
+      color: #a78bfa;
+    }
+
+    section {
+      padding: 6rem 5% 4rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    h2 {
+      font-size: clamp(2rem, 8vw, 3rem);
+      text-align: center;
+      margin-bottom: 2.5rem;
+      color: #c4b5fd;
+      position: relative;
+    }
+
+    h2::after {
+      content: '';
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(90deg, #a78bfa, #c084fc);
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 2px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.6rem;
+    }
+
+    .card {
+      background: rgba(30,20,60,0.5);
+      border: 1px solid rgba(167,139,250,0.3);
+      border-radius: 14px;
+      padding: 1.6rem;
+      transition: all 0.35s;
+      backdrop-filter: blur(6px);
+    }
+
+    .card:hover, .card:active {
+      transform: translateY(-8px);
+      border-color: #a78bfa;
+      box-shadow: 0 12px 35px rgba(167,139,250,0.2);
+    }
+
+    .card h3 {
+      color: #ddd6fe;
+      margin-bottom: 0.8rem;
+      font-size: clamp(1.15rem, 4.5vw, 1.35rem);
+    }
+
+    footer {
+      text-align: center;
+      padding: 3rem 1rem 2rem;
+      color: #b0b0ff;
+      border-top: 1px solid rgba(167,139,250,0.2);
+      font-size: 0.9rem;
+    }
+
+    /* Mobile optimizations */
+    @media (max-width: 768px) {
+      header {
+        padding: 1rem 4%;
+        flex-direction: column;
+        gap: 0.8rem;
+      }
+      nav {
+        gap: 0.8rem;
+      }
+      .hero {
+        min-height: 85vh;
+        padding: 1rem 4%;
+      }
+      section {
+        padding: 4rem 4% 3rem;
+      }
+      .grid {
+        grid-template-columns: 1fr;
+      }
+      .btn-container {
+        flex-direction: column;
+        align-items: center;
+      }
+      .btn {
+        width: 80%;
+        max-width: 300px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 {
+        font-size: clamp(2.2rem, 13vw, 4rem);
+      }
+      #typed {
+        font-size: clamp(1.2rem, 7vw, 1.8rem);
+      }
+      .profile-img {
+        width: clamp(100px, 28vw, 140px);
+        height: clamp(100px, 28vw, 140px);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="tsparticles"></div>
+  <div class="overlay"></div>
+
+  <header>
+    <div class="logo">Mohammad Yasin</div>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#publications">Publications</a>
+      <a href="#videos">Videos</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <img 
+        src="https://i.postimg.cc/9fL37KH6/Untitled-design-31.png" 
+        alt="Mohammad Yasin" 
+        class="profile-img"
+      />
+      <h1>Mohammad Yasin</h1>
+      <p class="tagline">Physics Undergraduate • Science Enthusiast</p>
+      <div id="typed"></div>
+
+      <div class="btn-container">
+        <a href="#projects" class="btn">Explore My Work</a>
+        <a href="#contact" class="btn btn-outline">Get in Touch</a>
+      </div>
+    </section>
+
+    <section id="about">
+      <h2>About Me</h2>
+      <div class="card" style="max-width: 800px; margin: 0 auto; text-align: center;">
+        <p style="font-size: clamp(1rem, 4.5vw, 1.15rem); margin-bottom: 1.5rem;">
+          আমি মোহাম্মদ ইয়াসিন। ফিজিক্স নিয়ে পড়াশোনা করছি এবং মহাবিশ্বের রহস্য উন্মোচন করতে চাই। কোয়ান্টাম মেকানিক্স, অ্যাস্ট্রোফিজিক্স, থিওরেটিক্যাল ফিজিক্স — এসব আমার আবেগ। ভবিষ্যতে গবেষণার মাধ্যমে বিজ্ঞানের সীমানা প্রসারিত করতে চাই।
+        </p>
+        <p><strong>Location:</strong> Dhaka, Bangladesh</p>
+        <p><strong>Email:</strong> your.email@example.com</p>
+      </div>
+    </section>
+
+    <!-- এখানে Skills, Projects, Publications, Videos, Contact সেকশন যোগ করো (আগের কোড থেকে কপি করে) -->
+
+  </main>
+
+  <footer>
+    <p>© 2026 Mohammad Yasin • Aspiring Physicist</p>
+  </footer>
+
+  <script>
+    // tsParticles science background
+    tsParticles.load("tsparticles", {
+      preset: "stars",
+      particles: {
+        number: { value: 80 },
+        color: { value: ["#ffffff", "#a78bfa", "#c084fc", "#7c3aed"] },
+        size: { value: { min: 1, max: 3 } },
+        opacity: { value: { min: 0.4, max: 0.8 } },
+        move: { enable: true, speed: 0.7, random: true },
+        links: { enable: true, distance: 120, color: "#a78bfa", opacity: 0.4 }
+      },
+      interactivity: {
+        events: { onhover: { enable: true, mode: "grab" }, onclick: { enable: true, mode: "push" } },
+        modes: { grab: { distance: 160 }, push: { quantity: 3 } }
+      }
+    });
+
+    // Typing animation
+    const texts = [
+      "I'm Mohammad Yasin",
+      "I'm a science enthusiast",
+      "Physics is my passion",
+      "I'll become a scientist"
+    ];
+    let textIndex = 0;
+    let charIndex = 0;
+    let currentText = "";
+    const typedElement = document.getElementById("typed");
+
+    function type() {
+      if (charIndex < texts[textIndex].length) {
+        currentText += texts[textIndex].charAt(charIndex);
+        typedElement.textContent = currentText;
+        charIndex++;
+        setTimeout(type, 70);
+      } else {
+        setTimeout(erase, 2000);
+      }
+    }
+
+    function erase() {
+      if (charIndex > 0) {
+        currentText = currentText.slice(0, -1);
+        typedElement.textContent = currentText;
+        charIndex--;
+        setTimeout(erase, 35);
+      } else {
+        textIndex = (textIndex + 1) % texts.length;
+        setTimeout(type, 600);
+      }
+    }
+
+    type();
+  </script>
+
+</body>
+</html>
