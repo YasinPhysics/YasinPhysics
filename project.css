@@ -110,3 +110,15 @@
     padding: 1.5rem;
   }
 }
+
+
+/* Project Role (নতুন যোগ করা) */
+.project-role {
+  font-size: 0.95rem;
+  color: #c084fc;
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+  display: block;
+}
+
+/* বাকি projects-section, project-card, project-title, project-desc, project-tags, project-link স্টাইল আগের মতোই রাখো */
