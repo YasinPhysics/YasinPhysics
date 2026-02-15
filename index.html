@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   
-  <!-- Font Awesome for social icons (free CDN) -->
+  <!-- Font Awesome for social icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <script src="https://cdn.jsdelivr.net/npm/tsparticles@3.5.0/tsparticles.min.js"></script>
@@ -17,22 +17,19 @@
 
   <div id="tsparticles"></div>
 
-  <!-- Sticky Social Icons (ডান পাশে ফিক্সড) -->
+  <!-- Sticky Social Icons - ডান পাশে -->
   <div class="social-sidebar">
-    <a href="https://www.linkedin.com/in/yourprofile" target="_blank" class="social-icon linkedin">
+    <a href="https://www.linkedin.com/in/your-linkedin-profile" target="_blank" class="social-icon linkedin" title="LinkedIn">
       <i class="fab fa-linkedin-in"></i>
     </a>
-    <a href="https://github.com/yourusername" target="_blank" class="social-icon github">
+    <a href="https://www.researchgate.net/profile/Your-ResearchGate-Profile" target="_blank" class="social-icon researchgate" title="ResearchGate">
+      <i class="fab fa-researchgate"></i>
+    </a>
+    <a href="https://github.com/your-github-username" target="_blank" class="social-icon github" title="GitHub">
       <i class="fab fa-github"></i>
     </a>
-    <a href="https://twitter.com/yourhandle" target="_blank" class="social-icon twitter">
-      <i class="fab fa-twitter"></i>
-    </a>
-    <a href="https://www.facebook.com/yourpage" target="_blank" class="social-icon facebook">
-      <i class="fab fa-facebook-f"></i>
-    </a>
-    <a href="https://www.instagram.com/yourhandle" target="_blank" class="social-icon instagram">
-      <i class="fab fa-instagram"></i>
+    <a href="https://www.youtube.com/@your-channel" target="_blank" class="social-icon youtube" title="YouTube">
+      <i class="fab fa-youtube"></i>
     </a>
   </div>
 
@@ -135,7 +132,7 @@
     .float-symbol { position:absolute; font-size:1.8rem; color:#c084fc; opacity:0.65; pointer-events:none; animation:floatSym 12s infinite ease-in-out; }
     @keyframes floatSym { 0%,100% {transform:translate(0,0) rotate(0deg);} 50% {transform:translate(var(--dx),var(--dy)) rotate(360deg);} }
 
-    /* Sticky Social Icons - ডান পাশে ফিক্সড */
+    /* Sticky Social Icons - ডান পাশে */
     .social-sidebar {
       position: fixed;
       right: 20px;
@@ -143,31 +140,37 @@
       transform: translateY(-50%);
       display: flex;
       flex-direction: column;
-      gap: 1.2rem;
+      gap: 1.4rem;
       z-index: 999;
     }
 
     .social-icon {
-      width: 45px;
-      height: 45px;
+      width: 48px;
+      height: 48px;
       border-radius: 50%;
       background: rgba(192, 132, 252, 0.15);
       color: #c084fc;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.3rem;
+      font-size: 1.4rem;
       transition: all 0.3s ease;
       border: 1px solid rgba(192, 132, 252, 0.3);
       text-decoration: none;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
     }
 
     .social-icon:hover {
-      transform: scale(1.15);
-      background: rgba(192, 132, 252, 0.35);
-      box-shadow: 0 0 20px rgba(192, 132, 252, 0.5);
+      transform: scale(1.2);
+      background: linear-gradient(135deg, #c084fc, #a78bfa);
       color: white;
+      box-shadow: 0 0 25px rgba(192,132,252,0.6);
     }
+
+    .social-icon.linkedin:hover { background: linear-gradient(135deg, #0077b5, #00a0dc); }
+    .social-icon.researchgate:hover { background: linear-gradient(135deg, #00cc99, #009973); }
+    .social-icon.github:hover { background: linear-gradient(135deg, #333, #555); }
+    .social-icon.youtube:hover { background: linear-gradient(135deg, #ff0000, #cc0000); }
 
     /* মোবাইল অপটিমাইজেশন */
     @media (max-width: 1024px) {
@@ -177,7 +180,7 @@
       .buttons { flex-direction:column; align-items:center; gap:1rem; }
       .btn { width:80%; max-width:320px; }
       .social-sidebar { right:15px; gap:1rem; }
-      .social-icon { width:40px; height:40px; font-size:1.1rem; }
+      .social-icon { width:42px; height:42px; font-size:1.2rem; }
     }
 
     @media (max-width: 768px) {
@@ -190,7 +193,7 @@
       .tagline-wrapper { font-size:1.6rem; }
       .subtitle { font-size:1rem; }
       .social-sidebar { right:10px; gap:0.9rem; }
-      .social-icon { width:36px; height:36px; font-size:1rem; }
+      .social-icon { width:38px; height:38px; font-size:1.1rem; }
     }
 
     @media (max-width: 480px) {
@@ -198,6 +201,8 @@
       .tagline-wrapper { font-size:1.4rem; }
       .btn { padding:0.6rem 1.4rem; font-size:0.85rem; }
       .profile-container { width:180px; height:180px; }
+      .social-sidebar { right:8px; gap:0.8rem; }
+      .social-icon { width:34px; height:34px; font-size:1rem; }
     }
   </style>
 
