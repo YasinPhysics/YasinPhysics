@@ -67,15 +67,15 @@
     .left { flex:1; min-width:320px; }
     .intro { font-size:1.5rem; color:#c084fc; margin-bottom:0.8rem; font-weight:500; }
     
-    /* নামের সাইজ কমানো + হালকা করা */
+    /* নামের সাইজ ঠিক 2.25rem করা হয়েছে (clamp ব্যবহার না করে ফিক্সড সাইজ দিয়েছি) */
     .name { 
-      font-size: clamp(3.2rem, 7.5vw, 5.2rem); 
+      font-size: 2.25rem; 
       font-weight: 800; 
-      line-height:1.05; 
+      line-height: 1.1; 
       background: linear-gradient(90deg, #a78bfa, #c084fc, #7c3aed); 
-      -webkit-background-clip:text; 
-      -webkit-text-fill-color:transparent; 
-      margin-bottom:0.8rem; 
+      -webkit-background-clip: text; 
+      -webkit-text-fill-color: transparent; 
+      margin-bottom: 0.8rem; 
     }
 
     .tagline-wrapper { 
@@ -116,7 +116,7 @@
   </style>
 
   <script>
-    // tsParticles লোড নিশ্চিত করা
+    // tsParticles + tagline animation (আগের মতোই রাখা হয়েছে)
     document.addEventListener("DOMContentLoaded", function() {
       if (typeof tsParticles !== 'undefined') {
         tsParticles.load("tsparticles", {
@@ -133,10 +133,9 @@
             events: { onhover:{enable:true,mode:"grab"}, onclick:{enable:true,mode:"push"} },
             modes: { grab:{distance:180,links:{opacity:0.6}}, push:{quantity:3} }
           }
-        }).catch(err => console.log("Particles load error:", err));
+        });
       }
 
-      // Tagline animation
       const phrases = [
         "I'm science enthusiast",
         "I will become scientist"
@@ -167,7 +166,7 @@
         }
       }
 
-      animate();  // শুরু করা
+      animate();
     });
   </script>
 
