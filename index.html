@@ -4,11 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Mohammad Yasin | Physics Enthusiast</title>
-  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   
+  <!-- tsParticles for floating particles / dots effect -->
   <script src="https://cdn.jsdelivr.net/npm/tsparticles@3.5.0/tsparticles.min.js"></script>
 
   <style>
@@ -20,263 +20,231 @@
 
     body {
       font-family: 'Inter', sans-serif;
-      background: #0a001f;
+      background: #0d001f;
       color: #e0e0ff;
-      line-height: 1.65;
+      min-height: 100vh;
       overflow-x: hidden;
     }
 
     #tsparticles {
       position: fixed;
       inset: 0;
-      z-index: -2;
-    }
-
-    .overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(10, 5, 40, 0.72);
       z-index: -1;
     }
 
     header {
       position: fixed;
       top: 0;
-      left: 0;
       width: 100%;
-      padding: 1.1rem 6%;
+      padding: 1.5rem 5%;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: rgba(10, 5, 40, 0.6);
-      backdrop-filter: blur(12px);
+      background: rgba(30, 10, 60, 0.5);
+      backdrop-filter: blur(10px);
       z-index: 1000;
-      border-bottom: 1px solid rgba(167, 139, 250, 0.18);
+      border-bottom: 1px solid rgba(167, 139, 250, 0.2);
     }
 
-    .logo {
-      font-size: clamp(1.4rem, 5vw, 1.8rem);
-      font-weight: 700;
-      color: #c4b5fd;
-    }
-
-    nav {
+    .nav-links {
       display: flex;
-      gap: 1.5rem;
+      gap: 2.2rem;
     }
 
-    nav a {
+    .nav-links a {
       color: #d1d5ff;
       text-decoration: none;
       font-weight: 500;
-      font-size: clamp(0.95rem, 3vw, 1.05rem);
+      font-size: 1.05rem;
       transition: color 0.3s;
     }
 
-    nav a:hover, nav a.active {
-      color: #a78bfa;
-    }
-
-    main {
-      padding-top: 100px; /* header height + margin */
+    .nav-links a:hover {
+      color: #c084fc;
     }
 
     .hero {
-      min-height: 90vh;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       text-align: center;
-      padding: 2rem 6% 4rem;
+      padding: 0 5%;
+      position: relative;
     }
 
-    .profile-img {
-      width: clamp(160px, 40vw, 240px);
-      height: clamp(160px, 40vw, 240px);
-      border-radius: 50%;
-      object-fit: cover;
-      border: 6px solid rgba(167, 139, 250, 0.65);
-      box-shadow: 0 0 50px rgba(167, 139, 250, 0.55), inset 0 0 20px rgba(167, 139, 250, 0.3);
-      margin-bottom: 2rem;
-      transition: transform 0.4s ease;
+    .intro {
+      font-size: 1.4rem;
+      color: #c084fc;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
     }
 
-    .profile-img:hover {
-      transform: scale(1.08);
-    }
-
-    .hero h1 {
-      font-size: clamp(3.5rem, 10vw, 7rem);
+    .name {
+      font-size: clamp(3.5rem, 8vw, 6.5rem);
       font-weight: 800;
       background: linear-gradient(90deg, #a78bfa, #c084fc, #7c3aed);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      margin-bottom: 0.8rem;
-      line-height: 1.05;
+      margin: 0.5rem 0;
     }
 
-    .tagline {
-      font-size: clamp(1.5rem, 5vw, 2.4rem);
-      color: #b0b0ff;
-      margin-bottom: 1.5rem;
-      font-weight: 400;
-    }
-
-    #typed {
-      font-size: clamp(1.6rem, 6vw, 2.8rem);
-      font-weight: 600;
+    .typing-container {
+      font-size: clamp(2.2rem, 6vw, 4rem);
+      font-weight: 700;
       color: #ddd6fe;
-      min-height: 60px;
-      border-right: 4px solid #a78bfa;
-      white-space: nowrap;
-      overflow: hidden;
-      animation: blink 0.75s step-end infinite;
+      margin: 1rem 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .cursor {
+      width: 4px;
+      height: 1.1em;
+      background: #c084fc;
+      animation: blink 0.8s infinite;
     }
 
     @keyframes blink {
-      50% { border-color: transparent; }
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
     }
 
-    .btn-group {
+    .profile-circle {
+      position: relative;
+      width: clamp(220px, 45vw, 320px);
+      height: clamp(220px, 45vw, 320px);
+      margin: 1.5rem 0 2.5rem;
+    }
+
+    .profile-img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 5px solid rgba(192, 132, 252, 0.6);
+      box-shadow: 0 0 60px rgba(167, 139, 250, 0.5);
+    }
+
+    .floating-icons {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .icon {
+      position: absolute;
+      font-size: 1.8rem;
+      color: #c084fc;
+      opacity: 0.7;
+      animation: float 8s infinite ease-in-out;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0) rotate(0deg); }
+      50% { transform: translate(var(--x), var(--y)) rotate(180deg); }
+    }
+
+    .description {
+      font-size: clamp(1.2rem, 4vw, 1.5rem);
+      color: #b0b0ff;
+      max-width: 700px;
+      margin: 1.5rem 0 3rem;
+      line-height: 1.6;
+    }
+
+    .buttons {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 1.2rem;
-      margin-top: 2.5rem;
+      gap: 1.5rem;
     }
 
     .btn {
-      padding: 0.9rem 2rem;
+      padding: 0.9rem 2.2rem;
       border-radius: 50px;
       font-weight: 600;
-      font-size: 1.05rem;
+      font-size: 1.1rem;
       text-decoration: none;
       transition: all 0.3s ease;
-      min-width: 180px;
-      text-align: center;
+      cursor: pointer;
     }
 
     .btn-primary {
-      background: linear-gradient(45deg, #7c3aed, #a78bfa);
+      background: linear-gradient(45deg, #7c3aed, #c084fc);
       color: white;
+      border: none;
     }
 
     .btn-primary:hover {
       transform: translateY(-4px);
-      box-shadow: 0 12px 35px rgba(124, 58, 237, 0.45);
+      box-shadow: 0 15px 40px rgba(192, 132, 252, 0.4);
     }
 
     .btn-outline {
-      border: 2px solid #a78bfa;
-      color: #a78bfa;
       background: transparent;
+      border: 2px solid #c084fc;
+      color: #c084fc;
     }
 
     .btn-outline:hover {
-      background: rgba(167, 139, 250, 0.15);
+      background: rgba(192, 132, 252, 0.1);
     }
 
-    section {
-      padding: 7rem 6% 5rem;
-      max-width: 1200px;
-      margin: 0 auto;
+    .social-dots {
+      position: fixed;
+      right: 2rem;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      z-index: 999;
     }
 
-    h2 {
-      font-size: clamp(2.4rem, 7vw, 3.4rem);
-      text-align: center;
-      margin-bottom: 3.5rem;
-      color: #c4b5fd;
-      position: relative;
+    .dot {
+      width: 14px;
+      height: 14px;
+      background: #c084fc;
+      border-radius: 50%;
+      box-shadow: 0 0 15px #c084fc;
+      transition: all 0.3s;
     }
 
-    h2::after {
-      content: '';
-      width: 80px;
-      height: 4px;
-      background: linear-gradient(90deg, #a78bfa, #c084fc);
-      position: absolute;
-      bottom: -12px;
-      left: 50%;
-      transform: translateX(-50%);
-      border-radius: 2px;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 2rem;
-    }
-
-    .card {
-      background: rgba(30, 20, 60, 0.5);
-      border: 1px solid rgba(167, 139, 250, 0.3);
-      border-radius: 16px;
-      padding: 2rem;
-      transition: all 0.4s ease;
-      backdrop-filter: blur(8px);
-    }
-
-    .card:hover {
-      transform: translateY(-12px);
-      border-color: #a78bfa;
-      box-shadow: 0 20px 50px rgba(167, 139, 250, 0.25);
-    }
-
-    .card h3 {
-      color: #ddd6fe;
-      margin-bottom: 1rem;
-      font-size: 1.4rem;
+    .dot:hover {
+      transform: scale(1.4);
     }
 
     footer {
       text-align: center;
-      padding: 4rem 1rem 2rem;
+      padding: 3rem 1rem;
       color: #b0b0ff;
-      border-top: 1px solid rgba(167, 139, 250, 0.2);
+      font-size: 0.95rem;
     }
 
-    /* Responsive */
     @media (max-width: 768px) {
       header {
         padding: 1rem 5%;
         flex-direction: column;
         gap: 1rem;
       }
-      nav {
-        gap: 1rem;
-        justify-content: center;
+      .nav-links {
+        gap: 1.2rem;
+        font-size: 0.95rem;
       }
-      .hero {
-        padding: 1.5rem 5% 5rem;
+      .profile-circle {
+        width: 220px;
+        height: 220px;
       }
-      section {
-        padding: 5rem 5% 4rem;
-      }
-      .grid {
-        grid-template-columns: 1fr;
-      }
-      .btn-group {
+      .buttons {
         flex-direction: column;
-        align-items: center;
+        gap: 1rem;
       }
-      .btn {
-        width: 85%;
-        max-width: 320px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .profile-img {
-        width: 180px;
-        height: 180px;
-      }
-      .hero h1 {
-        font-size: 3.2rem;
-      }
-      #typed {
-        font-size: 1.8rem;
+      .social-dots {
+        right: 1rem;
       }
     }
   </style>
@@ -284,176 +252,105 @@
 <body>
 
   <div id="tsparticles"></div>
-  <div class="overlay"></div>
 
   <header>
-    <div class="logo">Mohammad Yasin</div>
-    <nav>
+    <div class="nav-links">
+      <a href="#home">Home</a>
       <a href="#about">About</a>
       <a href="#skills">Skills</a>
       <a href="#projects">Projects</a>
       <a href="#publications">Publications</a>
-      <a href="#videos">Videos</a>
-    </nav>
+      <a href="#contact">Contact</a>
+    </div>
   </header>
 
-  <main>
-    <section class="hero">
+  <section class="hero">
+    <p class="intro">Hello, I'm</p>
+    <h1 class="name">Mohammad Yasin</h1>
+
+    <div class="typing-container">
+      <span>Future Physicist</span>
+      <span class="cursor">|</span>
+    </div>
+
+    <div class="profile-circle">
       <img 
         src="https://i.postimg.cc/9fL37KH6/Untitled-design-31.png" 
         alt="Mohammad Yasin" 
         class="profile-img"
       />
-      <h1>Mohammad Yasin</h1>
-      <p class="tagline">Physics Enthusiast & Future Scientist</p>
-      <div id="typed"></div>
-
-      <div class="btn-group">
-        <a href="#projects" class="btn btn-primary">Explore My Work</a>
-        <a href="#contact" class="btn btn-outline">Get in Touch</a>
+      <div class="floating-icons">
+        <div class="icon" style="--x: -60px; --y: -80px; animation-delay: 0s;">⚛️</div>
+        <div class="icon" style="--x: 70px; --y: -50px; animation-delay: 2s;">🌌</div>
+        <div class="icon" style="--x: -40px; --y: 60px; animation-delay: 4s;">γ</div>
+        <div class="icon" style="--x: 80px; --y: 40px; animation-delay: 6s;">λ</div>
       </div>
-    </section>
+    </div>
 
-    <section id="about">
-      <h2>About Me</h2>
-      <div class="card" style="max-width: 800px; margin: 0 auto; text-align: center;">
-        <p style="font-size: 1.2rem; margin-bottom: 1.6rem;">
-          আমি মোহাম্মদ ইয়াসিন। ফিজিক্স নিয়ে পড়াশোনা করছি। মহাবিশ্বের গভীর রহস্য, কোয়ান্টাম মেকানিক্স, অ্যাস্ট্রোফিজিক্স নিয়ে অদম্য আগ্রহ। ভবিষ্যতে গবেষণা করে বিজ্ঞানী হওয়ার স্বপ্ন দেখি এবং বিজ্ঞানকে সহজভাবে সবার কাছে পৌঁছে দিতে চাই।
-        </p>
-        <p><strong>Location:</strong> Dhaka, Bangladesh</p>
-        <p><strong>Email:</strong> your.email@example.com</p>
-      </div>
-    </section>
+    <p class="description">
+      I explore the mysteries of the universe through theoretical physics, quantum mechanics, astrophysics, 
+      and computational simulations. Passionate about turning equations into understanding.
+    </p>
 
-    <section id="skills">
-      <h2>Skills & Interests</h2>
-      <div class="grid">
-        <div class="card">
-          <h3>Theoretical Physics</h3>
-          <p>Quantum Mechanics, Relativity, Particle Physics</p>
-        </div>
-        <div class="card">
-          <h3>Computational Tools</h3>
-          <p>Python, MATLAB, LaTeX, Qiskit</p>
-        </div>
-        <div class="card">
-          <h3>Astrophysics</h3>
-          <p>Cosmology, Black Holes, Dark Matter</p>
-        </div>
-      </div>
-    </section>
+    <div class="buttons">
+      <a href="#projects" class="btn btn-primary">View Projects</a>
+      <a href="#contact" class="btn btn-outline">Contact Me</a>
+      <a href="#" class="btn btn-outline">Resume ↓</a>
+    </div>
+  </section>
 
-    <section id="projects">
-      <h2>Projects</h2>
-      <div class="grid">
-        <div class="card">
-          <h3>Quantum Simulator</h3>
-          <p>Qiskit দিয়ে কোয়ান্টাম সার্কিট সিমুলেশন</p>
-        </div>
-        <div class="card">
-          <h3>N-Body Simulation</h3>
-          <p>গ্র্যাভিটেশনাল স্টার ক্লাস্টার মডেল</p>
-        </div>
-        <div class="card">
-          <h3>Relativity Visualizer</h3>
-          <p>স্পেশাল রিলেটিভিটি ইন্টারেক্টিভ ডেমো</p>
-        </div>
-      </div>
-    </section>
+  <!-- Add other sections here if needed (About, Skills, etc.) -->
 
-    <section id="publications">
-      <h2>Publications & Talks</h2>
-      <div class="grid">
-        <div class="card">
-          <h3>Dark Matter Candidates</h3>
-          <p>Undergraduate Review & Poster (2025)</p>
-        </div>
-        <div class="card">
-          <h3>Quantum Entanglement Article</h3>
-          <p>Educational write-up</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="videos">
-      <h2>YouTube Videos</h2>
-      <div class="grid">
-        <div class="card">
-          <h3>Black Hole Paradox Explained</h3>
-          <p>Bangla • 12 min</p>
-        </div>
-        <div class="card">
-          <h3>Double Slit Experiment</h3>
-          <p>Quantum basics simplified</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact">
-      <h2>Get In Touch</h2>
-      <div class="card" style="max-width: 700px; margin: 0 auto; text-align: center;">
-        <p style="font-size: 1.3rem; margin-bottom: 2rem;">
-          Physics, research, বা universe নিয়ে আলোচনা করতে চাইলে যোগাযোগ করো!
-        </p>
-        <a href="mailto:your.email@example.com" class="btn btn-primary">Send Message</a>
-      </div>
-    </section>
-  </main>
+  <div class="social-dots">
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+  </div>
 
   <footer>
-    <p>© 2026 Mohammad Yasin • Aspiring Physicist & Science Communicator</p>
+    © 2026 Mohammad Yasin • Exploring the Cosmos One Equation at a Time
   </footer>
 
   <script>
+    // tsParticles - floating dots / particles like in the example
     tsParticles.load("tsparticles", {
-      preset: "stars",
       particles: {
-        number: { value: 90 },
-        color: { value: ["#ffffff", "#a78bfa", "#c084fc", "#7c3aed"] },
-        size: { value: { min: 1, max: 3.5 } },
-        opacity: { value: { min: 0.35, max: 0.8 } },
-        move: { enable: true, speed: 0.8, random: true },
-        links: { enable: true, distance: 130, color: "#a78bfa", opacity: 0.35 }
+        number: { value: 60 },
+        color: { value: ["#a78bfa", "#c084fc", "#7c3aed", "#ffffff"] },
+        shape: { type: "circle" },
+        opacity: { value: 0.6, random: true },
+        size: { value: { min: 1, max: 4 } },
+        move: {
+          enable: true,
+          speed: 0.8,
+          direction: "none",
+          random: true,
+          outModes: "out"
+        },
+        links: {
+          enable: true,
+          distance: 150,
+          color: "#c084fc",
+          opacity: 0.4,
+          width: 1
+        }
       },
       interactivity: {
-        events: { onhover: { enable: true, mode: "grab" }, onclick: { enable: true, mode: "push" } },
-        modes: { grab: { distance: 170 }, push: { quantity: 4 } }
-      }
+        events: {
+          onhover: { enable: true, mode: "grab" },
+          onclick: { enable: true, mode: "push" }
+        },
+        modes: {
+          grab: { distance: 180, links: { opacity: 0.7 } },
+          push: { quantity: 3 }
+        }
+      },
+      detectRetina: true
     });
 
-    const texts = [
-      "I'm Mohammad Yasin",
-      "I'm a science enthusiast",
-      "Physics is my passion",
-      "I'll become a scientist"
-    ];
-    let textIndex = 0, charIndex = 0, current = "";
-    const typed = document.getElementById("typed");
-
-    function type() {
-      if (charIndex < texts[textIndex].length) {
-        current += texts[textIndex].charAt(charIndex);
-        typed.textContent = current;
-        charIndex++;
-        setTimeout(type, 65);
-      } else {
-        setTimeout(erase, 2200);
-      }
-    }
-
-    function erase() {
-      if (charIndex > 0) {
-        current = current.slice(0, -1);
-        typed.textContent = current;
-        charIndex--;
-        setTimeout(erase, 30);
-      } else {
-        textIndex = (textIndex + 1) % texts.length;
-        setTimeout(type, 600);
-      }
-    }
-
-    type();
+    // Simple typing effect variation (you can use Typed.js CDN for full typing if wanted)
+    // Here just blinking cursor for simplicity matching the screenshot
   </script>
 
 </body>
