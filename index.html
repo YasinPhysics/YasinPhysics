@@ -36,7 +36,7 @@
           <span class="cursor"></span>
         </div>
 
-        <!-- নতুন যোগ করা লাইন (tagline এর নিচে) -->
+        <!-- Subtitle - ফন্ট সাইজ ছোট করা -->
         <p class="subtitle">
           Decoding the Universe, One Equation at a Time.
         </p>
@@ -44,7 +44,7 @@
         <div class="buttons">
           <a href="#publications" class="btn btn-primary">Publications</a>
           <a href="#videos" class="btn btn-outline">My Videos</a>
-          <a href="#" class="btn btn-outline">Resume ↓</a> <!-- ডেমো লিংক - পরে চেঞ্জ করো -->
+          <a href="#" class="btn btn-outline">Resume ↓</a> <!-- ডেমো - পরে চেঞ্জ করো -->
         </div>
       </div>
 
@@ -83,14 +83,15 @@
     .cursor { display:inline-block; width:4px; height:1.2em; background:#ff79c6; vertical-align:middle; margin-left:4px; animation:blink 0.75s step-end infinite; }
     @keyframes blink { 0%,100% {opacity:1;} 50% {opacity:0;} }
 
-    /* নতুন যোগ করা subtitle */
+    /* Subtitle ফন্ট সাইজ ছোট করা */
     .subtitle {
-      font-size: clamp(1.1rem, 3.5vw, 1.4rem);
+      font-size: 1.15rem;                    /* আগের চেয়ে ছোট + হালকা */
       color: #b0b0ff;
-      margin: 1.5rem 0 2.5rem;
+      margin: 1.2rem 0 2rem;
       font-weight: 400;
-      max-width: 500px;
+      max-width: 480px;
       opacity: 0.9;
+      line-height: 1.4;
     }
 
     .buttons {
@@ -100,13 +101,13 @@
     }
 
     .btn {
-      padding: 0.85rem 2rem;
+      padding: 0.8rem 1.9rem;
       border-radius: 50px;
       font-weight: 600;
-      font-size: 1.05rem;
+      font-size: 0.95rem;                    /* বাটন টেক্সট সাইজ ছোট করা */
       text-decoration: none;
       transition: all 0.3s ease;
-      min-width: 160px;
+      min-width: 150px;
       text-align: center;
     }
 
