@@ -75,3 +75,87 @@
     padding: 1.5rem;
   }
 }
+
+
+/* Book Cover Image Style */
+.book-cover {
+  width: 100%;
+  max-height: 280px;
+  object-fit: contain;
+  border-radius: 12px;
+  margin-bottom: 1.2rem;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+  transition: transform 0.3s ease;
+}
+
+.book-card:hover .book-cover {
+  transform: scale(1.03);
+}
+
+/* বাকি publications-section স্টাইল আগের মতোই রাখো */
+.publications-section {
+  padding: 6rem 5% 4rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.publications-section h2 {
+  font-size: clamp(2.2rem, 6vw, 3.2rem);
+  color: #c084fc;
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+.publications-section h2::after {
+  content: '';
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, #a78bfa, #c084fc);
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 2px;
+}
+
+.books-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+}
+
+.book-card {
+  background: rgba(30, 20, 60, 0.5);
+  border: 1px solid rgba(192, 132, 252, 0.3);
+  border-radius: 16px;
+  padding: 2rem;
+  transition: all 0.4s ease;
+  backdrop-filter: blur(8px);
+  text-align: left;
+}
+
+.book-card:hover {
+  transform: translateY(-10px);
+  border-color: #c084fc;
+  box-shadow: 0 15px 40px rgba(192, 132, 252, 0.25);
+}
+
+.book-card h3 {
+  color: #e0aaff;
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.book-card .author {
+  color: #b0b0ff;
+  font-style: italic;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.book-card .description {
+  color: #d1d5ff;
+  font-size: 1rem;
+  line-height: 1.6;
+}
