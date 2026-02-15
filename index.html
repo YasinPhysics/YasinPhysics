@@ -9,7 +9,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   
-  <!-- tsParticles for science/galaxy background -->
   <script src="https://cdn.jsdelivr.net/npm/tsparticles@3.5.0/tsparticles.min.js"></script>
 
   <style>
@@ -21,9 +20,9 @@
 
     body {
       font-family: 'Inter', sans-serif;
-      background: #0b001f;
+      background: #0a001f;
       color: #e0e0ff;
-      line-height: 1.6;
+      line-height: 1.65;
       overflow-x: hidden;
     }
 
@@ -36,160 +35,169 @@
     .overlay {
       position: fixed;
       inset: 0;
-      background: linear-gradient(to bottom, rgba(10,5,40,0.75), rgba(20,10,60,0.8));
+      background: rgba(10, 5, 40, 0.72);
       z-index: -1;
     }
 
     header {
       position: fixed;
       top: 0;
+      left: 0;
       width: 100%;
-      padding: 1rem 5%;
+      padding: 1.1rem 6%;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      z-index: 100;
-      background: rgba(10,5,40,0.55);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(167,139,250,0.2);
+      background: rgba(10, 5, 40, 0.6);
+      backdrop-filter: blur(12px);
+      z-index: 1000;
+      border-bottom: 1px solid rgba(167, 139, 250, 0.18);
     }
 
     .logo {
-      font-size: clamp(1.4rem, 5vw, 1.7rem);
+      font-size: clamp(1.4rem, 5vw, 1.8rem);
       font-weight: 700;
       color: #c4b5fd;
     }
 
     nav {
       display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      justify-content: center;
+      gap: 1.5rem;
     }
 
     nav a {
       color: #d1d5ff;
       text-decoration: none;
-      font-size: clamp(0.9rem, 3.5vw, 1rem);
       font-weight: 500;
+      font-size: clamp(0.95rem, 3vw, 1.05rem);
       transition: color 0.3s;
     }
 
-    nav a:hover, nav a:active {
+    nav a:hover, nav a.active {
       color: #a78bfa;
     }
 
+    main {
+      padding-top: 100px; /* header height + margin */
+    }
+
     .hero {
-      min-height: 100vh;
+      min-height: 90vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       text-align: center;
-      padding: 1rem 5%;
+      padding: 2rem 6% 4rem;
     }
 
     .profile-img {
-      width: clamp(110px, 30vw, 170px);
-      height: clamp(110px, 30vw, 170px);
+      width: clamp(160px, 40vw, 240px);
+      height: clamp(160px, 40vw, 240px);
       border-radius: 50%;
       object-fit: cover;
-      border: 5px solid rgba(167,139,250,0.7);
-      box-shadow: 0 0 40px rgba(167,139,250,0.5);
-      margin-bottom: 1.5rem;
+      border: 6px solid rgba(167, 139, 250, 0.65);
+      box-shadow: 0 0 50px rgba(167, 139, 250, 0.55), inset 0 0 20px rgba(167, 139, 250, 0.3);
+      margin-bottom: 2rem;
       transition: transform 0.4s ease;
     }
 
-    .profile-img:hover, .profile-img:active {
-      transform: scale(1.1);
+    .profile-img:hover {
+      transform: scale(1.08);
     }
 
     .hero h1 {
-      font-size: clamp(2.8rem, 12vw, 6.5rem);
+      font-size: clamp(3.5rem, 10vw, 7rem);
       font-weight: 800;
       background: linear-gradient(90deg, #a78bfa, #c084fc, #7c3aed);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      margin-bottom: 0.6rem;
-      line-height: 1.1;
+      margin-bottom: 0.8rem;
+      line-height: 1.05;
     }
 
-    .hero .tagline {
-      font-size: clamp(1.2rem, 5.5vw, 2rem);
+    .tagline {
+      font-size: clamp(1.5rem, 5vw, 2.4rem);
       color: #b0b0ff;
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
+      font-weight: 400;
     }
 
     #typed {
-      font-size: clamp(1.4rem, 6.5vw, 2.5rem);
+      font-size: clamp(1.6rem, 6vw, 2.8rem);
       font-weight: 600;
       color: #ddd6fe;
-      min-height: 50px;
-      border-right: 3px solid #a78bfa;
+      min-height: 60px;
+      border-right: 4px solid #a78bfa;
       white-space: nowrap;
       overflow: hidden;
-      animation: blink 0.8s step-end infinite;
+      animation: blink 0.75s step-end infinite;
     }
 
     @keyframes blink {
       50% { border-color: transparent; }
     }
 
-    .btn-container {
+    .btn-group {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 1rem;
-      margin-top: 2rem;
-      width: 100%;
-      max-width: 500px;
+      gap: 1.2rem;
+      margin-top: 2.5rem;
     }
 
     .btn {
-      padding: 0.8rem 1.8rem;
-      background: linear-gradient(45deg, #7c3aed, #a78bfa);
-      color: white;
-      text-decoration: none;
+      padding: 0.9rem 2rem;
       border-radius: 50px;
       font-weight: 600;
-      font-size: clamp(0.95rem, 4vw, 1.1rem);
-      transition: all 0.3s;
-      min-width: 160px;
+      font-size: 1.05rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      min-width: 180px;
       text-align: center;
     }
 
-    .btn:hover, .btn:active {
+    .btn-primary {
+      background: linear-gradient(45deg, #7c3aed, #a78bfa);
+      color: white;
+    }
+
+    .btn-primary:hover {
       transform: translateY(-4px);
-      box-shadow: 0 10px 30px rgba(124,58,237,0.4);
+      box-shadow: 0 12px 35px rgba(124, 58, 237, 0.45);
     }
 
     .btn-outline {
-      background: transparent;
       border: 2px solid #a78bfa;
       color: #a78bfa;
+      background: transparent;
+    }
+
+    .btn-outline:hover {
+      background: rgba(167, 139, 250, 0.15);
     }
 
     section {
-      padding: 6rem 5% 4rem;
-      max-width: 1100px;
+      padding: 7rem 6% 5rem;
+      max-width: 1200px;
       margin: 0 auto;
     }
 
     h2 {
-      font-size: clamp(2rem, 8vw, 3rem);
+      font-size: clamp(2.4rem, 7vw, 3.4rem);
       text-align: center;
-      margin-bottom: 2.5rem;
+      margin-bottom: 3.5rem;
       color: #c4b5fd;
       position: relative;
     }
 
     h2::after {
       content: '';
-      width: 60px;
+      width: 80px;
       height: 4px;
       background: linear-gradient(90deg, #a78bfa, #c084fc);
       position: absolute;
-      bottom: -10px;
+      bottom: -12px;
       left: 50%;
       transform: translateX(-50%);
       border-radius: 2px;
@@ -197,79 +205,78 @@
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.6rem;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
     }
 
     .card {
-      background: rgba(30,20,60,0.5);
-      border: 1px solid rgba(167,139,250,0.3);
-      border-radius: 14px;
-      padding: 1.6rem;
-      transition: all 0.35s;
-      backdrop-filter: blur(6px);
+      background: rgba(30, 20, 60, 0.5);
+      border: 1px solid rgba(167, 139, 250, 0.3);
+      border-radius: 16px;
+      padding: 2rem;
+      transition: all 0.4s ease;
+      backdrop-filter: blur(8px);
     }
 
-    .card:hover, .card:active {
-      transform: translateY(-8px);
+    .card:hover {
+      transform: translateY(-12px);
       border-color: #a78bfa;
-      box-shadow: 0 12px 35px rgba(167,139,250,0.2);
+      box-shadow: 0 20px 50px rgba(167, 139, 250, 0.25);
     }
 
     .card h3 {
       color: #ddd6fe;
-      margin-bottom: 0.8rem;
-      font-size: clamp(1.15rem, 4.5vw, 1.35rem);
+      margin-bottom: 1rem;
+      font-size: 1.4rem;
     }
 
     footer {
       text-align: center;
-      padding: 3rem 1rem 2rem;
+      padding: 4rem 1rem 2rem;
       color: #b0b0ff;
-      border-top: 1px solid rgba(167,139,250,0.2);
-      font-size: 0.9rem;
+      border-top: 1px solid rgba(167, 139, 250, 0.2);
     }
 
-    /* Mobile optimizations */
+    /* Responsive */
     @media (max-width: 768px) {
       header {
-        padding: 1rem 4%;
+        padding: 1rem 5%;
         flex-direction: column;
-        gap: 0.8rem;
+        gap: 1rem;
       }
       nav {
-        gap: 0.8rem;
+        gap: 1rem;
+        justify-content: center;
       }
       .hero {
-        min-height: 85vh;
-        padding: 1rem 4%;
+        padding: 1.5rem 5% 5rem;
       }
       section {
-        padding: 4rem 4% 3rem;
+        padding: 5rem 5% 4rem;
       }
       .grid {
         grid-template-columns: 1fr;
       }
-      .btn-container {
+      .btn-group {
         flex-direction: column;
         align-items: center;
       }
       .btn {
-        width: 80%;
-        max-width: 300px;
+        width: 85%;
+        max-width: 320px;
       }
     }
 
     @media (max-width: 480px) {
+      .profile-img {
+        width: 180px;
+        height: 180px;
+      }
       .hero h1 {
-        font-size: clamp(2.2rem, 13vw, 4rem);
+        font-size: 3.2rem;
       }
       #typed {
-        font-size: clamp(1.2rem, 7vw, 1.8rem);
-      }
-      .profile-img {
-        width: clamp(100px, 28vw, 140px);
-        height: clamp(100px, 28vw, 140px);
+        font-size: 1.8rem;
       }
     }
   </style>
@@ -298,11 +305,11 @@
         class="profile-img"
       />
       <h1>Mohammad Yasin</h1>
-      <p class="tagline">Physics Undergraduate • Science Enthusiast</p>
+      <p class="tagline">Physics Enthusiast & Future Scientist</p>
       <div id="typed"></div>
 
-      <div class="btn-container">
-        <a href="#projects" class="btn">Explore My Work</a>
+      <div class="btn-group">
+        <a href="#projects" class="btn btn-primary">Explore My Work</a>
         <a href="#contact" class="btn btn-outline">Get in Touch</a>
       </div>
     </section>
@@ -310,69 +317,136 @@
     <section id="about">
       <h2>About Me</h2>
       <div class="card" style="max-width: 800px; margin: 0 auto; text-align: center;">
-        <p style="font-size: clamp(1rem, 4.5vw, 1.15rem); margin-bottom: 1.5rem;">
-          আমি মোহাম্মদ ইয়াসিন। ফিজিক্স নিয়ে পড়াশোনা করছি এবং মহাবিশ্বের রহস্য উন্মোচন করতে চাই। কোয়ান্টাম মেকানিক্স, অ্যাস্ট্রোফিজিক্স, থিওরেটিক্যাল ফিজিক্স — এসব আমার আবেগ। ভবিষ্যতে গবেষণার মাধ্যমে বিজ্ঞানের সীমানা প্রসারিত করতে চাই।
+        <p style="font-size: 1.2rem; margin-bottom: 1.6rem;">
+          আমি মোহাম্মদ ইয়াসিন। ফিজিক্স নিয়ে পড়াশোনা করছি। মহাবিশ্বের গভীর রহস্য, কোয়ান্টাম মেকানিক্স, অ্যাস্ট্রোফিজিক্স নিয়ে অদম্য আগ্রহ। ভবিষ্যতে গবেষণা করে বিজ্ঞানী হওয়ার স্বপ্ন দেখি এবং বিজ্ঞানকে সহজভাবে সবার কাছে পৌঁছে দিতে চাই।
         </p>
         <p><strong>Location:</strong> Dhaka, Bangladesh</p>
         <p><strong>Email:</strong> your.email@example.com</p>
       </div>
     </section>
 
-    <!-- এখানে Skills, Projects, Publications, Videos, Contact সেকশন যোগ করো (আগের কোড থেকে কপি করে) -->
+    <section id="skills">
+      <h2>Skills & Interests</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Theoretical Physics</h3>
+          <p>Quantum Mechanics, Relativity, Particle Physics</p>
+        </div>
+        <div class="card">
+          <h3>Computational Tools</h3>
+          <p>Python, MATLAB, LaTeX, Qiskit</p>
+        </div>
+        <div class="card">
+          <h3>Astrophysics</h3>
+          <p>Cosmology, Black Holes, Dark Matter</p>
+        </div>
+      </div>
+    </section>
 
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Quantum Simulator</h3>
+          <p>Qiskit দিয়ে কোয়ান্টাম সার্কিট সিমুলেশন</p>
+        </div>
+        <div class="card">
+          <h3>N-Body Simulation</h3>
+          <p>গ্র্যাভিটেশনাল স্টার ক্লাস্টার মডেল</p>
+        </div>
+        <div class="card">
+          <h3>Relativity Visualizer</h3>
+          <p>স্পেশাল রিলেটিভিটি ইন্টারেক্টিভ ডেমো</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="publications">
+      <h2>Publications & Talks</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Dark Matter Candidates</h3>
+          <p>Undergraduate Review & Poster (2025)</p>
+        </div>
+        <div class="card">
+          <h3>Quantum Entanglement Article</h3>
+          <p>Educational write-up</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="videos">
+      <h2>YouTube Videos</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Black Hole Paradox Explained</h3>
+          <p>Bangla • 12 min</p>
+        </div>
+        <div class="card">
+          <h3>Double Slit Experiment</h3>
+          <p>Quantum basics simplified</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Get In Touch</h2>
+      <div class="card" style="max-width: 700px; margin: 0 auto; text-align: center;">
+        <p style="font-size: 1.3rem; margin-bottom: 2rem;">
+          Physics, research, বা universe নিয়ে আলোচনা করতে চাইলে যোগাযোগ করো!
+        </p>
+        <a href="mailto:your.email@example.com" class="btn btn-primary">Send Message</a>
+      </div>
+    </section>
   </main>
 
   <footer>
-    <p>© 2026 Mohammad Yasin • Aspiring Physicist</p>
+    <p>© 2026 Mohammad Yasin • Aspiring Physicist & Science Communicator</p>
   </footer>
 
   <script>
-    // tsParticles science background
     tsParticles.load("tsparticles", {
       preset: "stars",
       particles: {
-        number: { value: 80 },
+        number: { value: 90 },
         color: { value: ["#ffffff", "#a78bfa", "#c084fc", "#7c3aed"] },
-        size: { value: { min: 1, max: 3 } },
-        opacity: { value: { min: 0.4, max: 0.8 } },
-        move: { enable: true, speed: 0.7, random: true },
-        links: { enable: true, distance: 120, color: "#a78bfa", opacity: 0.4 }
+        size: { value: { min: 1, max: 3.5 } },
+        opacity: { value: { min: 0.35, max: 0.8 } },
+        move: { enable: true, speed: 0.8, random: true },
+        links: { enable: true, distance: 130, color: "#a78bfa", opacity: 0.35 }
       },
       interactivity: {
         events: { onhover: { enable: true, mode: "grab" }, onclick: { enable: true, mode: "push" } },
-        modes: { grab: { distance: 160 }, push: { quantity: 3 } }
+        modes: { grab: { distance: 170 }, push: { quantity: 4 } }
       }
     });
 
-    // Typing animation
     const texts = [
       "I'm Mohammad Yasin",
       "I'm a science enthusiast",
       "Physics is my passion",
       "I'll become a scientist"
     ];
-    let textIndex = 0;
-    let charIndex = 0;
-    let currentText = "";
-    const typedElement = document.getElementById("typed");
+    let textIndex = 0, charIndex = 0, current = "";
+    const typed = document.getElementById("typed");
 
     function type() {
       if (charIndex < texts[textIndex].length) {
-        currentText += texts[textIndex].charAt(charIndex);
-        typedElement.textContent = currentText;
+        current += texts[textIndex].charAt(charIndex);
+        typed.textContent = current;
         charIndex++;
-        setTimeout(type, 70);
+        setTimeout(type, 65);
       } else {
-        setTimeout(erase, 2000);
+        setTimeout(erase, 2200);
       }
     }
 
     function erase() {
       if (charIndex > 0) {
-        currentText = currentText.slice(0, -1);
-        typedElement.textContent = currentText;
+        current = current.slice(0, -1);
+        typed.textContent = current;
         charIndex--;
-        setTimeout(erase, 35);
+        setTimeout(erase, 30);
       } else {
         textIndex = (textIndex + 1) % texts.length;
         setTimeout(type, 600);
