@@ -1,0 +1,111 @@
+/* Affiliations & Collaborations Section */
+.affiliations-section {
+  padding: 6rem 5% 4rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.affiliations-section h2 {
+  font-size: clamp(2.2rem, 6vw, 3.2rem);
+  color: #c084fc;
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+.affiliations-section h2::after {
+  content: '';
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, #a78bfa, #c084fc);
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 2px;
+}
+
+.brief-intro {
+  max-width: 800px;
+  margin: 0 auto 4rem;
+  text-align: center;
+}
+
+.brief-intro p {
+  font-size: 1.05rem;
+  color: #d1d5ff;
+  line-height: 1.7;
+  opacity: 0.95;
+}
+
+.affiliations-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.affiliation-card {
+  background: rgba(30, 20, 60, 0.5);
+  border: 1px solid rgba(192, 132, 252, 0.3);
+  border-radius: 16px;
+  padding: 2rem;
+  transition: all 0.4s ease;
+  backdrop-filter: blur(8px);
+  text-align: center;
+}
+
+.affiliation-card:hover {
+  transform: translateY(-10px);
+  border-color: #c084fc;
+  box-shadow: 0 15px 40px rgba(192, 132, 252, 0.25);
+}
+
+.aff-logo-placeholder {
+  width: 80px;
+  height: 80px;
+  background: rgba(192, 132, 252, 0.2);
+  border-radius: 50%;
+  margin: 0 auto 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  color: #c084fc;
+  font-weight: bold;
+}
+
+.aff-name {
+  color: #e0aaff;
+  font-size: 1.35rem;
+  margin-bottom: 0.6rem;
+}
+
+.aff-role {
+  color: #c084fc;
+  font-weight: 600;
+  font-size: 1rem;
+  margin-bottom: 0.4rem;
+}
+
+.aff-duration {
+  color: #b0b0ff;
+  font-size: 0.9rem;
+  margin-bottom: 0.8rem;
+  display: block;
+}
+
+.aff-desc {
+  color: #d1d5ff;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .affiliations-section {
+    padding: 4rem 5% 3rem;
+  }
+  .affiliation-card {
+    padding: 1.5rem;
+  }
+}
