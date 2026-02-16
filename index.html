@@ -687,78 +687,65 @@
 
 
 
-<!-- Science Festival Volunteer Section -->
-<section id="volunteer" class="volunteer-section">
-  <h2>Volunteer Experience at Science Festival</h2>
+<!-- Science Image Section (কোলাজ + মোবাইল স্লাইডার) -->
+<section id="science-image" class="science-image-section">
+  <h2>Science Image</h2>
 
-  <!-- Brief Intro -->
-  <div class="brief-intro">
-    <p>
-      I had the privilege of volunteering at a national-level Science Festival, where I assisted in organizing interactive science exhibits, conducted hands-on workshops for school students, and helped coordinate public outreach activities. It was an enriching experience that allowed me to promote scientific curiosity among young minds and collaborate with educators, scientists, and fellow volunteers.
-    </p>
-  </div>
+  <div class="image-collage desktop-collage">
+    <!-- বাম নিচের ছোট ছবি -->
+    <div class="collage-item small bottom-left">
+      <img 
+        src="https://images.unsplash.com/photo-1505506874110-6a7a69039b08?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+        alt="Science moment 1" 
+      />
+      <div class="gallery-caption">Quantum experiment setup</div>
+    </div>
 
-  <!-- Photo Gallery / Album -->
-  <div class="gallery-grid">
-    <!-- Demo Photo 1 - Replace with your actual photo link -->
-    <div class="gallery-item">
+    <!-- মাঝের বড় ছবি -->
+    <div class="collage-item large center">
+      <img 
+        src="https://images.unsplash.com/photo-1567095761054-7a02e69e5c43?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" 
+        alt="Science tower structure" 
+      />
+      <div class="gallery-caption">Exploring scientific structures</div>
+    </div>
+
+    <!-- ডান নিচের ছোট ছবি -->
+    <div class="collage-item small bottom-right">
       <img 
         src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-        alt="Science Festival Workshop" 
-        class="gallery-img"
+        alt="Science moment 2" 
       />
-      <div class="gallery-caption">
-        Conducting hands-on physics experiment workshop
-      </div>
+      <div class="gallery-caption">Interactive physics demo</div>
     </div>
-
-    <!-- Demo Photo 2 -->
-    <div class="gallery-item">
-      <img 
-        src="https://images.unsplash.com/photo-1567095761054-7a02e69e5c43?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-        alt="Interactive Exhibit" 
-        class="gallery-img"
-      />
-      <div class="gallery-caption">
-        Guiding students through interactive quantum exhibit
-      </div>
-    </div>
-
-    <!-- Demo Photo 3 -->
-    <div class="gallery-item">
-      <img 
-        src="https://images.unsplash.com/photo-1581093450021-4a7360e9a6b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-        alt="Group Photo" 
-        class="gallery-img"
-      />
-      <div class="gallery-caption">
-        With fellow volunteers and science enthusiasts
-      </div>
-    </div>
-
-    <!-- Demo Photo 4 -->
-    <!-- <div class="gallery-item">
-      <img 
-        src="https://images.unsplash.com/photo-1581092160560-1c1e428e2f9e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-        alt="Exhibit Setup" 
-        class="gallery-img"
-      />
-      <div class="gallery-caption">
-        Setting up astronomy and cosmology stall
-      </div>
-    </div> -->
-
-    <!-- আরও ছবি যোগ করতে চাইলে এখানে কপি করে পেস্ট করো -->
-    <!-- 
-    <div class="gallery-item">
-      <img src="YOUR_PHOTO_LINK" alt="Description" class="gallery-img" />
-      <div class="gallery-caption">Your caption here</div>
-    </div>
-    -->
   </div>
-</section>
 
-<script src="ScienceImage.js"></script>
+  <!-- মোবাইল ভার্সনের জন্য স্লাইডার -->
+  <div class="mobile-slider">
+    <div class="slider-wrapper" id="slider">
+      <div class="slide">
+        <img src="https://images.unsplash.com/photo-1505506874110-6a7a69039b08?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Slide 1" />
+        <div class="caption">Quantum experiment setup</div>
+      </div>
+      <div class="slide">
+        <img src="https://images.unsplash.com/photo-1567095761054-7a02e69e5c43?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Slide 2" />
+        <div class="caption">Exploring scientific structures</div>
+      </div>
+      <div class="slide">
+        <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Slide 3" />
+        <div class="caption">Interactive physics demo</div>
+      </div>
+    </div>
+
+    <!-- অ্যারো বাটন -->
+    <button class="slider-prev"><i class="fas fa-chevron-left"></i></button>
+    <button class="slider-next"><i class="fas fa-chevron-right"></i></button>
+  </div>
+
+  <p class="collage-caption">
+    Capturing moments of scientific curiosity and exploration
+  </p>
+</section>
 
 
 
@@ -969,67 +956,13 @@
 
 
 
-<!-- Science Image Section (কোলাজ + মোবাইল স্লাইডার) -->
-<section id="science-image" class="science-image-section">
-  <h2>Science Image</h2>
 
-  <div class="image-collage desktop-collage">
-    <!-- বাম নিচের ছোট ছবি -->
-    <div class="collage-item small bottom-left">
-      <img 
-        src="https://images.unsplash.com/photo-1505506874110-6a7a69039b08?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-        alt="Science moment 1" 
-      />
-      <div class="gallery-caption">Quantum experiment setup</div>
-    </div>
 
-    <!-- মাঝের বড় ছবি -->
-    <div class="collage-item large center">
-      <img 
-        src="https://images.unsplash.com/photo-1567095761054-7a02e69e5c43?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" 
-        alt="Science tower structure" 
-      />
-      <div class="gallery-caption">Exploring scientific structures</div>
-    </div>
 
-    <!-- ডান নিচের ছোট ছবি -->
-    <div class="collage-item small bottom-right">
-      <img 
-        src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-        alt="Science moment 2" 
-      />
-      <div class="gallery-caption">Interactive physics demo</div>
-    </div>
-  </div>
 
-  <!-- মোবাইল ভার্সনের জন্য স্লাইডার -->
-  <div class="mobile-slider">
-    <div class="slider-wrapper" id="slider">
-      <div class="slide">
-        <img src="https://images.unsplash.com/photo-1505506874110-6a7a69039b08?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Slide 1" />
-        <div class="caption">Quantum experiment setup</div>
-      </div>
-      <div class="slide">
-        <img src="https://images.unsplash.com/photo-1567095761054-7a02e69e5c43?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Slide 2" />
-        <div class="caption">Exploring scientific structures</div>
-      </div>
-      <div class="slide">
-        <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Slide 3" />
-        <div class="caption">Interactive physics demo</div>
-      </div>
-    </div>
 
-    <!-- অ্যারো বাটন -->
-    <button class="slider-prev"><i class="fas fa-chevron-left"></i></button>
-    <button class="slider-next"><i class="fas fa-chevron-right"></i></button>
-  </div>
-
-  <p class="collage-caption">
-    Capturing moments of scientific curiosity and exploration
-  </p>
-</section>
+  
 <script src="ScienceImage.js"></script>
-  
-  
+ 
 </body>
 </html>
