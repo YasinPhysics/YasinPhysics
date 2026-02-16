@@ -28,3 +28,8 @@ document.addEventListener("DOMContentLoaded", function () {
   //   showSlide(currentIndex);
   // }, 5000);
 });
+
+setInterval(() => {
+  currentIndex++;
+  showSlide(currentIndex);
+}, 5000); // প্রতি ৫ সেকেন্ডে পরের স্লাইড
