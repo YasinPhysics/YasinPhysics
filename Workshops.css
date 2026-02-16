@@ -450,3 +450,179 @@
 
 .slider-prev { left: 15px; }
 .slider-next { right: 15px; }
+
+
+/* Science Workshops Section - Exact 5-image collage */
+.workshops-section {
+  padding: 6rem 5% 4rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.workshops-section h2 {
+  font-size: clamp(2.2rem, 6vw, 3.2rem);
+  color: #c084fc;
+  margin-bottom: 2rem;
+}
+
+.brief-intro {
+  max-width: 800px;
+  margin: 0 auto 3rem;
+}
+
+.brief-intro p {
+  font-size: 1.05rem;
+  color: #d1d5ff;
+  line-height: 1.7;
+}
+
+/* Collage Frame (হুবুহ স্টাইল) */
+.collage-frame {
+  position: relative;
+  max-width: 1000px;
+  margin: 0 auto;
+  background: white;
+  padding: 3rem 2rem 4rem;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+  border-radius: 20px;
+}
+
+.collage-images {
+  position: relative;
+  height: 620px;
+}
+
+.collage-photo {
+  position: absolute;
+  border: 12px solid white;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+  overflow: hidden;
+  border-radius: 12px;
+  background: white;
+  transition: all 0.45s ease;
+}
+
+.collage-photo:hover {
+  transform: scale(1.25);
+  z-index: 30;
+  box-shadow: 0 30px 80px rgba(192,132,252,0.5);
+}
+
+.collage-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 5 ছবির পজিশন (তোমার দেওয়া ছবির মতো) */
+.photo-1 {
+  width: 260px;
+  height: 340px;
+  top: 8%;
+  left: 10%;
+  transform: rotate(-5deg);
+  z-index: 5;
+}
+
+.photo-2 {
+  width: 280px;
+  height: 360px;
+  top: 5%;
+  left: 32%;
+  transform: rotate(3deg);
+  z-index: 6;
+}
+
+.photo-3 {
+  width: 420px;
+  height: 520px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(1deg);
+  z-index: 10;
+}
+
+.photo-4 {
+  width: 260px;
+  height: 340px;
+  bottom: 10%;
+  left: 12%;
+  transform: rotate(-7deg);
+  z-index: 7;
+}
+
+.photo-5 {
+  width: 260px;
+  height: 340px;
+  bottom: 8%;
+  right: 10%;
+  transform: rotate(6deg);
+  z-index: 8;
+}
+
+/* Mobile Slider (২ সেকেন্ড অটো) */
+.mobile-view {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .desktop-view { display: none; }
+  .mobile-view { display: block; }
+}
+
+.slider-wrapper {
+  display: flex;
+  transition: transform 0.5s ease;
+  width: 500%; /* ৫টা স্লাইড */
+}
+
+.slide {
+  flex: 0 0 100%;
+  position: relative;
+}
+
+.slide img {
+  width: 100%;
+  height: auto;
+  max-height: 420px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+
+.slide .caption {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+  background: rgba(0,0,0,0.7);
+  color: white;
+  padding: 12px;
+  border-radius: 10px;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.slider-prev, .slider-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(192,132,252,0.8);
+  color: white;
+  border: none;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.slider-prev:hover, .slider-next:hover {
+  background: #c084fc;
+  transform: translateY(-50%) scale(1.15);
+}
+
+.slider-prev { left: 15px; }
+.slider-next { right: 15px; }
