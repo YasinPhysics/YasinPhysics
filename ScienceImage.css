@@ -1,0 +1,132 @@
+/* Science Image Section - Collage Style */
+.science-image-section {
+  padding: 6rem 5% 4rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.science-image-section h2 {
+  font-size: clamp(2.2rem, 6vw, 3.2rem);
+  color: #c084fc;
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+.science-image-section h2::after {
+  content: '';
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, #a78bfa, #c084fc);
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 2px;
+}
+
+.image-collage {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+  height: 500px; /* মোবাইলে অ্যাডজাস্ট হবে */
+}
+
+.collage-item {
+  position: absolute;
+  border: 8px solid white;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+  overflow: hidden;
+  border-radius: 12px;
+  transition: all 0.4s ease;
+  background: white;
+}
+
+.collage-item:hover {
+  transform: scale(1.08);
+  z-index: 10;
+  box-shadow: 0 20px 50px rgba(192,132,252,0.4);
+}
+
+.collage-item.small {
+  width: 220px;
+  height: 280px;
+}
+
+.collage-item.large {
+  width: 380px;
+  height: 480px;
+  z-index: 5;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(2deg);
+}
+
+.bottom-left {
+  bottom: 20px;
+  left: 10%;
+  transform: rotate(-6deg);
+}
+
+.bottom-right {
+  bottom: 30px;
+  right: 10%;
+  transform: rotate(5deg);
+}
+
+.gallery-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.collage-caption {
+  margin-top: 2rem;
+  font-size: 1.1rem;
+  color: #c084fc;
+  font-style: italic;
+  opacity: 0.9;
+}
+
+/* Mobile adjustments */
+@media (max-width: 1024px) {
+  .image-collage {
+    height: 420px;
+  }
+  .collage-item.large {
+    width: 320px;
+    height: 400px;
+  }
+  .collage-item.small {
+    width: 180px;
+    height: 220px;
+  }
+}
+
+@media (max-width: 768px) {
+  .image-collage {
+    height: auto;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .collage-item {
+    position: static;
+    transform: none !important;
+    width: 90%;
+    max-width: 320px;
+    height: auto;
+    aspect-ratio: 4/5;
+  }
+
+  .collage-item.large {
+    order: 2;
+  }
+
+  .bottom-left, .bottom-right {
+    order: 1;
+  }
+}
