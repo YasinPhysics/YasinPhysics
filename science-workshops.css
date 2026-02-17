@@ -5,14 +5,12 @@
   margin: 0 auto;
   text-align: center;
 }
-
 .memories-section h2 {
   font-size: clamp(2.2rem, 6vw, 3.2rem);
   color: #c084fc;
   margin-bottom: 3rem;
   position: relative;
 }
-
 .memories-section h2::after {
   content: '';
   width: 80px;
@@ -24,13 +22,11 @@
   transform: translateX(-50%);
   border-radius: 2px;
 }
-
 .brief-intro {
   max-width: 800px;
   margin: 0 auto 4rem;
   text-align: center;
 }
-
 .brief-intro p {
   font-size: 1.05rem;
   color: #d1d5ff;
@@ -38,14 +34,13 @@
 }
 
 /* Desktop Collage Layout */
-.desktop-collage {
+.sci-desktop-collage {
   position: relative;
   height: 600px;
   max-width: 1000px;
   margin: 0 auto;
 }
-
-.collage-item {
+.sci-collage-item {
   position: absolute;
   width: 320px;
   height: 400px;
@@ -56,51 +51,44 @@
   transition: all 0.4s ease;
   background: white;
 }
-
-.collage-item:hover {
+.sci-collage-item:hover {
   transform: scale(1.15);
   z-index: 10;
   box-shadow: 0 25px 60px rgba(192,132,252,0.5);
 }
-
-.item-1 { top: 10%; left: 5%; transform: rotate(-8deg); }
-.item-2 { top: 20%; left: 25%; transform: rotate(5deg); z-index: 2; }
-.item-3 { top: 5%; left: 45%; transform: rotate(-3deg); z-index: 3; width: 380px; height: 480px; }
-.item-4 { top: 25%; left: 65%; transform: rotate(7deg); }
-.item-5 { top: 40%; left: 15%; transform: rotate(4deg); }
-
-.collage-item img {
+.sci-item-1 { top: 10%; left: 5%; transform: rotate(-8deg); }
+.sci-item-2 { top: 20%; left: 25%; transform: rotate(5deg); z-index: 2; }
+.sci-item-3 { top: 5%; left: 45%; transform: rotate(-3deg); z-index: 3; width: 380px; height: 480px; }
+.sci-item-4 { top: 25%; left: 65%; transform: rotate(7deg); }
+.sci-item-5 { top: 40%; left: 15%; transform: rotate(4deg); }
+.sci-collage-item img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
 /* Mobile Slider */
-.mobile-slider {
+.sci-mobile-slider {
   display: none;
   position: relative;
   max-width: 100%;
   margin: 0 auto 2rem;
   overflow: hidden;
 }
-
 @media (max-width: 1024px) {
-  .desktop-collage { display: none; }
-  .mobile-slider { display: block; }
+  .sci-desktop-collage { display: none; }
+  .sci-mobile-slider { display: block; }
 }
-
-.slider-wrapper {
+.sci-slider-wrapper {
   display: flex;
   transition: transform 0.5s ease;
   width: 500%; /* ৫টা স্লাইড */
 }
-
-.slide {
+.sci-slide {
   flex: 0 0 100%;
   position: relative;
 }
-
-.slide img {
+.sci-slide img {
   width: 100%;
   height: auto;
   max-height: 500px;
@@ -109,8 +97,7 @@
   border: 10px solid white;
   box-shadow: 0 10px 30px rgba(0,0,0,0.4);
 }
-
-.slider-arrow {
+.sci-slider-arrow {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -125,14 +112,12 @@
   z-index: 10;
   transition: all 0.3s;
 }
-
-.slider-arrow:hover {
+.sci-slider-arrow:hover {
   background: #c084fc;
   transform: translateY(-50%) scale(1.15);
 }
-
-.slider-prev { left: 15px; }
-.slider-next { right: 15px; }
+.sci-slider-prev { left: 15px; }
+.sci-slider-next { right: 15px; }
 
 /* Science Image Section - Non-overlapping with Center Focus */
 .science-image-section {
@@ -141,14 +126,12 @@
   margin: 0 auto;
   text-align: center;
 }
-
 .science-image-section h2 {
   font-size: clamp(2.2rem, 6vw, 3.2rem);
   color: #c084fc;
   margin-bottom: 3rem;
   position: relative;
 }
-
 .science-image-section h2::after {
   content: '';
   width: 80px;
@@ -160,13 +143,11 @@
   transform: translateX(-50%);
   border-radius: 2px;
 }
-
 .brief-intro {
   max-width: 800px;
   margin: 0 auto 4rem;
   text-align: center;
 }
-
 .brief-intro p {
   font-size: 1.05rem;
   color: #d1d5ff;
@@ -174,7 +155,7 @@
 }
 
 /* Desktop Grid - 5 images, center large, no overlap */
-.desktop-grid {
+.sci-desktop-grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: auto auto;
@@ -182,8 +163,7 @@
   max-width: 1100px;
   margin: 0 auto;
 }
-
-.grid-item {
+.sci-grid-item {
   border: 12px solid white;
   box-shadow: 0 12px 40px rgba(0,0,0,0.4);
   overflow: hidden;
@@ -192,26 +172,22 @@
   transition: all 0.4s ease;
   position: relative;
 }
-
-.grid-item:hover {
+.sci-grid-item:hover {
   transform: scale(1.12);
   z-index: 10;
   box-shadow: 0 25px 60px rgba(192,132,252,0.5);
 }
-
-.grid-item img {
+.sci-grid-item img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
-
-.top-left { grid-column: 1; grid-row: 1; }
-.bottom-left { grid-column: 1; grid-row: 2; }
-.center-large { grid-column: 2; grid-row: 1 / span 2; height: 600px; }
-.top-right { grid-column: 3; grid-row: 1; }
-.bottom-right { grid-column: 3; grid-row: 2; }
-
-.label {
+.sci-top-left     { grid-column: 1; grid-row: 1; }
+.sci-bottom-left  { grid-column: 1; grid-row: 2; }
+.sci-center-large { grid-column: 2; grid-row: 1 / span 2; height: 600px; }
+.sci-top-right    { grid-column: 3; grid-row: 1; }
+.sci-bottom-right { grid-column: 3; grid-row: 2; }
+.sci-label {
   position: absolute;
   bottom: -35px;
   left: 50%;
@@ -226,31 +202,27 @@
 }
 
 /* Mobile Slider */
-.mobile-slider {
+.sci-mobile-slider {
   display: none;
   position: relative;
   max-width: 100%;
   margin: 0 auto 2rem;
   overflow: hidden;
 }
-
 @media (max-width: 1024px) {
-  .desktop-grid { display: none; }
-  .mobile-slider { display: block; }
+  .sci-desktop-grid { display: none; }
+  .sci-mobile-slider { display: block; }
 }
-
-.slider-wrapper {
+.sci-slider-wrapper {
   display: flex;
   transition: transform 0.5s ease;
   width: 500%; /* 5 slides */
 }
-
-.slide {
+.sci-slide {
   flex: 0 0 100%;
   position: relative;
 }
-
-.slide img {
+.sci-slide img {
   width: 100%;
   height: auto;
   max-height: 500px;
@@ -259,8 +231,7 @@
   border: 10px solid white;
   box-shadow: 0 10px 30px rgba(0,0,0,0.4);
 }
-
-.slider-arrow {
+.sci-slider-arrow {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -275,11 +246,9 @@
   z-index: 10;
   transition: all 0.3s;
 }
-
-.slider-arrow:hover {
+.sci-slider-arrow:hover {
   background: #c084fc;
   transform: translateY(-50%) scale(1.15);
 }
-
-.slider-prev { left: 15px; }
-.slider-next { right: 15px; }
+.sci-slider-prev { left: 15px; }
+.sci-slider-next { right: 15px; }
