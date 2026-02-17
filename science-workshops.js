@@ -1,4 +1,4 @@
-// Memories Slider (mobile only)
+// Memories Slider for mobile
 document.addEventListener("DOMContentLoaded", function () {
   const memoriesSlider = document.getElementById("memories-slider");
   if (memoriesSlider) {
@@ -13,20 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
       memoriesSlider.style.transform = `translateX(-${currentIndex * 100}%)`;
     }
 
-    prevBtn.addEventListener("click", () => {
-      currentIndex--;
-      showSlide(currentIndex);
-    });
-
-    nextBtn.addEventListener("click", () => {
-      currentIndex++;
-      showSlide(currentIndex);
-    });
-
-    // Optional auto-slide
-    // setInterval(() => {
-    //   currentIndex++;
-    //   showSlide(currentIndex);
-    // }, 5000);
+    prevBtn.addEventListener("click", () => { currentIndex--; showSlide(currentIndex); });
+    nextBtn.addEventListener("click", () => { currentIndex++; showSlide(currentIndex); });
   }
 });
