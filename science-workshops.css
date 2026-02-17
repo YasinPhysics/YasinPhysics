@@ -227,7 +227,7 @@
 .sci-slide img,
 .sci-grid-item img,
 .sci-collage-item img {
-  width: 100% !important;
+  width: 20% !important;
   height: auto !important;
   max-height: 500px;
   min-height: 200px;
