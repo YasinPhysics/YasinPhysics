@@ -333,3 +333,17 @@
   height: 50px !important;
   background: rgba(192,132,252,0.8) !important;
 }
+
+
+.sci-mobile-slider {
+  display: none;
+  position: relative;
+  max-width: 100%;
+  margin: 0 auto 2rem;
+  overflow: hidden;
+  /* যোগ করুন ↓ */
+  min-height: 400px;           /* খালি না দেখানোর জন্য */
+  width: 100% !important;
+  padding: 0 10px;
+  box-sizing: border-box;
+}
