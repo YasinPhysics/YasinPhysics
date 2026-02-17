@@ -223,3 +223,19 @@
   font-weight: 600;
   white-space: nowrap;
 }
+
+.sci-slide img,
+.sci-grid-item img,
+.sci-collage-item img {
+  width: 100% !important;
+  height: auto !important;
+  max-height: 500px;
+  min-height: 200px;
+  object-fit: contain !important;
+  box-sizing: border-box !important;
+  display: block !important;
+}
+
+.sci-mobile-slider {
+  min-height: 350px !important;
+}
