@@ -227,7 +227,7 @@
 .sci-slide img,
 .sci-grid-item img,
 .sci-collage-item img {
-  width: 20% !important;
+  width: 100% !important;
   height: auto !important;
   max-height: 500px;
   min-height: 200px;
@@ -238,4 +238,42 @@
 
 .sci-mobile-slider {
   min-height: 350px !important;
+}
+
+/* মোবাইলের জন্য ছবি সঠিকভাবে দেখানোর ফিক্স */
+@media (max-width: 1024px) {
+  .sci-slide img,
+  .sci-grid-item img,
+  .sci-collage-item img {
+    width: 100% !important;
+    height: auto !important;
+    max-height: 450px !important; /* মোবাইলে খুব বড় না হওয়ার জন্য */
+    min-height: 250px !important; /* খালি না দেখানোর জন্য */
+    object-fit: contain !important; /* ছবি কাটা যাবে না */
+    box-sizing: border-box !important;
+  }
+
+  .sci-mobile-slider {
+    min-height: 400px !important;
+    display: block !important;
+  }
+
+  .sci-slider-wrapper {
+    width: 500% !important;
+  }
+
+  .sci-slide {
+    flex: 0 0 100% !important;
+  }
+}
+
+/* ডেস্কটপে আগের মতোই রাখতে চাইলে এটা যোগ করুন */
+@media (min-width: 1025px) {
+  .sci-slide img,
+  .sci-grid-item img,
+  .sci-collage-item img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+  }
 }
