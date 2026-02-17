@@ -5,12 +5,14 @@
   margin: 0 auto;
   text-align: center;
 }
+
 .memories-section h2 {
   font-size: clamp(2.2rem, 6vw, 3.2rem);
   color: #c084fc;
   margin-bottom: 3rem;
   position: relative;
 }
+
 .memories-section h2::after {
   content: '';
   width: 80px;
@@ -22,24 +24,27 @@
   transform: translateX(-50%);
   border-radius: 2px;
 }
+
 .brief-intro {
   max-width: 800px;
   margin: 0 auto 4rem;
   text-align: center;
 }
+
 .brief-intro p {
   font-size: 1.05rem;
   color: #d1d5ff;
   line-height: 1.7;
 }
 
-/* Desktop Collage Layout */
+/* ── Desktop Collage ── (আপনার আগের কোড ঠিক আছে, শুধু img fix) */
 .sci-desktop-collage {
   position: relative;
   height: 600px;
   max-width: 1000px;
   margin: 0 auto;
 }
+
 .sci-collage-item {
   position: absolute;
   width: 320px;
@@ -51,73 +56,65 @@
   transition: all 0.4s ease;
   background: white;
 }
+
 .sci-collage-item:hover {
   transform: scale(1.15);
   z-index: 10;
   box-shadow: 0 25px 60px rgba(192,132,252,0.5);
 }
-.sci-item-1 { top: 10%; left: 5%; transform: rotate(-8deg); }
-.sci-item-2 { top: 20%; left: 25%; transform: rotate(5deg); z-index: 2; }
-.sci-item-3 { top: 5%; left: 45%; transform: rotate(-3deg); z-index: 3; width: 380px; height: 480px; }
-.sci-item-4 { top: 25%; left: 65%; transform: rotate(7deg); }
-.sci-item-5 { top: 40%; left: 15%; transform: rotate(4deg); }
-.sci-collage-item img {
+
+/* ... আপনার item position গুলো ঠিক আছে ... */
+
+.sci-collage-item img,
+.sci-grid-item img,
+.sci-slide img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;          /* contain → cover না হলে ছবি কাটা যাবে না */
+  object-position: center;
+  display: block;
+  background: #111;             /* loading এ ফাঁকা না দেখায় */
 }
 
-/* Mobile Slider */
+/* ── Mobile Slider ── */
 .sci-mobile-slider {
   display: none;
   position: relative;
   width: 100%;
-  max-width: 100%;
   margin: 0 auto 2rem;
   overflow: hidden;
-  min-height: 400px;           /* খালি না দেখানোর জন্য */
+  min-height: 420px;            /* খালি না দেখানোর জন্য */
   padding: 0 10px;
   box-sizing: border-box;
-}
-
-@media (max-width: 1024px) {
-  .sci-desktop-collage,
-  .sci-desktop-grid {
-    display: none !important;
-  }
-  .sci-mobile-slider {
-    display: block !important;
-  }
 }
 
 .sci-slider-wrapper {
   display: flex;
   transition: transform 0.5s ease-in-out;
-  width: 500%;
-  box-sizing: border-box;
+  width: 500%;                  /* 5 slides */
 }
 
 .sci-slide {
   flex: 0 0 100%;
   width: 100%;
   position: relative;
-  box-sizing: border-box;
 }
 
 .sci-slide img {
   width: 100%;
   height: auto;
-  max-height: 500px;
+  max-height: 480px;
   min-height: 300px;
   object-fit: contain;
-  display: block;
-  border-radius: 16px;
   border: 10px solid white;
+  border-radius: 16px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-  box-sizing: border-box;
   background: #111;
+  display: block;
+  box-sizing: border-box;
 }
 
+/* Arrow */
 .sci-slider-arrow {
   position: absolute;
   top: 50%;
@@ -139,45 +136,19 @@
   transform: translateY(-50%) scale(1.15);
 }
 
-.sci-slider-prev { left: 15px; }
-.sci-slider-next { right: 15px; }
+.sci-slider-prev { left: 10px; }
+.sci-slider-next { right: 10px; }
 
-/* Science Image Section - Non-overlapping with Center Focus */
+/* ── Science Image Section (Grid) ── */
 .science-image-section {
   padding: 6rem 5% 4rem;
   max-width: 1400px;
   margin: 0 auto;
   text-align: center;
 }
-.science-image-section h2 {
-  font-size: clamp(2.2rem, 6vw, 3.2rem);
-  color: #c084fc;
-  margin-bottom: 3rem;
-  position: relative;
-}
-.science-image-section h2::after {
-  content: '';
-  width: 80px;
-  height: 4px;
-  background: linear-gradient(90deg, #a78bfa, #c084fc);
-  position: absolute;
-  bottom: -12px;
-  left: 50%;
-  transform: translateX(-50%);
-  border-radius: 2px;
-}
-.brief-intro {
-  max-width: 800px;
-  margin: 0 auto 4rem;
-  text-align: center;
-}
-.brief-intro p {
-  font-size: 1.05rem;
-  color: #d1d5ff;
-  line-height: 1.7;
-}
 
-/* Desktop Grid - 5 images, center large, no overlap */
+/* h2, brief-intro আগের মতোই */
+
 .sci-desktop-grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -186,6 +157,7 @@
   max-width: 1100px;
   margin: 0 auto;
 }
+
 .sci-grid-item {
   border: 12px solid white;
   box-shadow: 0 12px 40px rgba(0,0,0,0.4);
@@ -195,21 +167,21 @@
   transition: all 0.4s ease;
   position: relative;
 }
+
 .sci-grid-item:hover {
   transform: scale(1.12);
   z-index: 10;
   box-shadow: 0 25px 60px rgba(192,132,252,0.5);
 }
-.sci-grid-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+
+.sci-center-large {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  /* height auto করা যায়, কিন্তু aspect ratio রাখতে min-height দিন */
+  min-height: 600px;
 }
-.sci-top-left { grid-column: 1; grid-row: 1; }
-.sci-bottom-left { grid-column: 1; grid-row: 2; }
-.sci-center-large { grid-column: 2; grid-row: 1 / span 2; height: 600px; }
-.sci-top-right { grid-column: 3; grid-row: 1; }
-.sci-bottom-right { grid-column: 3; grid-row: 2; }
+
+/* Label */
 .sci-label {
   position: absolute;
   bottom: -35px;
@@ -222,58 +194,40 @@
   font-size: 0.9rem;
   font-weight: 600;
   white-space: nowrap;
+  pointer-events: none;
 }
 
-.sci-slide img,
-.sci-grid-item img,
-.sci-collage-item img {
-  width: 100% !important;
-  height: auto !important;
-  max-height: 500px;
-  min-height: 200px;
-  object-fit: contain !important;
-  box-sizing: border-box !important;
-  display: block !important;
-}
-
-.sci-mobile-slider {
-  min-height: 350px !important;
-}
-
-/* মোবাইলের জন্য ছবি সঠিকভাবে দেখানোর ফিক্স */
+/* ── Media Queries ── */
 @media (max-width: 1024px) {
-  .sci-slide img,
-  .sci-grid-item img,
-  .sci-collage-item img {
-    width: 100% !important;
-    height: auto !important;
-    max-height: 450px !important; /* মোবাইলে খুব বড় না হওয়ার জন্য */
-    min-height: 250px !important; /* খালি না দেখানোর জন্য */
-    object-fit: contain !important; /* ছবি কাটা যাবে না */
-    box-sizing: border-box !important;
+  .sci-desktop-collage,
+  .sci-desktop-grid {
+    display: none !important;
   }
-
   .sci-mobile-slider {
-    min-height: 400px !important;
     display: block !important;
   }
 
-  .sci-slider-wrapper {
-    width: 500% !important;
+  /* মোবাইলে ছবি overflow না করার জন্য */
+  .sci-slide img,
+  .sci-grid-item img,
+  .sci-collage-item img {
+    max-height: 480px !important;
+    min-height: 280px !important;
+    object-fit: contain !important;
+    width: 100% !important;
+    height: auto !important;
   }
 
-  .sci-slide {
-    flex: 0 0 100% !important;
+  .sci-mobile-slider {
+    min-height: 420px !important;
   }
 }
 
-/* ডেস্কটপে আগের মতোই রাখতে চাইলে এটা যোগ করুন */
 @media (min-width: 1025px) {
   .sci-slide img,
   .sci-grid-item img,
   .sci-collage-item img {
-    width: 100% !important;
     height: 100% !important;
-    object-fit: cover !important;
+    object-fit: cover !important;   /* ডেস্কটপে cover ভালো লাগে */
   }
 }
