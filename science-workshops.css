@@ -71,15 +71,15 @@
 .sci-mobile-slider {
   display: none;
   position: relative;
+  width: 100%;
   max-width: 100%;
   margin: 0 auto 2rem;
   overflow: hidden;
-  /* ফিক্স যোগ করা হয়েছে */
-  min-height: 350px; /* খালি না দেখানোর জন্য */
-  width: 100%;       /* নিশ্চিত করা */
-  padding: 0 8px;
+  min-height: 400px;           /* খালি না দেখানোর জন্য */
+  padding: 0 10px;
   box-sizing: border-box;
 }
+
 @media (max-width: 1024px) {
   .sci-desktop-collage,
   .sci-desktop-grid {
@@ -89,29 +89,35 @@
     display: block !important;
   }
 }
+
 .sci-slider-wrapper {
   display: flex;
-  transition: transform 0.5s ease;
-  width: 500%; /* ৫টা স্লাইড */
+  transition: transform 0.5s ease-in-out;
+  width: 500%;
   box-sizing: border-box;
 }
+
 .sci-slide {
   flex: 0 0 100%;
+  width: 100%;
   position: relative;
   box-sizing: border-box;
 }
+
 .sci-slide img {
   width: 100%;
   height: auto;
   max-height: 500px;
-  object-fit: contain; /* cover এর বদলে contain — ছবি কাটা যাবে না */
+  min-height: 300px;
+  object-fit: contain;
   display: block;
   border-radius: 16px;
   border: 10px solid white;
   box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-  box-sizing: border-box; /* সবচেয়ে গুরুত্বপূর্ণ — border ভিতরে গণনা হবে */
-  background: #111; /* ফাঁকা অংশ কালো দেখাবে */
+  box-sizing: border-box;
+  background: #111;
 }
+
 .sci-slider-arrow {
   position: absolute;
   top: 50%;
@@ -127,10 +133,12 @@
   z-index: 10;
   transition: all 0.3s;
 }
+
 .sci-slider-arrow:hover {
   background: #c084fc;
   transform: translateY(-50%) scale(1.15);
 }
+
 .sci-slider-prev { left: 15px; }
 .sci-slider-next { right: 15px; }
 
@@ -168,6 +176,7 @@
   color: #d1d5ff;
   line-height: 1.7;
 }
+
 /* Desktop Grid - 5 images, center large, no overlap */
 .sci-desktop-grid {
   display: grid;
@@ -213,137 +222,4 @@
   font-size: 0.9rem;
   font-weight: 600;
   white-space: nowrap;
-}
-/* Mobile Slider */
-.sci-mobile-slider {
-  display: none;
-  position: relative;
-  max-width: 100%;
-  margin: 0 auto 2rem;
-  overflow: hidden;
-  /* ফিক্স যোগ করা হয়েছে */
-  min-height: 350px;
-  width: 100%;
-  padding: 0 8px;
-  box-sizing: border-box;
-}
-@media (max-width: 1024px) {
-  .sci-desktop-grid { display: none !important; }
-  .sci-mobile-slider { display: block !important; }
-}
-.sci-slider-wrapper {
-  display: flex;
-  transition: transform 0.5s ease;
-  width: 500%; /* 5 slides */
-  box-sizing: border-box;
-}
-.sci-slide {
-  flex: 0 0 100%;
-  position: relative;
-  box-sizing: border-box;
-}
-.sci-slide img {
-  width: 100%;
-  height: auto;
-  max-height: 500px;
-  object-fit: contain; /* ফিক্স: cover এর বদলে contain */
-  display: block;
-  border-radius: 16px;
-  border: 10px solid white;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-  box-sizing: border-box; /* ফিক্স: border ভিতরে গণনা হবে */
-}
-.sci-slider-arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(192,132,252,0.7);
-  color: white;
-  border: none;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  font-size: 1.6rem;
-  cursor: pointer;
-  z-index: 10;
-  transition: all 0.3s;
-}
-.sci-slider-arrow:hover {
-  background: #c084fc;
-  transform: translateY(-50%) scale(1.15);
-}
-.sci-slider-prev { left: 15px; }
-.sci-slider-next { right: 15px; }
-
-/* ────────────────────────────────────────────────────────
-   মোবাইল স্লাইডারের জন্য অতিরিক্ত ফিক্স (আপনার কোডের নিচে যোগ করুন)
-───────────────────────────────────────────────────────── */
-
-.sci-mobile-slider {
-  display: none !important;
-  width: 100% !important;
-  max-width: 100% !important;
-  min-height: 400px !important; /* খালি না দেখানোর জন্য */
-  margin: 2rem auto !important;
-  padding: 0 10px !important;
-  overflow: hidden !important;
-  box-sizing: border-box !important;
-}
-
-@media (max-width: 1024px) {
-  .sci-desktop-collage,
-  .sci-desktop-grid,
-  .sci-desktop-collage {
-    display: none !important;
-  }
-  .sci-mobile-slider {
-    display: block !important;
-  }
-}
-
-.sci-slider-wrapper {
-  display: flex !important;
-  width: 500% !important;
-  transition: transform 0.5s ease-in-out !important;
-  box-sizing: border-box !important;
-}
-
-.sci-slide {
-  flex: 0 0 100% !important;
-  width: 100% !important;
-  box-sizing: border-box !important;
-}
-
-.sci-slide img {
-  width: 100% !important;
-  height: auto !important;
-  max-height: 550px !important;
-  min-height: 300px !important;
-  object-fit: contain !important;
-  display: block !important;
-  border-radius: 16px !important;
-  border: 10px solid white !important;
-  box-sizing: border-box !important;
-  background: #111 !important;
-}
-
-/* তীর বাটনের জন্য অতিরিক্ত নিশ্চিতকরণ */
-.sci-slider-arrow {
-  width: 50px !important;
-  height: 50px !important;
-  background: rgba(192,132,252,0.8) !important;
-}
-
-
-.sci-mobile-slider {
-  display: none;
-  position: relative;
-  max-width: 100%;
-  margin: 0 auto 2rem;
-  overflow: hidden;
-  /* যোগ করুন ↓ */
-  min-height: 400px;           /* খালি না দেখানোর জন্য */
-  width: 100% !important;
-  padding: 0 10px;
-  box-sizing: border-box;
 }
