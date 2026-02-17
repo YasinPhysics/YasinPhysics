@@ -67,36 +67,58 @@
   object-fit: cover;
 }
 
-/* Mobile Slider */
+/* Mobile Slider — এখানে ফিক্স করা হয়েছে */
 .sci-mobile-slider {
   display: none;
   position: relative;
+  width: 100%;
   max-width: 100%;
   margin: 0 auto 2rem;
   overflow: hidden;
+  padding: 0 10px;
+  box-sizing: border-box;
 }
+
+/* মিডিয়া কোয়েরি — !important যোগ করে নিশ্চিত করা হলো */
 @media (max-width: 1024px) {
-  .sci-desktop-collage { display: none; }
-  .sci-mobile-slider { display: block; }
+  .sci-desktop-collage,
+  .sci-desktop-grid {
+    display: none !important;
+  }
+  .sci-mobile-slider {
+    display: block !important;
+  }
 }
+
+/* স্লাইডারের কোর স্টাইল */
 .sci-slider-wrapper {
   display: flex;
-  transition: transform 0.5s ease;
+  transition: transform 0.5s ease-in-out;
   width: 500%; /* ৫টা স্লাইড */
+  will-change: transform; /* মসৃণ অ্যানিমেশনের জন্য */
 }
+
 .sci-slide {
   flex: 0 0 100%;
+  width: 100%;
   position: relative;
+  box-sizing: border-box;
 }
+
 .sci-slide img {
   width: 100%;
   height: auto;
   max-height: 500px;
-  object-fit: cover;
+  min-height: 300px;          /* নতুন: ছোট স্ক্রিনে খালি না দেখানোর জন্য */
+  object-fit: contain;        /* cover এর বদলে contain — ছবি কাটা যাবে না */
+  display: block;
   border-radius: 16px;
   border: 10px solid white;
   box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+  background: #111;           /* ফাঁকা জায়গা কালো দেখাবে */
 }
+
+/* Arrow Buttons */
 .sci-slider-arrow {
   position: absolute;
   top: 50%;
@@ -112,12 +134,14 @@
   z-index: 10;
   transition: all 0.3s;
 }
+
 .sci-slider-arrow:hover {
   background: #c084fc;
   transform: translateY(-50%) scale(1.15);
 }
-.sci-slider-prev { left: 15px; }
-.sci-slider-next { right: 15px; }
+
+.sci-slider-prev { left: 10px; }
+.sci-slider-next { right: 10px; }
 
 /* Science Image Section - Non-overlapping with Center Focus */
 .science-image-section {
@@ -182,10 +206,10 @@
   height: 100%;
   object-fit: cover;
 }
-.sci-top-left     { grid-column: 1; grid-row: 1; }
-.sci-bottom-left  { grid-column: 1; grid-row: 2; }
+.sci-top-left { grid-column: 1; grid-row: 1; }
+.sci-bottom-left { grid-column: 1; grid-row: 2; }
 .sci-center-large { grid-column: 2; grid-row: 1 / span 2; height: 600px; }
-.sci-top-right    { grid-column: 3; grid-row: 1; }
+.sci-top-right { grid-column: 3; grid-row: 1; }
 .sci-bottom-right { grid-column: 3; grid-row: 2; }
 .sci-label {
   position: absolute;
@@ -200,55 +224,3 @@
   font-weight: 600;
   white-space: nowrap;
 }
-
-/* Mobile Slider */
-.sci-mobile-slider {
-  display: none;
-  position: relative;
-  max-width: 100%;
-  margin: 0 auto 2rem;
-  overflow: hidden;
-}
-@media (max-width: 1024px) {
-  .sci-desktop-grid { display: none; }
-  .sci-mobile-slider { display: block; }
-}
-.sci-slider-wrapper {
-  display: flex;
-  transition: transform 0.5s ease;
-  width: 500%; /* 5 slides */
-}
-.sci-slide {
-  flex: 0 0 100%;
-  position: relative;
-}
-.sci-slide img {
-  width: 100%;
-  height: auto;
-  max-height: 500px;
-  object-fit: cover;
-  border-radius: 16px;
-  border: 10px solid white;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-}
-.sci-slider-arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(192,132,252,0.7);
-  color: white;
-  border: none;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  font-size: 1.6rem;
-  cursor: pointer;
-  z-index: 10;
-  transition: all 0.3s;
-}
-.sci-slider-arrow:hover {
-  background: #c084fc;
-  transform: translateY(-50%) scale(1.15);
-}
-.sci-slider-prev { left: 15px; }
-.sci-slider-next { right: 15px; }
