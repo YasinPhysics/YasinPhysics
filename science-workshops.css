@@ -71,30 +71,35 @@
 .sci-mobile-slider {
   display: none;
   position: relative;
+  width: 100%;
   max-width: 100%;
   margin: 0 auto 2rem;
   overflow: hidden;
-  /* ফিক্স যোগ করা হয়েছে */
-  min-height: 400px !important;
-  width: 100% !important;
+  min-height: 400px;           /* খালি না দেখানোর জন্য */
   padding: 0 10px;
   box-sizing: border-box;
 }
 
 @media (max-width: 1024px) {
-  .sci-desktop-collage { display: none !important; }
-  .sci-mobile-slider { display: block !important; }
+  .sci-desktop-collage,
+  .sci-desktop-grid {
+    display: none !important;
+  }
+  .sci-mobile-slider {
+    display: block !important;
+  }
 }
 
 .sci-slider-wrapper {
   display: flex;
-  transition: transform 0.5s ease;
-  width: 500%; /* ৫টা স্লাইড */
+  transition: transform 0.5s ease-in-out;
+  width: 500%;
   box-sizing: border-box;
 }
 
 .sci-slide {
   flex: 0 0 100%;
+  width: 100%;
   position: relative;
   box-sizing: border-box;
 }
@@ -103,14 +108,14 @@
   width: 100%;
   height: auto;
   max-height: 500px;
-  min-height: 300px; /* খালি না দেখানোর জন্য */
-  object-fit: contain; /* cover এর বদলে contain — ছবি কাটা যাবে না */
+  min-height: 300px;
+  object-fit: contain;
   display: block;
   border-radius: 16px;
   border: 10px solid white;
   box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-  box-sizing: border-box; /* বর্ডার ভিতরে গণনা হবে — overflow যাবে না */
-  background: #111; /* ফাঁকা অংশ কালো দেখাবে */
+  box-sizing: border-box;
+  background: #111;
 }
 
 .sci-slider-arrow {
@@ -128,10 +133,12 @@
   z-index: 10;
   transition: all 0.3s;
 }
+
 .sci-slider-arrow:hover {
   background: #c084fc;
   transform: translateY(-50%) scale(1.15);
 }
+
 .sci-slider-prev { left: 15px; }
 .sci-slider-next { right: 15px; }
 
@@ -197,7 +204,6 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  box-sizing: border-box;
 }
 .sci-top-left { grid-column: 1; grid-row: 1; }
 .sci-bottom-left { grid-column: 1; grid-row: 2; }
@@ -216,4 +222,58 @@
   font-size: 0.9rem;
   font-weight: 600;
   white-space: nowrap;
+}
+
+.sci-slide img,
+.sci-grid-item img,
+.sci-collage-item img {
+  width: 100% !important;
+  height: auto !important;
+  max-height: 500px;
+  min-height: 200px;
+  object-fit: contain !important;
+  box-sizing: border-box !important;
+  display: block !important;
+}
+
+.sci-mobile-slider {
+  min-height: 350px !important;
+}
+
+/* মোবাইলের জন্য ছবি সঠিকভাবে দেখানোর ফিক্স */
+@media (max-width: 1024px) {
+  .sci-slide img,
+  .sci-grid-item img,
+  .sci-collage-item img {
+    width: 100% !important;
+    height: auto !important;
+    max-height: 450px !important; /* মোবাইলে খুব বড় না হওয়ার জন্য */
+    min-height: 250px !important; /* খালি না দেখানোর জন্য */
+    object-fit: contain !important; /* ছবি কাটা যাবে না */
+    box-sizing: border-box !important;
+  }
+
+  .sci-mobile-slider {
+    min-height: 400px !important;
+    display: block !important;
+  }
+
+  .sci-slider-wrapper {
+    width: 500% !important;
+  }
+
+  .sci-slide {
+    flex: 0 0 100% !important;
+  }
+}
+
+/* ডেস্কটপে আগের মতোই রাখতে চাইলে এটা যোগ করুন */
+@media (min-width: 1025px) {
+  .sci-slide img,
+  .sci-grid-item img,
+  .sci-collage-item img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+  }
 }
