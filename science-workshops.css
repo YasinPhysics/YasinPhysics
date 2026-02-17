@@ -67,19 +67,19 @@
   object-fit: cover;
 }
 
-/* Mobile Slider — এখানে ফিক্স করা হয়েছে */
+/* Mobile Slider */
 .sci-mobile-slider {
   display: none;
   position: relative;
-  width: 100%;
   max-width: 100%;
   margin: 0 auto 2rem;
   overflow: hidden;
-  padding: 0 10px;
+  /* ফিক্স যোগ করা হয়েছে */
+  min-height: 350px; /* খালি না দেখানোর জন্য */
+  width: 100%;       /* নিশ্চিত করা */
+  padding: 0 8px;
   box-sizing: border-box;
 }
-
-/* মিডিয়া কোয়েরি — !important যোগ করে নিশ্চিত করা হলো */
 @media (max-width: 1024px) {
   .sci-desktop-collage,
   .sci-desktop-grid {
@@ -89,36 +89,29 @@
     display: block !important;
   }
 }
-
-/* স্লাইডারের কোর স্টাইল */
 .sci-slider-wrapper {
   display: flex;
-  transition: transform 0.5s ease-in-out;
+  transition: transform 0.5s ease;
   width: 500%; /* ৫টা স্লাইড */
-  will-change: transform; /* মসৃণ অ্যানিমেশনের জন্য */
+  box-sizing: border-box;
 }
-
 .sci-slide {
   flex: 0 0 100%;
-  width: 100%;
   position: relative;
   box-sizing: border-box;
 }
-
 .sci-slide img {
   width: 100%;
   height: auto;
   max-height: 500px;
-  min-height: 300px;          /* নতুন: ছোট স্ক্রিনে খালি না দেখানোর জন্য */
-  object-fit: contain;        /* cover এর বদলে contain — ছবি কাটা যাবে না */
+  object-fit: contain; /* cover এর বদলে contain — ছবি কাটা যাবে না */
   display: block;
   border-radius: 16px;
   border: 10px solid white;
   box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-  background: #111;           /* ফাঁকা জায়গা কালো দেখাবে */
+  box-sizing: border-box; /* সবচেয়ে গুরুত্বপূর্ণ — border ভিতরে গণনা হবে */
+  background: #111; /* ফাঁকা অংশ কালো দেখাবে */
 }
-
-/* Arrow Buttons */
 .sci-slider-arrow {
   position: absolute;
   top: 50%;
@@ -134,14 +127,12 @@
   z-index: 10;
   transition: all 0.3s;
 }
-
 .sci-slider-arrow:hover {
   background: #c084fc;
   transform: translateY(-50%) scale(1.15);
 }
-
-.sci-slider-prev { left: 10px; }
-.sci-slider-next { right: 10px; }
+.sci-slider-prev { left: 15px; }
+.sci-slider-next { right: 15px; }
 
 /* Science Image Section - Non-overlapping with Center Focus */
 .science-image-section {
@@ -177,7 +168,6 @@
   color: #d1d5ff;
   line-height: 1.7;
 }
-
 /* Desktop Grid - 5 images, center large, no overlap */
 .sci-desktop-grid {
   display: grid;
@@ -224,3 +214,63 @@
   font-weight: 600;
   white-space: nowrap;
 }
+/* Mobile Slider */
+.sci-mobile-slider {
+  display: none;
+  position: relative;
+  max-width: 100%;
+  margin: 0 auto 2rem;
+  overflow: hidden;
+  /* ফিক্স যোগ করা হয়েছে */
+  min-height: 350px;
+  width: 100%;
+  padding: 0 8px;
+  box-sizing: border-box;
+}
+@media (max-width: 1024px) {
+  .sci-desktop-grid { display: none !important; }
+  .sci-mobile-slider { display: block !important; }
+}
+.sci-slider-wrapper {
+  display: flex;
+  transition: transform 0.5s ease;
+  width: 500%; /* 5 slides */
+  box-sizing: border-box;
+}
+.sci-slide {
+  flex: 0 0 100%;
+  position: relative;
+  box-sizing: border-box;
+}
+.sci-slide img {
+  width: 100%;
+  height: auto;
+  max-height: 500px;
+  object-fit: contain; /* ফিক্স: cover এর বদলে contain */
+  display: block;
+  border-radius: 16px;
+  border: 10px solid white;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+  box-sizing: border-box; /* ফিক্স: border ভিতরে গণনা হবে */
+}
+.sci-slider-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(192,132,252,0.7);
+  color: white;
+  border: none;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  font-size: 1.6rem;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.3s;
+}
+.sci-slider-arrow:hover {
+  background: #c084fc;
+  transform: translateY(-50%) scale(1.15);
+}
+.sci-slider-prev { left: 15px; }
+.sci-slider-next { right: 15px; }
