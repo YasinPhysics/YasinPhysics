@@ -67,36 +67,44 @@
   object-fit: cover;
 }
 
-/* Mobile Slider */
+/* Mobile Slider - এখানে সবচেয়ে গুরুত্বপূর্ণ পরিবর্তন */
 .sci-mobile-slider {
   display: none;
   position: relative;
+  width: 100%;
   max-width: 100%;
   margin: 0 auto 2rem;
   overflow: hidden;
+  padding: 0 10px;
+  box-sizing: border-box;
 }
-@media (max-width: 1024px) {
-  .sci-desktop-collage { display: none; }
-  .sci-mobile-slider { display: block; }
-}
+
 .sci-slider-wrapper {
   display: flex;
-  transition: transform 0.5s ease;
-  width: 500%; /* ৫টা স্লাইড */
+  transition: transform 0.5s ease-in-out;
+  width: 500%; /* 5 slides */
+  will-change: transform; /* পারফরম্যান্স ভালো করার জন্য */
 }
+
 .sci-slide {
   flex: 0 0 100%;
+  width: 100%;
   position: relative;
+  box-sizing: border-box;
 }
+
 .sci-slide img {
   width: 100%;
   height: auto;
   max-height: 500px;
-  object-fit: cover;
+  object-fit: contain; /* cover এর বদলে contain → ছবি কাটা যাবে না */
+  display: block;
   border-radius: 16px;
   border: 10px solid white;
   box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+  background: #000; /* ফাঁকা জায়গা কালো দেখাবে */
 }
+
 .sci-slider-arrow {
   position: absolute;
   top: 50%;
@@ -110,16 +118,21 @@
   font-size: 1.6rem;
   cursor: pointer;
   z-index: 10;
-  transition: all 0.3s;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
 .sci-slider-arrow:hover {
   background: #c084fc;
   transform: translateY(-50%) scale(1.15);
 }
-.sci-slider-prev { left: 15px; }
-.sci-slider-next { right: 15px; }
 
-/* Science Image Section - Non-overlapping with Center Focus */
+.sci-slider-prev { left: 10px; }
+.sci-slider-next { right: 10px; }
+
+/* Science Image Section */
 .science-image-section {
   padding: 6rem 5% 4rem;
   max-width: 1400px;
@@ -154,7 +167,7 @@
   line-height: 1.7;
 }
 
-/* Desktop Grid - 5 images, center large, no overlap */
+/* Desktop Grid */
 .sci-desktop-grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -163,92 +176,24 @@
   max-width: 1100px;
   margin: 0 auto;
 }
-.sci-grid-item {
-  border: 12px solid white;
-  box-shadow: 0 12px 40px rgba(0,0,0,0.4);
-  overflow: hidden;
-  border-radius: 16px;
-  background: white;
-  transition: all 0.4s ease;
-  position: relative;
-}
-.sci-grid-item:hover {
-  transform: scale(1.12);
-  z-index: 10;
-  box-shadow: 0 25px 60px rgba(192,132,252,0.5);
-}
-.sci-grid-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.sci-top-left     { grid-column: 1; grid-row: 1; }
-.sci-bottom-left  { grid-column: 1; grid-row: 2; }
-.sci-center-large { grid-column: 2; grid-row: 1 / span 2; height: 600px; }
-.sci-top-right    { grid-column: 3; grid-row: 1; }
-.sci-bottom-right { grid-column: 3; grid-row: 2; }
-.sci-label {
-  position: absolute;
-  bottom: -35px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: #c084fc;
-  color: white;
-  padding: 0.4rem 1rem;
-  border-radius: 20px;
-  font-size: 0.9rem;
-  font-weight: 600;
-  white-space: nowrap;
+
+/* Media Queries - এখানে !important যোগ করা হয়েছে */
+@media (max-width: 1024px) {
+  .sci-desktop-grid,
+  .sci-desktop-collage {
+    display: none !important;
+  }
+  .sci-mobile-slider {
+    display: block !important;
+  }
 }
 
-/* Mobile Slider */
-.sci-mobile-slider {
-  display: none;
-  position: relative;
-  max-width: 100%;
-  margin: 0 auto 2rem;
-  overflow: hidden;
+@media (min-width: 1025px) {
+  .sci-mobile-slider {
+    display: none !important;
+  }
+  .sci-desktop-grid,
+  .sci-desktop-collage {
+    display: grid !important; /* grid বা block যা প্রয়োজন */
+  }
 }
-@media (max-width: 1024px) {
-  .sci-desktop-grid { display: none; }
-  .sci-mobile-slider { display: block; }
-}
-.sci-slider-wrapper {
-  display: flex;
-  transition: transform 0.5s ease;
-  width: 500%; /* 5 slides */
-}
-.sci-slide {
-  flex: 0 0 100%;
-  position: relative;
-}
-.sci-slide img {
-  width: 100%;
-  height: auto;
-  max-height: 500px;
-  object-fit: cover;
-  border-radius: 16px;
-  border: 10px solid white;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-}
-.sci-slider-arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(192,132,252,0.7);
-  color: white;
-  border: none;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  font-size: 1.6rem;
-  cursor: pointer;
-  z-index: 10;
-  transition: all 0.3s;
-}
-.sci-slider-arrow:hover {
-  background: #c084fc;
-  transform: translateY(-50%) scale(1.15);
-}
-.sci-slider-prev { left: 15px; }
-.sci-slider-next { right: 15px; }
