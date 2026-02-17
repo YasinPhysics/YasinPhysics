@@ -1,8 +1,7 @@
-// Science Slider for mobile — মোবাইলে ছবি দেখানোর জন্য নিশ্চিত
 document.addEventListener("DOMContentLoaded", function () {
   const wrapper = document.querySelector(".sci-slider-wrapper");
   if (!wrapper) {
-    console.log("Slider wrapper (.sci-slider-wrapper) পাওয়া যায়নি");
+    console.warn("Slider wrapper not found");
     return;
   }
 
@@ -10,13 +9,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const prev = document.querySelector(".sci-slider-prev");
   const next = document.querySelector(".sci-slider-next");
 
-  if (slides.length === 0) {
-    console.log("কোনো স্লাইড (.sci-slide) পাওয়া যায়নি");
-    return;
-  }
-
-  if (!prev || !next) {
-    console.log("তীর বাটন পাওয়া যায়নি");
+  if (slides.length === 0 || !prev || !next) {
+    console.warn("Slider elements missing");
     return;
   }
 
@@ -24,6 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function showSlide() {
     wrapper.style.transform = `translateX(-${current * 100}%)`;
+    console.log("Showing slide:", current); // debug
   }
 
   prev.addEventListener("click", () => {
@@ -36,7 +31,8 @@ document.addEventListener("DOMContentLoaded", function () {
     showSlide();
   });
 
-  // প্রথম লোডে দেখানো + ফোর্স চেক
   showSlide();
-  setTimeout(showSlide, 300); // ক্যাশ/লোডিং সমস্যা এড়ানোর জন্য
+  // লোডিং ইস্যু এড়াতে
+  window.addEventListener("load", showSlide);
+  setTimeout(showSlide, 500);
 });
