@@ -1,7 +1,8 @@
+// Science Slider for mobile — মোবাইলে ছবি দেখানোর জন্য নিশ্চিত
 document.addEventListener("DOMContentLoaded", function () {
   const wrapper = document.querySelector(".sci-slider-wrapper");
   if (!wrapper) {
-    console.log("Slider wrapper not found");
+    console.log("Slider wrapper (.sci-slider-wrapper) পাওয়া যায়নি");
     return;
   }
 
@@ -9,28 +10,33 @@ document.addEventListener("DOMContentLoaded", function () {
   const prev = document.querySelector(".sci-slider-prev");
   const next = document.querySelector(".sci-slider-next");
 
-  if (slides.length === 0 || !prev || !next) {
-    console.log("Slider elements missing");
+  if (slides.length === 0) {
+    console.log("কোনো স্লাইড (.sci-slide) পাওয়া যায়নি");
     return;
   }
 
-  let index = 0;
+  if (!prev || !next) {
+    console.log("তীর বাটন পাওয়া যায়নি");
+    return;
+  }
 
-  function show() {
-    wrapper.style.transform = `translateX(-${index * 100}%)`;
+  let current = 0;
+
+  function showSlide() {
+    wrapper.style.transform = `translateX(-${current * 100}%)`;
   }
 
   prev.addEventListener("click", () => {
-    index = (index - 1 + slides.length) % slides.length;
-    show();
+    current = (current - 1 + slides.length) % slides.length;
+    showSlide();
   });
 
   next.addEventListener("click", () => {
-    index = (index + 1) % slides.length;
-    show();
+    current = (current + 1) % slides.length;
+    showSlide();
   });
 
-  // প্রথম স্লাইড দেখানো + ফোর্স রিফ্রেশ
-  show();
-  setTimeout(show, 300); // ৩০০ms পর আবার দেখানো (ক্যাশ/লোডিং সমস্যা এড়ানোর জন্য)
+  // প্রথম লোডে দেখানো + ফোর্স চেক
+  showSlide();
+  setTimeout(showSlide, 300); // ক্যাশ/লোডিং সমস্যা এড়ানোর জন্য
 });
