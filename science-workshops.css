@@ -69,89 +69,11 @@
 
 /* Mobile Slider */
 .sci-mobile-slider {
-  display: none;
+  display: none !important;
   position: relative;
   max-width: 100%;
   margin: 0 auto 2rem;
   overflow: hidden;
-}
-@media (max-width: 1024px) {
-  .sci-desktop-collage { display: none; }
-  .sci-mobile-slider { display: block; }
-}
-.sci-slider-wrapper {
-  display: flex;
-  transition: transform 0.5s ease;
-  width: 500%; /* ৫টা স্লাইড */
-}
-.sci-slide {
-  flex: 0 0 100%;
-  position: relative;
-}
-.sci-slide img {
-  width: 100%;
-  height: auto;
-  max-height: 500px;
-  object-fit: cover;
-  border-radius: 16px;
-  border: 10px solid white;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-}
-.sci-slider-arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(192,132,252,0.7);
-  color: white;
-  border: none;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  font-size: 1.6rem;
-  cursor: pointer;
-  z-index: 10;
-  transition: all 0.3s;
-}
-.sci-slider-arrow:hover {
-  background: #c084fc;
-  transform: translateY(-50%) scale(1.15);
-}
-.sci-slider-prev { left: 15px; }
-.sci-slider-next { right: 15px; }
-
-/* Science Image Section - Non-overlapping with Center Focus */
-.science-image-section {
-  padding: 6rem 5% 4rem;
-  max-width: 1400px;
-  margin: 0 auto;
-  text-align: center;
-}
-.science-image-section h2 {
-  font-size: clamp(2.2rem, 6vw, 3.2rem);
-  color: #c084fc;
-  margin-bottom: 3rem;
-  position: relative;
-}
-.science-image-section h2::after {
-  content: '';
-  width: 80px;
-  height: 4px;
-  background: linear-gradient(90deg, #a78bfa, #c084fc);
-  position: absolute;
-  bottom: -12px;
-  left: 50%;
-  transform: translateX(-50%);
-  border-radius: 2px;
-}
-.brief-intro {
-  max-width: 800px;
-  margin: 0 auto 4rem;
-  text-align: center;
-}
-.brief-intro p {
-  font-size: 1.05rem;
-  color: #d1d5ff;
-  line-height: 1.7;
 }
 
 /* Desktop Grid - 5 images, center large, no overlap */
@@ -201,35 +123,26 @@
   white-space: nowrap;
 }
 
-/* Mobile Slider */
-.sci-mobile-slider {
-  display: none;
-  position: relative;
-  max-width: 100%;
-  margin: 0 auto 2rem;
-  overflow: hidden;
-}
-@media (max-width: 1024px) {
-  .sci-desktop-grid { display: none; }
-  .sci-mobile-slider { display: block; }
-}
+/* Mobile Slider Layout */
 .sci-slider-wrapper {
   display: flex;
   transition: transform 0.5s ease;
-  width: 500%; /* 5 slides */
+  width: 500%; /* 5 slides × 100% */
 }
 .sci-slide {
   flex: 0 0 100%;
+  width: 100%;
   position: relative;
 }
 .sci-slide img {
   width: 100%;
   height: auto;
   max-height: 500px;
-  object-fit: cover;
+  object-fit: contain; /* cover এর পরিবর্তে contain → ছবি কাটা যাবে না */
   border-radius: 16px;
   border: 10px solid white;
   box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+  display: block;
 }
 .sci-slider-arrow {
   position: absolute;
@@ -252,3 +165,24 @@
 }
 .sci-slider-prev { left: 15px; }
 .sci-slider-next { right: 15px; }
+
+/* Media Queries - আরও নিরাপদ */
+@media (max-width: 1024px) {
+  .sci-desktop-grid,
+  .sci-desktop-collage {
+    display: none !important;
+  }
+  .sci-mobile-slider {
+    display: block !important;
+  }
+}
+
+@media (min-width: 1025px) {
+  .sci-mobile-slider {
+    display: none !important;
+  }
+  .sci-desktop-grid,
+  .sci-desktop-collage {
+    display: block !important;
+  }
+}
