@@ -274,3 +274,62 @@
 }
 .sci-slider-prev { left: 15px; }
 .sci-slider-next { right: 15px; }
+
+/* ────────────────────────────────────────────────────────
+   মোবাইল স্লাইডারের জন্য অতিরিক্ত ফিক্স (আপনার কোডের নিচে যোগ করুন)
+───────────────────────────────────────────────────────── */
+
+.sci-mobile-slider {
+  display: none !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-height: 400px !important; /* খালি না দেখানোর জন্য */
+  margin: 2rem auto !important;
+  padding: 0 10px !important;
+  overflow: hidden !important;
+  box-sizing: border-box !important;
+}
+
+@media (max-width: 1024px) {
+  .sci-desktop-collage,
+  .sci-desktop-grid,
+  .sci-desktop-collage {
+    display: none !important;
+  }
+  .sci-mobile-slider {
+    display: block !important;
+  }
+}
+
+.sci-slider-wrapper {
+  display: flex !important;
+  width: 500% !important;
+  transition: transform 0.5s ease-in-out !important;
+  box-sizing: border-box !important;
+}
+
+.sci-slide {
+  flex: 0 0 100% !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.sci-slide img {
+  width: 100% !important;
+  height: auto !important;
+  max-height: 550px !important;
+  min-height: 300px !important;
+  object-fit: contain !important;
+  display: block !important;
+  border-radius: 16px !important;
+  border: 10px solid white !important;
+  box-sizing: border-box !important;
+  background: #111 !important;
+}
+
+/* তীর বাটনের জন্য অতিরিক্ত নিশ্চিতকরণ */
+.sci-slider-arrow {
+  width: 50px !important;
+  height: 50px !important;
+  background: rgba(192,132,252,0.8) !important;
+}
