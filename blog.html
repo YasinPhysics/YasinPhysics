@@ -7,6 +7,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome for icons (pagination arrows) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  
   <style>
     * { margin:0; padding:0; box-sizing:border-box; }
     body {
@@ -19,20 +23,37 @@
     header {
       background: rgba(30,10,60,0.7);
       backdrop-filter: blur(10px);
-      padding: 1.5rem 5%;
-      text-align: center;
+      padding: 1.2rem 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       border-bottom: 1px solid rgba(192,132,252,0.2);
       position: sticky;
       top: 0;
       z-index: 100;
     }
 
-    header h1 { font-size: 2.2rem; color: #c084fc; }
+    .logo { font-size: 1.6rem; font-weight:700; color: #c084fc; }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: #d1d5ff;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover { color: #c084fc; }
 
     .container {
       max-width: 1200px;
-      margin: 0 auto;
-      padding: 2rem 5%;
+      margin: 2rem auto;
+      padding: 0 5%;
       display: flex;
       gap: 2rem;
       flex-wrap: wrap;
@@ -77,12 +98,31 @@
       cursor: pointer;
       transition: all 0.3s;
       color: #e0aaff;
+      text-align: left;
     }
 
     .category-item:hover,
     .category-item.active {
       background: #c084fc;
       color: white;
+    }
+
+    /* Mobile: Category dropdown */
+    .category-dropdown {
+      display: none;
+      width: 100%;
+      padding: 0.8rem;
+      background: rgba(30,20,60,0.6);
+      color: #e0e0ff;
+      border: 1px solid rgba(192,132,252,0.3);
+      border-radius: 8px;
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    @media (max-width: 1024px) {
+      .category-list { display: none; }
+      .category-dropdown { display: block; }
     }
 
     .blog-grid {
@@ -169,7 +209,7 @@
       margin-top: 3rem;
       display: flex;
       justify-content: center;
-      gap: 1rem;
+      gap: 0.8rem;
       flex-wrap: wrap;
     }
 
@@ -182,6 +222,8 @@
       color: #c084fc;
       cursor: pointer;
       transition: all 0.3s;
+      min-width: 40px;
+      text-align: center;
     }
 
     .pagination button:hover,
@@ -205,7 +247,16 @@
 <body>
 
   <header>
-    <h1>Blog</h1>
+    <div class="logo">Yasin</div>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="#">About</a>
+      <a href="#">Skills</a>
+      <a href="#">Projects</a>
+      <a href="#">Publications</a>
+      <a href="blog.html">Blog</a>
+      <a href="#">Contact</a>
+    </nav>
   </header>
 
   <div class="container">
@@ -226,15 +277,19 @@
     <aside>
       <div class="category-filter">
         <h3>Categories</h3>
+        <select id="categorySelect" class="category-dropdown">
+          <option value="All">All Categories</option>
+          <!-- Categories will be added dynamically -->
+        </select>
         <div class="category-list" id="categoryList">
-          <!-- Categories will be added here dynamically -->
+          <!-- Desktop category list -->
         </div>
       </div>
     </aside>
   </div>
 
   <script>
-    // Sample Blog Data (তুমি পরে নিজের দিয়ে রিপ্লেস করো)
+    // Sample Blog Data (তোমার আসল ব্লগ দিয়ে রিপ্লেস করো)
     const blogs = [
       {
         title: "কোয়ান্টাম এনট্যাঙ্গলমেন্টের রহস্য",
@@ -272,22 +327,24 @@
         link: "#",
         image: "https://images.unsplash.com/photo-1505506874110-6a7a69039b08?w=800"
       },
-      // আরও যোগ করো
+      // আরও ব্লগ যোগ করো (যত খুশি)
+      // ...
     ];
 
-    const itemsPerPage = 6;
+    const itemsPerPage = 10; // প্রতি পেজে ১০টা
     let currentPage = 1;
     let currentCategory = "All";
 
     const blogGrid = document.getElementById("blogGrid");
     const categoryList = document.getElementById("categoryList");
+    const categorySelect = document.getElementById("categorySelect");
     const searchInput = document.getElementById("searchInput");
     const pagination = document.getElementById("pagination");
 
     // Get unique categories
     const categories = ["All", ...new Set(blogs.map(b => b.category))];
 
-    // Render categories
+    // Render categories for desktop
     categoryList.innerHTML = "";
     categories.forEach(cat => {
       const item = document.createElement("div");
@@ -303,6 +360,22 @@
         renderBlogs();
       });
       categoryList.appendChild(item);
+    });
+
+    // Render categories for mobile dropdown
+    categorySelect.innerHTML = "";
+    categories.forEach(cat => {
+      const option = document.createElement("option");
+      option.value = cat;
+      option.textContent = cat;
+      if (cat === "All") option.selected = true;
+      categorySelect.appendChild(option);
+    });
+
+    categorySelect.addEventListener("change", () => {
+      currentCategory = categorySelect.value;
+      currentPage = 1;
+      renderBlogs();
     });
 
     function renderBlogs() {
@@ -354,7 +427,7 @@
       pagination.innerHTML = "";
       if (totalPages > 1) {
         const prev = document.createElement("button");
-        prev.textContent = "Previous";
+        prev.innerHTML = '<i class="fas fa-chevron-left"></i> Previous';
         prev.disabled = currentPage === 1;
         prev.addEventListener("click", () => {
           if (currentPage > 1) {
@@ -376,7 +449,7 @@
         }
 
         const next = document.createElement("button");
-        next.textContent = "Next";
+        next.innerHTML = 'Next <i class="fas fa-chevron-right"></i>';
         next.disabled = currentPage === totalPages;
         next.addEventListener("click", () => {
           if (currentPage < totalPages) {
