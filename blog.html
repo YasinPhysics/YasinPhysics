@@ -148,10 +148,21 @@
     }
 
     .blog-meta {
-      color: #b0b0ff;
-      font-size: 0.85rem;
       display: flex;
       justify-content: space-between;
+      align-items: center;
+      color: #b0b0ff;
+      font-size: 0.85rem;
+      margin-top: 1rem;
+    }
+
+    .blog-category {
+      background: rgba(192,132,252,0.25);
+      color: #ff79c6;
+      padding: 0.4rem 0.9rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
     }
 
     .pagination {
@@ -223,7 +234,7 @@
   </div>
 
   <script>
-    // Sample Blog Data (তুমি পরে নিজের ব্লগ দিয়ে রিপ্লেস করো)
+    // Sample Blog Data (তুমি পরে নিজের দিয়ে রিপ্লেস করো)
     const blogs = [
       {
         title: "কোয়ান্টাম এনট্যাঙ্গলমেন্টের রহস্য",
@@ -261,7 +272,7 @@
         link: "#",
         image: "https://images.unsplash.com/photo-1505506874110-6a7a69039b08?w=800"
       },
-      // আরও ব্লগ যোগ করতে চাইলে এখানে অবজেক্ট কপি করে পেস্ট করো
+      // আরও যোগ করো
     ];
 
     const itemsPerPage = 6;
@@ -330,10 +341,10 @@
               <a href="${blog.link}" target="_blank">${blog.title}</a>
             </h3>
             <p class="blog-excerpt">${blog.excerpt}</p>
-            <p class="blog-meta">
-              <span>${blog.date}</span>
-              <span>• ${blog.readTime}</span>
-            </p>
+            <div class="blog-meta">
+              <span class="blog-category">${blog.category}</span>
+              <span>${blog.date} • ${blog.readTime}</span>
+            </div>
           </div>
         `;
         blogGrid.appendChild(card);
