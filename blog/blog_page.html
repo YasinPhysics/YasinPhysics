@@ -4,10 +4,18 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>কোয়ান্টাম এনট্যাঙ্গলমেন্টের রহস্য | Mohammad Yasin</title>
+  
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- MathJax for LaTeX support -->
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
   <style>
     * { margin:0; padding:0; box-sizing:border-box; }
     body {
@@ -36,34 +44,16 @@
     .nav-links a { color: #d1d5ff; text-decoration: none; font-weight: 500; transition: color 0.3s; }
     .nav-links a:hover { color: #c084fc; }
 
-    .language-switcher {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      z-index: 999;
-      cursor: pointer;
-    }
-
-    .lang-toggle {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-      background: rgba(192,132,252,0.2);
-      padding: 0.6rem 1.2rem;
-      border-radius: 30px;
-      border: 1px solid rgba(192,132,252,0.4);
-      transition: all 0.3s;
-      backdrop-filter: blur(10px);
-    }
-
-    .lang-toggle:hover { background: rgba(192,132,252,0.4); transform: scale(1.05); }
-
-    .lang-toggle .current-lang { font-weight: 600; color: #c084fc; }
-
     .content-container {
       max-width: 900px;
       margin: 4rem auto;
       padding: 0 5%;
+      position: relative;
+    }
+
+    .featured-image-container {
+      position: relative;
+      margin-bottom: 2rem;
     }
 
     .featured-image {
@@ -71,8 +61,44 @@
       height: 400px;
       object-fit: cover;
       border-radius: 16px;
-      margin-bottom: 2rem;
       box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    }
+
+    /* Language Switcher - Featured image-এর ডান-উপর কোণায় */
+    .language-switcher {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      z-index: 10;
+      cursor: pointer;
+    }
+
+    .lang-toggle {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: rgba(0,0,0,0.6);
+      padding: 0.6rem 1.2rem;
+      border-radius: 30px;
+      border: 1px solid rgba(192,132,252,0.5);
+      transition: all 0.3s;
+      backdrop-filter: blur(10px);
+    }
+
+    .lang-toggle:hover {
+      background: rgba(192,132,252,0.4);
+      transform: scale(1.05);
+    }
+
+    .lang-toggle .current-lang {
+      font-weight: 600;
+      color: #c084fc;
+      font-size: 0.95rem;
+    }
+
+    .lang-toggle .fa-globe {
+      color: #c084fc;
+      font-size: 1.1rem;
     }
 
     .post-title {
@@ -105,6 +131,14 @@
       padding: 0.2rem 0.5rem;
       border-radius: 4px;
       font-family: monospace;
+    }
+
+    .post-body pre {
+      background: rgba(0,0,0,0.4);
+      padding: 1rem;
+      border-radius: 8px;
+      overflow-x: auto;
+      margin: 1.5rem 0;
     }
 
     .related-section {
@@ -157,6 +191,8 @@
       .content-container { padding: 0 5%; margin-top: 2rem; }
       .featured-image { height: 250px; }
       .post-title { font-size: 2rem; }
+      .language-switcher { top: 15px; right: 15px; }
+      .lang-toggle { padding: 0.5rem 1rem; font-size: 0.9rem; }
       .related-section { padding: 2rem 5%; }
     }
   </style>
@@ -176,15 +212,15 @@
     </nav>
   </header>
 
-  <!-- Language Switcher - ডান উপরের কর্নারে -->
-  <div class="language-switcher" id="langSwitcher">
-    <div class="lang-toggle">
-      <i class="fas fa-globe"></i>
-      <span class="current-lang" id="currentLang">English</span>
-    </div>
-  </div>
-
   <div class="content-container">
+    <!-- Language Switcher - Featured image-এর ডান-উপর কোণায় -->
+    <div class="language-switcher" id="langSwitcher">
+      <div class="lang-toggle">
+        <i class="fas fa-globe"></i>
+        <span class="current-lang" id="currentLang">English</span>
+      </div>
+    </div>
+
     <!-- Featured Image -->
     <img 
       src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" 
@@ -215,6 +251,13 @@
       </ul>
 
       <p>এই ধারণা কোয়ান্টাম কম্পিউটিং, ক্রিপ্টোগ্রাফি এবং টেলিপোর্টেশনের ভিত্তি।</p>
+
+      <!-- LaTeX উদাহরণ -->
+      <h2>গাণিতিক রূপ</h2>
+      <p>দুটি কণার যৌথ অবস্থা হতে পারে:</p>
+      \[ |\psi\rangle = \frac{1}{\sqrt{2}} \left( |0\rangle_A |1\rangle_B - |1\rangle_A |0\rangle_B \right) \]
+
+      <p>এখানে A এবং B দুটি কণা এনট্যাঙ্গলড।</p>
     </div>
 
     <!-- Related Content -->
@@ -264,6 +307,12 @@
           </ul>
 
           <p>This phenomenon forms the foundation of quantum computing, cryptography, and quantum teleportation research.</p>
+
+          <h2>Mathematical Form</h2>
+          <p>The joint state of two entangled particles can be:</p>
+          \[ |\psi\rangle = \frac{1}{\sqrt{2}} \left( |0\rangle_A |1\rangle_B - |1\rangle_A |0\rangle_B \right) \]
+
+          <p>Here A and B are two entangled particles.</p>
         `
       },
       bn: {
@@ -283,6 +332,12 @@
           </ul>
 
           <p>এই ধারণা কোয়ান্টাম কম্পিউটিং, ক্রিপ্টোগ্রাফি এবং টেলিপোর্টেশনের ভিত্তি।</p>
+
+          <h2>গাণিতিক রূপ</h2>
+          <p>দুটি এনট্যাঙ্গলড কণার যৌথ অবস্থা হতে পারে:</p>
+          \[ |\psi\rangle = \frac{1}{\sqrt{2}} \left( |0\rangle_A |1\rangle_B - |1\rangle_A |0\rangle_B \right) \]
+
+          <p>এখানে A এবং B দুটি কণা এনট্যাঙ্গলড।</p>
         `
       }
     };
@@ -297,12 +352,22 @@
       document.querySelector(".post-title").textContent = content[currentLanguage].title;
       document.querySelector(".post-meta").textContent = content[currentLanguage].meta;
       document.querySelector(".post-body").innerHTML = content[currentLanguage].body;
+
+      // Re-render MathJax after content change
+      if (typeof MathJax !== 'undefined') {
+        MathJax.typeset();
+      }
     });
 
     // Initial content load (English)
     document.querySelector(".post-title").textContent = content.en.title;
     document.querySelector(".post-meta").textContent = content.en.meta;
     document.querySelector(".post-body").innerHTML = content.en.body;
+
+    // Trigger MathJax initial render
+    if (typeof MathJax !== 'undefined') {
+      MathJax.typeset();
+    }
   </script>
 </body>
 </html>
