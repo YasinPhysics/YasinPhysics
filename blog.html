@@ -17,7 +17,6 @@
       background: #0d001f;
       color: #e0e0ff;
       line-height: 1.6;
-      min-height: 100vh;
     }
 
     header {
@@ -62,8 +61,18 @@
     main { flex: 3; min-width: 0; }
     aside { flex: 1; min-width: 280px; }
 
-    .search-bar {
+    .top-controls {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
       margin-bottom: 2rem;
+    }
+
+    .search-bar {
+      flex: 1;
+      min-width: 200px;
     }
 
     .search-bar input {
@@ -74,6 +83,39 @@
       background: rgba(30,20,60,0.6);
       color: #e0e0ff;
       font-size: 1rem;
+    }
+
+    .language-switcher {
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .lang-toggle {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: rgba(192,132,252,0.2);
+      padding: 0.6rem 1.2rem;
+      border-radius: 30px;
+      border: 1px solid rgba(192,132,252,0.4);
+      transition: all 0.3s;
+      backdrop-filter: blur(10px);
+    }
+
+    .lang-toggle:hover {
+      background: rgba(192,132,252,0.4);
+      transform: scale(1.05);
+    }
+
+    .lang-toggle .current-lang {
+      font-weight: 600;
+      color: #c084fc;
+      font-size: 0.95rem;
+    }
+
+    .lang-toggle .fa-globe {
+      color: #c084fc;
+      font-size: 1.1rem;
     }
 
     .category-filter {
@@ -235,54 +277,6 @@
       cursor: not-allowed;
     }
 
-    /* Language Switcher - Top Right Corner */
-    .language-switcher {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      z-index: 999;
-      cursor: pointer;
-    }
-
-    .lang-toggle {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-      background: rgba(192,132,252,0.2);
-      padding: 0.6rem 1.2rem;
-      border-radius: 30px;
-      border: 1px solid rgba(192,132,252,0.4);
-      transition: all 0.3s;
-      backdrop-filter: blur(10px);
-    }
-
-    .lang-toggle:hover {
-      background: rgba(192,132,252,0.4);
-      transform: scale(1.05);
-    }
-
-    .lang-toggle .current-lang {
-      font-weight: 600;
-      color: #c084fc;
-      font-size: 0.95rem;
-    }
-
-    .lang-toggle .fa-globe {
-      color: #c084fc;
-      font-size: 1.1rem;
-    }
-
-    @media (max-width: 768px) {
-      .language-switcher {
-        top: 15px;
-        right: 15px;
-      }
-      .lang-toggle {
-        padding: 0.5rem 1rem;
-        font-size: 0.9rem;
-      }
-    }
-
     @media (max-width: 1024px) {
       .container { flex-direction: column; }
       aside { order: 1; }
@@ -305,27 +299,25 @@
     </nav>
   </header>
 
-  <!-- Language Switcher - Top Right Corner -->
-  <div class="language-switcher" id="langSwitcher">
-    <div class="lang-toggle">
-      <i class="fas fa-globe"></i>
-      <span class="current-lang" id="currentLang">English</span>
-    </div>
-  </div>
-
   <div class="container">
     <main>
-      <div class="search-bar">
-        <input type="text" id="searchInput" placeholder="Search blogs..." />
+      <div class="top-controls">
+        <div class="search-bar">
+          <input type="text" id="searchInput" placeholder="Search blogs..." />
+        </div>
+
+        <!-- Language Switcher - সার্চ বক্সের পাশে -->
+        <div class="language-switcher" id="langSwitcher">
+          <div class="lang-toggle">
+            <i class="fas fa-globe"></i>
+            <span class="current-lang" id="currentLang">English</span>
+          </div>
+        </div>
       </div>
 
-      <div class="blog-grid" id="blogGrid">
-        <!-- Blogs will be added here dynamically -->
-      </div>
+      <div class="blog-grid" id="blogGrid"></div>
 
-      <div class="pagination" id="pagination">
-        <!-- Pagination buttons will be added here -->
-      </div>
+      <div class="pagination" id="pagination"></div>
     </main>
 
     <aside>
@@ -360,7 +352,7 @@
 
     let currentLanguage = "en";
 
-    // Sample Blog Data (তোমার আসল দিয়ে রিপ্লেস করো)
+    // Sample Blog Data
     const blogs = [
       {
         title: { en: "Quantum Entanglement Mystery", bn: "কোয়ান্টাম এনট্যাঙ্গলমেন্টের রহস্য" },
@@ -371,7 +363,7 @@
         link: "#",
         image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800"
       },
-      // আরও যোগ করো...
+      // আরও ব্লগ যোগ করো...
     ];
 
     const itemsPerPage = 10;
