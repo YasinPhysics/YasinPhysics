@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Blog | Mohammad Yasin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0d001f;
+      color: #e0e0ff;
+      line-height: 1.6;
+    }
+
+    header {
+      background: rgba(30,10,60,0.7);
+      backdrop-filter: blur(10px);
+      padding: 1.5rem 5%;
+      text-align: center;
+      border-bottom: 1px solid rgba(192,132,252,0.2);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    header h1 { font-size: 2.2rem; color: #c084fc; }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 5%;
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    main { flex: 3; min-width: 0; }
+    aside { flex: 1; min-width: 280px; }
+
+    .search-bar {
+      margin-bottom: 2rem;
+    }
+
+    .search-bar input {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      border: 1px solid rgba(192,132,252,0.3);
+      border-radius: 8px;
+      background: rgba(30,20,60,0.6);
+      color: #e0e0ff;
+      font-size: 1rem;
+    }
+
+    .category-filter {
+      margin-bottom: 2rem;
+    }
+
+    .category-filter h3 {
+      color: #c084fc;
+      margin-bottom: 1rem;
+    }
+
+    .category-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+
+    .category-item {
+      padding: 0.6rem 1rem;
+      background: rgba(192,132,252,0.15);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s;
+      color: #e0aaff;
+    }
+
+    .category-item:hover,
+    .category-item.active {
+      background: #c084fc;
+      color: white;
+    }
+
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 2rem;
+    }
+
+    .blog-card {
+      background: rgba(30,20,60,0.5);
+      border: 1px solid rgba(192,132,252,0.3);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: all 0.3s;
+      backdrop-filter: blur(8px);
+    }
+
+    .blog-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 40px rgba(192,132,252,0.25);
+      border-color: #c084fc;
+    }
+
+    .blog-thumbnail {
+      height: 180px;
+      overflow: hidden;
+    }
+
+    .blog-thumbnail img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s;
+    }
+
+    .blog-card:hover .blog-thumbnail img {
+      transform: scale(1.08);
+    }
+
+    .blog-content {
+      padding: 1.5rem;
+    }
+
+    .blog-title {
+      font-size: 1.35rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .blog-title a {
+      color: #e0aaff;
+      text-decoration: none;
+    }
+
+    .blog-title a:hover {
+      color: #c084fc;
+    }
+
+    .blog-excerpt {
+      color: #d1d5ff;
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+      line-height: 1.5;
+    }
+
+    .blog-meta {
+      color: #b0b0ff;
+      font-size: 0.85rem;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .pagination {
+      margin-top: 3rem;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pagination button,
+    .pagination span {
+      padding: 0.6rem 1.2rem;
+      border: 1px solid #c084fc;
+      border-radius: 8px;
+      background: rgba(192,132,252,0.15);
+      color: #c084fc;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .pagination button:hover,
+    .pagination .active {
+      background: #c084fc;
+      color: white;
+    }
+
+    .pagination button:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
+    @media (max-width: 1024px) {
+      .container { flex-direction: column; }
+      aside { order: 1; }
+      main { order: 2; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Blog</h1>
+  </header>
+
+  <div class="container">
+    <main>
+      <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Search blogs..." />
+      </div>
+
+      <div class="blog-grid" id="blogGrid">
+        <!-- Blogs will be added here dynamically -->
+      </div>
+
+      <div class="pagination" id="pagination">
+        <!-- Pagination buttons will be added here -->
+      </div>
+    </main>
+
+    <aside>
+      <div class="category-filter">
+        <h3>Categories</h3>
+        <div class="category-list" id="categoryList">
+          <!-- Categories will be added here dynamically -->
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <script>
+    // Sample Blog Data (তুমি পরে নিজের ব্লগ দিয়ে রিপ্লেস করো)
+    const blogs = [
+      {
+        title: "কোয়ান্টাম এনট্যাঙ্গলমেন্টের রহস্য",
+        excerpt: "স্পুকি অ্যাকশন অ্যাট আ ডিস্ট্যান্স — কোয়ান্টাম মেকানিক্সের সবচেয়ে অদ্ভুত ধারণা...",
+        category: "Quantum Physics",
+        date: "February 18, 2026",
+        readTime: "8 min",
+        link: "#",
+        image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800"
+      },
+      {
+        title: "ব্ল্যাক হোলের ভিতরে কী আছে?",
+        excerpt: "ইভেন্ট হরাইজন থেকে সিঙ্গুলারিটি পর্যন্ত — সাম্প্রতিক থিওরি ও পর্যবেক্ষণ...",
+        category: "Astrophysics",
+        date: "January 10, 2026",
+        readTime: "10 min",
+        link: "#",
+        image: "https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=800"
+      },
+      {
+        title: "ডার্ক ম্যাটার: মহাবিশ্বের অদৃশ্য ৮৫%",
+        excerpt: "কণা থেকে মডিফাইড গ্র্যাভিটি — সাম্প্রতিক এক্সপেরিমেন্টের সারাংশ...",
+        category: "Cosmology",
+        date: "December 5, 2025",
+        readTime: "7 min",
+        link: "#",
+        image: "https://images.unsplash.com/photo-1462331940025-496dfbfc7564?w=800"
+      },
+      {
+        title: "স্পেশাল রিলেটিভিটি: ১০ মিনিটে বোঝা",
+        excerpt: "টাইম ডাইলেশন, লেন্থ কনট্রাকশন এবং E=mc² — সহজ উদাহরণ সহ...",
+        category: "Relativity",
+        date: "November 20, 2025",
+        readTime: "6 min",
+        link: "#",
+        image: "https://images.unsplash.com/photo-1505506874110-6a7a69039b08?w=800"
+      },
+      // আরও ব্লগ যোগ করতে চাইলে এখানে অবজেক্ট কপি করে পেস্ট করো
+    ];
+
+    const itemsPerPage = 6;
+    let currentPage = 1;
+    let currentCategory = "All";
+
+    const blogGrid = document.getElementById("blogGrid");
+    const categoryList = document.getElementById("categoryList");
+    const searchInput = document.getElementById("searchInput");
+    const pagination = document.getElementById("pagination");
+
+    // Get unique categories
+    const categories = ["All", ...new Set(blogs.map(b => b.category))];
+
+    // Render categories
+    categoryList.innerHTML = "";
+    categories.forEach(cat => {
+      const item = document.createElement("div");
+      item.className = "category-item";
+      item.textContent = cat;
+      item.dataset.category = cat;
+      if (cat === "All") item.classList.add("active");
+      item.addEventListener("click", () => {
+        document.querySelectorAll(".category-item").forEach(i => i.classList.remove("active"));
+        item.classList.add("active");
+        currentCategory = cat;
+        currentPage = 1;
+        renderBlogs();
+      });
+      categoryList.appendChild(item);
+    });
+
+    function renderBlogs() {
+      blogGrid.innerHTML = "";
+      let filtered = blogs;
+
+      // Filter by category
+      if (currentCategory !== "All") {
+        filtered = filtered.filter(b => b.category === currentCategory);
+      }
+
+      // Filter by search
+      const searchTerm = searchInput.value.toLowerCase();
+      if (searchTerm) {
+        filtered = filtered.filter(b =>
+          b.title.toLowerCase().includes(searchTerm) ||
+          b.excerpt.toLowerCase().includes(searchTerm)
+        );
+      }
+
+      // Pagination
+      const totalPages = Math.ceil(filtered.length / itemsPerPage);
+      const start = (currentPage - 1) * itemsPerPage;
+      const end = start + itemsPerPage;
+      const pageItems = filtered.slice(start, end);
+
+      pageItems.forEach(blog => {
+        const card = document.createElement("div");
+        card.className = "blog-card";
+        card.innerHTML = `
+          <div class="blog-thumbnail">
+            <img src="${blog.image}" alt="${blog.title}" />
+          </div>
+          <div class="blog-content">
+            <h3 class="blog-title">
+              <a href="${blog.link}" target="_blank">${blog.title}</a>
+            </h3>
+            <p class="blog-excerpt">${blog.excerpt}</p>
+            <p class="blog-meta">
+              <span>${blog.date}</span>
+              <span>• ${blog.readTime}</span>
+            </p>
+          </div>
+        `;
+        blogGrid.appendChild(card);
+      });
+
+      // Render Pagination
+      pagination.innerHTML = "";
+      if (totalPages > 1) {
+        const prev = document.createElement("button");
+        prev.textContent = "Previous";
+        prev.disabled = currentPage === 1;
+        prev.addEventListener("click", () => {
+          if (currentPage > 1) {
+            currentPage--;
+            renderBlogs();
+          }
+        });
+        pagination.appendChild(prev);
+
+        for (let i = 1; i <= totalPages; i++) {
+          const btn = document.createElement("button");
+          btn.textContent = i;
+          if (i === currentPage) btn.classList.add("active");
+          btn.addEventListener("click", () => {
+            currentPage = i;
+            renderBlogs();
+          });
+          pagination.appendChild(btn);
+        }
+
+        const next = document.createElement("button");
+        next.textContent = "Next";
+        next.disabled = currentPage === totalPages;
+        next.addEventListener("click", () => {
+          if (currentPage < totalPages) {
+            currentPage++;
+            renderBlogs();
+          }
+        });
+        pagination.appendChild(next);
+      }
+    }
+
+    // Search on input
+    searchInput.addEventListener("input", () => {
+      currentPage = 1;
+      renderBlogs();
+    });
+
+    // Initial render
+    renderBlogs();
+  </script>
+</body>
+</html>
