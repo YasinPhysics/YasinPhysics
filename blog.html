@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="bn">
+<html lang="en" id="htmlRoot">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -7,11 +7,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  
-  <!-- Font Awesome for icons (pagination arrows) -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
     <link rel="stylesheet" href="blog.css">
+  
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   
   <style>
     * { margin:0; padding:0; box-sizing:border-box; }
@@ -20,6 +19,7 @@
       background: #0d001f;
       color: #e0e0ff;
       line-height: 1.6;
+      transition: background 0.3s, color 0.3s;
     }
 
     header {
@@ -51,6 +51,36 @@
     }
 
     .nav-links a:hover { color: #c084fc; }
+
+    .language-switcher {
+      position: relative;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .lang-toggle {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(192,132,252,0.15);
+      padding: 0.5rem 1rem;
+      border-radius: 30px;
+      border: 1px solid rgba(192,132,252,0.3);
+      transition: all 0.3s;
+    }
+
+    .lang-toggle:hover {
+      background: rgba(192,132,252,0.3);
+    }
+
+    .lang-toggle .current-lang {
+      font-weight: 600;
+      color: #c084fc;
+    }
+
+    .lang-toggle .fa-globe {
+      color: #c084fc;
+    }
 
     .container {
       max-width: 1200px;
@@ -100,31 +130,12 @@
       cursor: pointer;
       transition: all 0.3s;
       color: #e0aaff;
-      text-align: left;
     }
 
     .category-item:hover,
     .category-item.active {
       background: #c084fc;
       color: white;
-    }
-
-    /* Mobile: Category dropdown */
-    .category-dropdown {
-      display: none;
-      width: 100%;
-      padding: 0.8rem;
-      background: rgba(30,20,60,0.6);
-      color: #e0e0ff;
-      border: 1px solid rgba(192,132,252,0.3);
-      border-radius: 8px;
-      font-size: 1rem;
-      margin-bottom: 1.5rem;
-    }
-
-    @media (max-width: 1024px) {
-      .category-list { display: none; }
-      .category-dropdown { display: block; }
     }
 
     .blog-grid {
@@ -290,50 +301,51 @@
     </aside>
   </div>
 
+  <!-- Language Switcher (Top Right Corner) -->
+  <div class="language-switcher" id="langSwitcher">
+    <div class="lang-toggle">
+      <i class="fas fa-globe"></i>
+      <span class="current-lang" id="currentLang">English</span>
+    </div>
+  </div>
+
   <script>
-    // Sample Blog Data (তোমার আসল ব্লগ দিয়ে রিপ্লেস করো)
+    // Language Data (English & Bangla)
+    const translations = {
+      en: {
+        title: "Blog",
+        searchPlaceholder: "Search blogs...",
+        categories: "Categories",
+        allCategories: "All Categories",
+        // Add more if needed
+      },
+      bn: {
+        title: "ব্লগ",
+        searchPlaceholder: "ব্লগ সার্চ করুন...",
+        categories: "ক্যাটাগরি",
+        allCategories: "সব ক্যাটাগরি",
+        // Add more if needed
+      }
+    };
+
+    let currentLanguage = "en"; // Default English
+
+    // Sample Blog Data (with Bangla support)
     const blogs = [
       {
-        title: "কোয়ান্টাম এনট্যাঙ্গলমেন্টের রহস্য",
-        excerpt: "স্পুকি অ্যাকশন অ্যাট আ ডিস্ট্যান্স — কোয়ান্টাম মেকানিক্সের সবচেয়ে অদ্ভুত ধারণা...",
+        title: { en: "Quantum Entanglement Mystery", bn: "কোয়ান্টাম এনট্যাঙ্গলমেন্টের রহস্য" },
+        excerpt: { en: "Spooky action at a distance...", bn: "দূরত্বে ভুতুড়ে ক্রিয়া..." },
         category: "Quantum Physics",
         date: "February 18, 2026",
-        readTime: "8 min",
+        readTime: { en: "8 min", bn: "৮ মিনিট" },
         link: "#",
         image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800"
       },
-      {
-        title: "ব্ল্যাক হোলের ভিতরে কী আছে?",
-        excerpt: "ইভেন্ট হরাইজন থেকে সিঙ্গুলারিটি পর্যন্ত — সাম্প্রতিক থিওরি ও পর্যবেক্ষণ...",
-        category: "Astrophysics",
-        date: "January 10, 2026",
-        readTime: "10 min",
-        link: "#",
-        image: "https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=800"
-      },
-      {
-        title: "ডার্ক ম্যাটার: মহাবিশ্বের অদৃশ্য ৮৫%",
-        excerpt: "কণা থেকে মডিফাইড গ্র্যাভিটি — সাম্প্রতিক এক্সপেরিমেন্টের সারাংশ...",
-        category: "Cosmology",
-        date: "December 5, 2025",
-        readTime: "7 min",
-        link: "#",
-        image: "https://images.unsplash.com/photo-1462331940025-496dfbfc7564?w=800"
-      },
-      {
-        title: "স্পেশাল রিলেটিভিটি: ১০ মিনিটে বোঝা",
-        excerpt: "টাইম ডাইলেশন, লেন্থ কনট্রাকশন এবং E=mc² — সহজ উদাহরণ সহ...",
-        category: "Relativity",
-        date: "November 20, 2025",
-        readTime: "6 min",
-        link: "#",
-        image: "https://images.unsplash.com/photo-1505506874110-6a7a69039b08?w=800"
-      },
-      // আরও ব্লগ যোগ করো (যত খুশি)
+      // আরও ব্লগ যোগ করো (en & bn দুটোই দাও)
       // ...
     ];
 
-    const itemsPerPage = 10; // প্রতি পেজে ১০টা
+    const itemsPerPage = 10;
     let currentPage = 1;
     let currentCategory = "All";
 
@@ -342,63 +354,67 @@
     const categorySelect = document.getElementById("categorySelect");
     const searchInput = document.getElementById("searchInput");
     const pagination = document.getElementById("pagination");
+    const currentLangDisplay = document.getElementById("currentLang");
+    const htmlRoot = document.getElementById("htmlRoot");
+
+    // Language Switcher
+    document.getElementById("langSwitcher").addEventListener("click", () => {
+      currentLanguage = currentLanguage === "en" ? "bn" : "en";
+      currentLangDisplay.textContent = currentLanguage === "en" ? "English" : "বাংলা";
+      htmlRoot.lang = currentLanguage;
+      renderBlogs(); // Re-render to update text
+      updateCategories();
+    });
 
     // Get unique categories
     const categories = ["All", ...new Set(blogs.map(b => b.category))];
 
-    // Render categories for desktop
-    categoryList.innerHTML = "";
-    categories.forEach(cat => {
-      const item = document.createElement("div");
-      item.className = "category-item";
-      item.textContent = cat;
-      item.dataset.category = cat;
-      if (cat === "All") item.classList.add("active");
-      item.addEventListener("click", () => {
-        document.querySelectorAll(".category-item").forEach(i => i.classList.remove("active"));
-        item.classList.add("active");
-        currentCategory = cat;
-        currentPage = 1;
-        renderBlogs();
+    function updateCategories() {
+      // Desktop list
+      categoryList.innerHTML = "";
+      categories.forEach(cat => {
+        const item = document.createElement("div");
+        item.className = "category-item";
+        item.textContent = cat;
+        item.dataset.category = cat;
+        if (cat === currentCategory) item.classList.add("active");
+        item.addEventListener("click", () => {
+          document.querySelectorAll(".category-item").forEach(i => i.classList.remove("active"));
+          item.classList.add("active");
+          currentCategory = cat;
+          currentPage = 1;
+          renderBlogs();
+        });
+        categoryList.appendChild(item);
       });
-      categoryList.appendChild(item);
-    });
 
-    // Render categories for mobile dropdown
-    categorySelect.innerHTML = "";
-    categories.forEach(cat => {
-      const option = document.createElement("option");
-      option.value = cat;
-      option.textContent = cat;
-      if (cat === "All") option.selected = true;
-      categorySelect.appendChild(option);
-    });
-
-    categorySelect.addEventListener("change", () => {
-      currentCategory = categorySelect.value;
-      currentPage = 1;
-      renderBlogs();
-    });
+      // Mobile dropdown
+      categorySelect.innerHTML = "";
+      categories.forEach(cat => {
+        const option = document.createElement("option");
+        option.value = cat;
+        option.textContent = cat;
+        if (cat === currentCategory) option.selected = true;
+        categorySelect.appendChild(option);
+      });
+    }
 
     function renderBlogs() {
       blogGrid.innerHTML = "";
       let filtered = blogs;
 
-      // Filter by category
       if (currentCategory !== "All") {
         filtered = filtered.filter(b => b.category === currentCategory);
       }
 
-      // Filter by search
       const searchTerm = searchInput.value.toLowerCase();
       if (searchTerm) {
         filtered = filtered.filter(b =>
-          b.title.toLowerCase().includes(searchTerm) ||
-          b.excerpt.toLowerCase().includes(searchTerm)
+          b.title[currentLanguage].toLowerCase().includes(searchTerm) ||
+          b.excerpt[currentLanguage].toLowerCase().includes(searchTerm)
         );
       }
 
-      // Pagination
       const totalPages = Math.ceil(filtered.length / itemsPerPage);
       const start = (currentPage - 1) * itemsPerPage;
       const end = start + itemsPerPage;
@@ -409,27 +425,27 @@
         card.className = "blog-card";
         card.innerHTML = `
           <div class="blog-thumbnail">
-            <img src="${blog.image}" alt="${blog.title}" />
+            <img src="${blog.image}" alt="${blog.title[currentLanguage]}" />
           </div>
           <div class="blog-content">
             <h3 class="blog-title">
-              <a href="${blog.link}" target="_blank">${blog.title}</a>
+              <a href="${blog.link}" target="_blank">${blog.title[currentLanguage]}</a>
             </h3>
-            <p class="blog-excerpt">${blog.excerpt}</p>
+            <p class="blog-excerpt">${blog.excerpt[currentLanguage]}</p>
             <div class="blog-meta">
               <span class="blog-category">${blog.category}</span>
-              <span>${blog.date} • ${blog.readTime}</span>
+              <span>${blog.date} • ${blog.readTime[currentLanguage]}</span>
             </div>
           </div>
         `;
         blogGrid.appendChild(card);
       });
 
-      // Render Pagination
+      // Pagination
       pagination.innerHTML = "";
       if (totalPages > 1) {
         const prev = document.createElement("button");
-        prev.innerHTML = '<i class="fas fa-chevron-left"></i> Previous';
+        prev.innerHTML = '<i class="fas fa-chevron-left"></i>';
         prev.disabled = currentPage === 1;
         prev.addEventListener("click", () => {
           if (currentPage > 1) {
@@ -451,7 +467,7 @@
         }
 
         const next = document.createElement("button");
-        next.innerHTML = 'Next <i class="fas fa-chevron-right"></i>';
+        next.innerHTML = '<i class="fas fa-chevron-right"></i>';
         next.disabled = currentPage === totalPages;
         next.addEventListener("click", () => {
           if (currentPage < totalPages) {
@@ -463,67 +479,15 @@
       }
     }
 
-    // Search on input
+    // Search
     searchInput.addEventListener("input", () => {
       currentPage = 1;
       renderBlogs();
     });
 
-    // Initial render
+    // Initial setup
+    updateCategories();
     renderBlogs();
   </script>
-
-
-
-
-
-
-
-
-
-
-
-  
-<!-- Footer Section -->
-<footer class="footer">
-  <div class="footer-container">
-    <!-- Column 1: Name, Address, Email -->
-    <div class="footer-column">
-      <h3 class="footer-logo">Yasin</h3>
-      <p>Dhaka, Bangladesh</p>
-      <p><a href="mailto:your.email@example.com">your.email@example.com</a></p>
-      <p>© 2026 Mohammad Yasin. All rights reserved.</p>
-    </div>
-
-    <!-- Column 2: My Projects -->
-    <div class="footer-column">
-      <h3>My Projects</h3>
-      <ul>
-        <li><a href="#">Scientophile</a></li>
-        <li><a href="#">AI-Doctor-Blockchain</a></li>
-        <li><a href="#">Blockchain in Journal</a></li>
-        <li><a href="#">More Projects...</a></li>
-      </ul>
-    </div>
-
-    <!-- Column 3: Internal Links -->
-    <div class="footer-column">
-      <h3>Quick Links</h3>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="blog.html">Blog</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </div>
-  </div>
-</footer>
-  
-
-
-
-  
 </body>
 </html>
