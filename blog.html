@@ -7,9 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="blog.css">
   
-  <!-- Font Awesome for icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   
   <style>
@@ -19,7 +17,7 @@
       background: #0d001f;
       color: #e0e0ff;
       line-height: 1.6;
-      transition: background 0.3s, color 0.3s;
+      min-height: 100vh;
     }
 
     header {
@@ -51,36 +49,6 @@
     }
 
     .nav-links a:hover { color: #c084fc; }
-
-    .language-switcher {
-      position: relative;
-      cursor: pointer;
-      user-select: none;
-    }
-
-    .lang-toggle {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: rgba(192,132,252,0.15);
-      padding: 0.5rem 1rem;
-      border-radius: 30px;
-      border: 1px solid rgba(192,132,252,0.3);
-      transition: all 0.3s;
-    }
-
-    .lang-toggle:hover {
-      background: rgba(192,132,252,0.3);
-    }
-
-    .lang-toggle .current-lang {
-      font-weight: 600;
-      color: #c084fc;
-    }
-
-    .lang-toggle .fa-globe {
-      color: #c084fc;
-    }
 
     .container {
       max-width: 1200px;
@@ -136,6 +104,23 @@
     .category-item.active {
       background: #c084fc;
       color: white;
+    }
+
+    .category-dropdown {
+      display: none;
+      width: 100%;
+      padding: 0.8rem;
+      background: rgba(30,20,60,0.6);
+      color: #e0e0ff;
+      border: 1px solid rgba(192,132,252,0.3);
+      border-radius: 8px;
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    @media (max-width: 1024px) {
+      .category-list { display: none; }
+      .category-dropdown { display: block; }
     }
 
     .blog-grid {
@@ -250,6 +235,54 @@
       cursor: not-allowed;
     }
 
+    /* Language Switcher - Top Right Corner */
+    .language-switcher {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 999;
+      cursor: pointer;
+    }
+
+    .lang-toggle {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: rgba(192,132,252,0.2);
+      padding: 0.6rem 1.2rem;
+      border-radius: 30px;
+      border: 1px solid rgba(192,132,252,0.4);
+      transition: all 0.3s;
+      backdrop-filter: blur(10px);
+    }
+
+    .lang-toggle:hover {
+      background: rgba(192,132,252,0.4);
+      transform: scale(1.05);
+    }
+
+    .lang-toggle .current-lang {
+      font-weight: 600;
+      color: #c084fc;
+      font-size: 0.95rem;
+    }
+
+    .lang-toggle .fa-globe {
+      color: #c084fc;
+      font-size: 1.1rem;
+    }
+
+    @media (max-width: 768px) {
+      .language-switcher {
+        top: 15px;
+        right: 15px;
+      }
+      .lang-toggle {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+      }
+    }
+
     @media (max-width: 1024px) {
       .container { flex-direction: column; }
       aside { order: 1; }
@@ -272,6 +305,14 @@
     </nav>
   </header>
 
+  <!-- Language Switcher - Top Right Corner -->
+  <div class="language-switcher" id="langSwitcher">
+    <div class="lang-toggle">
+      <i class="fas fa-globe"></i>
+      <span class="current-lang" id="currentLang">English</span>
+    </div>
+  </div>
+
   <div class="container">
     <main>
       <div class="search-bar">
@@ -292,45 +333,34 @@
         <h3>Categories</h3>
         <select id="categorySelect" class="category-dropdown">
           <option value="All">All Categories</option>
-          <!-- Categories will be added dynamically -->
         </select>
-        <div class="category-list" id="categoryList">
-          <!-- Desktop category list -->
-        </div>
+        <div class="category-list" id="categoryList"></div>
       </div>
     </aside>
   </div>
 
-  <!-- Language Switcher (Top Right Corner) -->
-  <div class="language-switcher" id="langSwitcher">
-    <div class="lang-toggle">
-      <i class="fas fa-globe"></i>
-      <span class="current-lang" id="currentLang">English</span>
-    </div>
-  </div>
-
   <script>
-    // Language Data (English & Bangla)
+    // Language Data
     const translations = {
       en: {
         title: "Blog",
         searchPlaceholder: "Search blogs...",
         categories: "Categories",
         allCategories: "All Categories",
-        // Add more if needed
+        blogMeta: (date, time) => `${date} • ${time}`
       },
       bn: {
         title: "ব্লগ",
         searchPlaceholder: "ব্লগ সার্চ করুন...",
         categories: "ক্যাটাগরি",
         allCategories: "সব ক্যাটাগরি",
-        // Add more if needed
+        blogMeta: (date, time) => `${date} • ${time}`
       }
     };
 
-    let currentLanguage = "en"; // Default English
+    let currentLanguage = "en";
 
-    // Sample Blog Data (with Bangla support)
+    // Sample Blog Data (তোমার আসল দিয়ে রিপ্লেস করো)
     const blogs = [
       {
         title: { en: "Quantum Entanglement Mystery", bn: "কোয়ান্টাম এনট্যাঙ্গলমেন্টের রহস্য" },
@@ -341,8 +371,7 @@
         link: "#",
         image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800"
       },
-      // আরও ব্লগ যোগ করো (en & bn দুটোই দাও)
-      // ...
+      // আরও যোগ করো...
     ];
 
     const itemsPerPage = 10;
@@ -362,15 +391,13 @@
       currentLanguage = currentLanguage === "en" ? "bn" : "en";
       currentLangDisplay.textContent = currentLanguage === "en" ? "English" : "বাংলা";
       htmlRoot.lang = currentLanguage;
-      renderBlogs(); // Re-render to update text
       updateCategories();
+      renderBlogs();
     });
 
-    // Get unique categories
-    const categories = ["All", ...new Set(blogs.map(b => b.category))];
-
+    // Update categories
     function updateCategories() {
-      // Desktop list
+      const lang = currentLanguage;
       categoryList.innerHTML = "";
       categories.forEach(cat => {
         const item = document.createElement("div");
@@ -388,7 +415,6 @@
         categoryList.appendChild(item);
       });
 
-      // Mobile dropdown
       categorySelect.innerHTML = "";
       categories.forEach(cat => {
         const option = document.createElement("option");
@@ -479,8 +505,13 @@
       }
     }
 
-    // Search
     searchInput.addEventListener("input", () => {
+      currentPage = 1;
+      renderBlogs();
+    });
+
+    categorySelect.addEventListener("change", () => {
+      currentCategory = categorySelect.value;
       currentPage = 1;
       renderBlogs();
     });
