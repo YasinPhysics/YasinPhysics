@@ -163,6 +163,8 @@
     @media (max-width: 1024px) {
       .category-list { display: none; }
       .category-dropdown { display: block; }
+      .top-controls { flex-direction: column; align-items: stretch; }
+      .language-switcher { margin-top: 1rem; justify-content: flex-end; }
     }
 
     .blog-grid {
@@ -335,35 +337,57 @@
     // Language Data
     const translations = {
       en: {
-        title: "Blog",
         searchPlaceholder: "Search blogs...",
         categories: "Categories",
         allCategories: "All Categories",
-        blogMeta: (date, time) => `${date} • ${time}`
       },
       bn: {
-        title: "ব্লগ",
         searchPlaceholder: "ব্লগ সার্চ করুন...",
         categories: "ক্যাটাগরি",
         allCategories: "সব ক্যাটাগরি",
-        blogMeta: (date, time) => `${date} • ${time}`
       }
     };
 
     let currentLanguage = "en";
 
-    // Sample Blog Data
+    // Blog Data (এখানে ডেমো ৪টা ব্লগ যোগ করা হয়েছে)
     const blogs = [
       {
         title: { en: "Quantum Entanglement Mystery", bn: "কোয়ান্টাম এনট্যাঙ্গলমেন্টের রহস্য" },
-        excerpt: { en: "Spooky action at a distance...", bn: "দূরত্বে ভুতুড়ে ক্রিয়া..." },
+        excerpt: { en: "Spooky action at a distance in quantum mechanics...", bn: "কোয়ান্টাম মেকানিক্সে দূরত্বে ভুতুড়ে ক্রিয়া..." },
         category: "Quantum Physics",
         date: "February 18, 2026",
         readTime: { en: "8 min", bn: "৮ মিনিট" },
         link: "#",
         image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800"
       },
-      // আরও ব্লগ যোগ করো...
+      {
+        title: { en: "Black Hole Paradox", bn: "ব্ল্যাক হোলের প্যারাডক্স" },
+        excerpt: { en: "The information paradox and recent theories...", bn: "ইনফরমেশন প্যারাডক্স এবং সাম্প্রতিক থিওরি..." },
+        category: "Astrophysics",
+        date: "January 10, 2026",
+        readTime: { en: "10 min", bn: "১০ মিনিট" },
+        link: "#",
+        image: "https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=800"
+      },
+      {
+        title: { en: "Dark Matter Candidates", bn: "ডার্ক ম্যাটারের প্রার্থী" },
+        excerpt: { en: "WIMPs, axions, and beyond...", bn: "WIMPs, axions এবং তার বাইরে..." },
+        category: "Cosmology",
+        date: "December 5, 2025",
+        readTime: { en: "7 min", bn: "৭ মিনিট" },
+        link: "#",
+        image: "https://images.unsplash.com/photo-1462331940025-496dfbfc7564?w=800"
+      },
+      {
+        title: { en: "Special Relativity Intro", bn: "স্পেশাল রিলেটিভিটির পরিচিতি" },
+        excerpt: { en: "Time dilation and length contraction explained...", bn: "টাইম ডাইলেশন এবং লেন্থ কনট্রাকশন ব্যাখ্যা..." },
+        category: "Relativity",
+        date: "November 20, 2025",
+        readTime: { en: "6 min", bn: "৬ মিনিট" },
+        link: "#",
+        image: "https://images.unsplash.com/photo-1505506874110-6a7a69039b08?w=800"
+      }
     ];
 
     const itemsPerPage = 10;
@@ -391,12 +415,26 @@
     function updateCategories() {
       const lang = currentLanguage;
       categoryList.innerHTML = "";
-      categories.forEach(cat => {
+      const allCat = translations[lang].allCategories;
+      const catItem = document.createElement("div");
+      catItem.className = "category-item active";
+      catItem.textContent = allCat;
+      catItem.dataset.category = "All";
+      catItem.addEventListener("click", () => {
+        document.querySelectorAll(".category-item").forEach(i => i.classList.remove("active"));
+        catItem.classList.add("active");
+        currentCategory = "All";
+        currentPage = 1;
+        renderBlogs();
+      });
+      categoryList.appendChild(catItem);
+
+      const uniqueCats = [...new Set(blogs.map(b => b.category))];
+      uniqueCats.forEach(cat => {
         const item = document.createElement("div");
         item.className = "category-item";
         item.textContent = cat;
         item.dataset.category = cat;
-        if (cat === currentCategory) item.classList.add("active");
         item.addEventListener("click", () => {
           document.querySelectorAll(".category-item").forEach(i => i.classList.remove("active"));
           item.classList.add("active");
@@ -407,12 +445,11 @@
         categoryList.appendChild(item);
       });
 
-      categorySelect.innerHTML = "";
-      categories.forEach(cat => {
+      categorySelect.innerHTML = `<option value="All">${allCat}</option>`;
+      uniqueCats.forEach(cat => {
         const option = document.createElement("option");
         option.value = cat;
         option.textContent = cat;
-        if (cat === currentCategory) option.selected = true;
         categorySelect.appendChild(option);
       });
     }
@@ -459,7 +496,7 @@
         blogGrid.appendChild(card);
       });
 
-      // Pagination
+      // Render Pagination
       pagination.innerHTML = "";
       if (totalPages > 1) {
         const prev = document.createElement("button");
