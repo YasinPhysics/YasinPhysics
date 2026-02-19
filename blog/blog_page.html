@@ -4,179 +4,333 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>কোয়ান্টাম এনট্যাঙ্গলমেন্টের রহস্য | Mohammad Yasin</title>
-
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-
-  <!-- Font Awesome -->
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome for icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-  <!-- ✅ KaTeX -->
+
+    <!-- ✅ KaTeX -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
 
+  <!-- KaTeX CSS + JS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5SL+6Wv6b4z6q5Y6vZq6X5f5vZq6X5f5vZq6X5f5vZq6X5f5vZq6" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkjJ1q0o9j9q9q9q9q9q9q9q9q9q9q9q9q9q9q9q9q9q9q9q9q9q9q9q9q9q9q9q9" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"
+    onload="renderMathInElement(document.body, {
+      delimiters: [
+        {left: '$$', right: '$$', display: true},
+        {left: '\\[', right: '\\]', display: true},
+        {left: '$', right: '$', display: false},
+        {left: '\\(', right: '\\)', display: false}
+      ],
+      throwOnError : false
+    });"></script>
+
   <style>
-    body{
-      font-family:'Inter',sans-serif;
-      background:#0d001f;
-      color:#e0e0ff;
-      line-height:1.7;
-      margin:0;
-      padding-bottom:4rem;
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0d001f;
+      color: #e0e0ff;
+      line-height: 1.7;
+      padding-bottom: 4rem;
     }
 
-    header{
-      background:rgba(30,10,60,0.8);
-      padding:1rem 5%;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      border-bottom:1px solid rgba(192,132,252,0.3);
+    header {
+      background: rgba(30,10,60,0.7);
+      backdrop-filter: blur(10px);
+      padding: 1.2rem 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(192,132,252,0.2);
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
 
-    .logo{
-      font-size:1.6rem;
-      font-weight:700;
-      color:#c084fc;
+    .logo { font-size: 1.6rem; font-weight:700; color: #c084fc; }
+
+    .nav-links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+    .nav-links a { color: #d1d5ff; text-decoration: none; font-weight: 500; transition: color 0.3s; }
+    .nav-links a:hover { color: #c084fc; }
+
+    .content-container {
+      max-width: 900px;
+      margin: 4rem auto;
+      padding: 0 5%;
+      position: relative;
     }
 
-    .nav-links a{
-      color:#d1d5ff;
-      text-decoration:none;
-      margin-left:1rem;
+    .featured-image {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      border-radius: 16px;
+      margin-bottom: 2rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
     }
 
-    .content-container{
-      max-width:900px;
-      margin:4rem auto;
-      padding:0 5%;
-      position:relative;
+    .language-switcher {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      z-index: 10;
+      cursor: pointer;
     }
 
-    .post-title{
-      font-size:2.5rem;
-      color:#c084fc;
+    .lang-toggle {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: rgba(0,0,0,0.6);
+      padding: 0.6rem 1.2rem;
+      border-radius: 30px;
+      border: 1px solid rgba(192,132,252,0.5);
+      transition: all 0.3s;
+      backdrop-filter: blur(10px);
     }
 
-    .post-meta{
-      margin-bottom:2rem;
-      color:#b0b0ff;
+    .lang-toggle:hover {
+      background: rgba(192,132,252,0.4);
+      transform: scale(1.05);
     }
 
-    .language-switcher{
-      position:absolute;
-      top:0;
-      right:0;
-      cursor:pointer;
+    .lang-toggle .current-lang {
+      font-weight: 600;
+      color: #c084fc;
+      font-size: 0.95rem;
     }
 
-    .lang-toggle{
-      background:rgba(0,0,0,0.6);
-      padding:0.5rem 1rem;
-      border-radius:20px;
-      border:1px solid #c084fc;
-      display:flex;
-      align-items:center;
-      gap:0.5rem;
+    .lang-toggle .fa-globe {
+      color: #c084fc;
+      font-size: 1.1rem;
     }
 
-    .post-body h2{
-      color:#e0aaff;
-      margin-top:2rem;
+    .post-title {
+      font-size: clamp(2.2rem, 6vw, 3.5rem);
+      color: #c084fc;
+      margin-bottom: 1rem;
+    }
+
+    .post-meta {
+      color: #b0b0ff;
+      font-size: 0.95rem;
+      margin-bottom: 2rem;
+    }
+
+    .post-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #d1d5ff;
+    }
+
+    .post-body h2, .post-body h3 {
+      color: #e0aaff;
+      margin: 2rem 0 1rem;
+    }
+
+    .post-body p { margin-bottom: 1.2rem; }
+
+    .post-body code {
+      background: rgba(192,132,252,0.15);
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      font-family: monospace;
+    }
+
+    .post-body pre {
+      background: rgba(0,0,0,0.4);
+      padding: 1rem;
+      border-radius: 8px;
+      overflow-x: auto;
+      margin: 1.5rem 0;
+    }
+
+    .related-section {
+      margin-top: 5rem;
+      padding: 3rem 5%;
+      background: rgba(30,20,60,0.3);
+      border-radius: 16px;
+    }
+
+    .related-section h2 {
+      color: #c084fc;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .related-card {
+      background: rgba(30,20,60,0.5);
+      border: 1px solid rgba(192,132,252,0.3);
+      border-radius: 12px;
+      padding: 1.2rem;
+      transition: all 0.3s;
+    }
+
+    .related-card:hover {
+      transform: translateY(-6px);
+      border-color: #c084fc;
+    }
+
+    .related-title a {
+      color: #e0aaff;
+      text-decoration: none;
+      font-size: 1.2rem;
+    }
+
+    .related-title a:hover { color: #c084fc; }
+
+    .related-excerpt {
+      color: #b0b0ff;
+      font-size: 0.9rem;
+      margin-top: 0.8rem;
+    }
+
+    @media (max-width: 768px) {
+      .content-container { margin-top: 2rem; padding: 0 5%; }
+      .featured-image { height: 250px; }
+      .post-title { font-size: 2rem; }
+      .language-switcher { top: 15px; right: 15px; }
+      .lang-toggle { padding: 0.5rem 1rem; font-size: 0.9rem; }
+      .related-section { padding: 2rem 5%; }
     }
   </style>
 </head>
 <body>
 
-<header>
-  <div class="logo">Yasin</div>
-  <nav class="nav-links">
-    <a href="#">Home</a>
-    <a href="#">Blog</a>
-  </nav>
-</header>
+  <header>
+    <div class="logo">Yasin</div>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="#">About</a>
+      <a href="#">Skills</a>
+      <a href="#">Projects</a>
+      <a href="#">Publications</a>
+      <a href="blog.html">Blog</a>
+      <a href="#">Contact</a>
+    </nav>
+  </header>
 
-<div class="content-container">
+  <div class="content-container">
+    <!-- Language Switcher - Featured image-এর ডান-উপর কোণায় -->
+    <div class="language-switcher" id="langSwitcher">
+      <div class="lang-toggle">
+        <i class="fas fa-globe"></i>
+        <span class="current-lang" id="currentLang">English</span>
+      </div>
+    </div>
 
-  <div class="language-switcher" id="langSwitcher">
-    <div class="lang-toggle">
-      <i class="fas fa-globe"></i>
-      <span id="currentLang">English</span>
+    <!-- Featured Image -->
+    <img 
+      src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1600" 
+      alt="Featured Image - Quantum Entanglement" 
+      class="featured-image"
+    />
+
+    <!-- Post Title -->
+    <h1 class="post-title" id="postTitle">কোয়ান্টাম এনট্যাঙ্গলমেন্টের রহস্য</h1>
+
+    <!-- Meta -->
+    <div class="post-meta" id="postMeta">১৮ ফেব্রুয়ারি, ২০২৬ • ৮ মিনিট পড়া</div>
+
+    <!-- Main Content -->
+    <div class="post-body" id="postBody">
+      <p>কোয়ান্টাম এনট্যাঙ্গলমেন্ট হলো কোয়ান্টাম মেকানিক্সের সবচেয়ে অদ্ভুত এবং আকর্ষণীয় ধারণাগুলোর একটা। আইনস্টাইন এটাকে "spooky action at a distance" বলে অভিহিত করেছিলেন।</p>
+
+      <h2>এনট্যাঙ্গলমেন্ট কী?</h2>
+      <p>দুটি কণা যদি এনট্যাঙ্গলড হয়, তাহলে একটির অবস্থা পরিমাপ করলে অন্যটির অবস্থা তাৎক্ষণিকভাবে নির্ধারিত হয়ে যায় — যত দূরেই থাকুক না কেন। এমনকি আলোর গতির চেয়ে দ্রুত কোনো তথ্য প্রেরণ না হলেও এটা ঘটে।</p>
+
+      <h2>বাস্তব উদাহরণ</h2>
+      <ul>
+        <li>দুটি কণা একই স্পিনের অবস্থায় থাকে</li>
+        <li>একটির স্পিন পরিমাপ করলে অন্যটির স্পিন তাৎক্ষণিকভাবে বিপরীত হয়ে যায়</li>
+        <li>এটা ক্লাসিক্যাল ফিজিক্স দিয়ে ব্যাখ্যা করা যায় না</li>
+      </ul>
+
+      <p>এই ধারণা কোয়ান্টাম কম্পিউটিং, ক্রিপ্টোগ্রাফি এবং টেলিপোর্টেশনের ভিত্তি।</p>
+
+      <h2>গাণিতিক রূপ</h2>
+      <p>দুটি এনট্যাঙ্গলড কণার যৌথ অবস্থা হতে পারে:</p>
+
+      $$ |\psi\rangle = \frac{1}{\sqrt{2}} \left( |0\rangle_A |1\rangle_B - |1\rangle_A |0\rangle_B \right) $$
+
+      <p>এখানে A এবং B দুটি কণা এনট্যাঙ্গলড।</p>
+
+      <p>আরেকটা উদাহরণ:</p>
+
+      $$ E = mc^2 $$
+
+      <p>ইনলাইন উদাহরণ: শক্তি হলো $E = mc^2$।</p>
     </div>
   </div>
 
-  <h1 class="post-title" id="postTitle">কোয়ান্টাম এনট্যাঙ্গলমেন্টের রহস্য</h1>
-  <div class="post-meta" id="postMeta">১৮ ফেব্রুয়ারি, ২০২৬ • ৮ মিনিট পড়া</div>
+  <script>
+    let currentLanguage = "en";
 
-  <div class="post-body" id="postBody">
+    const content = {
+      en: {
+        title: "The Mystery of Quantum Entanglement",
+        meta: "February 18, 2026 • 8 min read",
+        body: `
+          <p>Quantum entanglement is one of the strangest and most fascinating concepts in quantum mechanics. Einstein famously called it "spooky action at a distance".</p>
 
-    <p>দুটি এনট্যাঙ্গলড কণার যৌথ অবস্থা:</p>
+          <h2>What is Entanglement?</h2>
+          <p>When two particles become entangled, the state of one instantly influences the state of the other, no matter how far apart they are. Measuring one determines the other's state immediately — even faster than light could travel between them.</p>
 
-    $$ |\psi\rangle = \frac{1}{\sqrt{2}} ( |0\rangle_A |1\rangle_B - |1\rangle_A |0\rangle_B ) $$
+          <h2>Real-World Example</h2>
+          <ul>
+            <li>Two particles share the same spin state</li>
+            <li>Measuring one instantly sets the other's spin to opposite</li>
+            <li>This cannot be explained by classical physics</li>
+          </ul>
 
-    <p>ইনলাইন উদাহরণ: শক্তি হলো $E = mc^2$।</p>
+          <p>This phenomenon forms the foundation of quantum computing, cryptography, and quantum teleportation research.</p>
 
-  </div>
-</div>
+          <h2>Mathematical Form</h2>
+          <p>The joint state of two entangled particles can be:</p>
 
-<script>
+          $$ |\psi\rangle = \frac{1}{\sqrt{2}} \left( |0\rangle_A |1\rangle_B - |1\rangle_A |0\rangle_B \right) $$
 
-let currentLanguage = "bn";
+          <p>Here A and B are two entangled particles.</p>
 
-const content = {
-  en: {
-    title: "The Mystery of Quantum Entanglement",
-    meta: "February 18, 2026 • 8 min read",
-    body: `
-      <p>The joint state of two entangled particles:</p>
+          <p>Another example:</p>
 
-      $$ |\\psi\\rangle = \\frac{1}{\\sqrt{2}} ( |0\\rangle_A |1\\rangle_B - |1\\rangle_A |0\\rangle_B ) $$
+          $$ E = mc^2 $$
 
-      <p>Inline example: Energy is $E = mc^2$.</p>
-    `
-  },
-  bn: {
-    title: "কোয়ান্টাম এনট্যাঙ্গলমেন্টের রহস্য",
-    meta: "১৮ ফেব্রুয়ারি, ২০২৬ • ৮ মিনিট পড়া",
-    body: `
-      <p>দুটি এনট্যাঙ্গলড কণার যৌথ অবস্থা:</p>
+          <p>Inline example: The energy is $E = mc^2$.</p>
+        `
+      },
+      bn: {
+        title: "কোয়ান্টাম এনট্যাঙ্গলমেন্টের রহস্য",
+        meta: "১৮ ফেব্রুয়ারি, ২০২৬ • ৮ মিনিট পড়া",
+        body: document.getElementById("postBody").innerHTML // বাংলা ডিফল্ট
+      }
+    };
 
-      $$ |\\psi\\rangle = \\frac{1}{\\sqrt{2}} ( |0\\rangle_A |1\\rangle_B - |1\\rangle_A |0\\rangle_B ) $$
+    // Language Switcher
+    document.getElementById("langSwitcher").addEventListener("click", () => {
+      currentLanguage = currentLanguage === "en" ? "bn" : "en";
+      document.getElementById("currentLang").textContent = currentLanguage === "en" ? "English" : "বাংলা";
+      document.getElementById("htmlRoot").lang = currentLanguage;
 
-      <p>ইনলাইন উদাহরণ: শক্তি হলো $E = mc^2$।</p>
-    `
-  }
-};
-
-function renderMath(){
-  renderMathInElement(document.getElementById("postBody"), {
-    delimiters: [
-      {left: "$$", right: "$$", display: true},
-      {left: "$", right: "$", display: false}
-    ],
-    throwOnError: false
-  });
-}
-
-document.addEventListener("DOMContentLoaded", function(){
-  renderMath();
-});
-
-document.getElementById("langSwitcher").addEventListener("click", function(){
-  currentLanguage = currentLanguage === "bn" ? "en" : "bn";
-
-  document.getElementById("currentLang").textContent =
-    currentLanguage === "bn" ? "English" : "বাংলা";
-
-  document.getElementById("postTitle").textContent = content[currentLanguage].title;
-  document.getElementById("postMeta").textContent = content[currentLanguage].meta;
-  document.getElementById("postBody").innerHTML = content[currentLanguage].body;
-
-  renderMath(); // 🔥 important
-});
-
-</script>
-
+      document.querySelector(".post-title").textContent = content[currentLanguage].title;
+      document.querySelector(".post-meta").textContent = content[currentLanguage].meta;
+      document.querySelector(".post-body").innerHTML = content[currentLanguage].body;
+    });
+  </script>
 </body>
 </html>
