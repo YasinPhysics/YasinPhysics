@@ -1,168 +1,47 @@
 <!DOCTYPE html>
-<html lang="bn" id="htmlRoot">
+<html lang="bn">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>কোয়ান্টাম এনট্যাঙ্গলমেন্টের রহস্য | Mohammad Yasin</title>
-  
-  <!-- Google Fonts -->
+  <title>Mohammad Yasin | Physics Enthusiast</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-  <!-- KaTeX CSS + JS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
-    onload="renderMathInElement(document.body, {
-      delimiters: [
-        {left: '$$', right: '$$', display: true},
-        {left: '\\[', right: '\\]', display: true},
-        {left: '$', right: '$', display: false},
-        {left: '\\(', right: '\\)', display: false}
-      ],
-      throwOnError: false
-    });"></script>
-
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@3.5.0/tsparticles.min.js"></script>
   <style>
-    body {
-      font-family: 'Inter', sans-serif;
-      background: #0d001f;
-      color: #e0e0ff;
-      line-height: 1.7;
-      margin: 0;
-      padding-bottom: 4rem;
-    }
-
-    header {
-      background: rgba(30,10,60,0.7);
-      backdrop-filter: blur(10px);
-      padding: 1.2rem 5%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid rgba(192,132,252,0.2);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-
-    .logo { font-size: 1.6rem; font-weight:700; color: #c084fc; }
-
-    .nav-links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
-    .nav-links a { color: #d1d5ff; text-decoration: none; font-weight: 500; transition: color 0.3s; }
-    .nav-links a:hover { color: #c084fc; }
-
-    .content-container {
-      max-width: 900px;
-      margin: 4rem auto;
-      padding: 0 5%;
-      position: relative;
-    }
-
-    .featured-image {
-      width: 100%;
-      height: 400px;
-      object-fit: cover;
-      border-radius: 16px;
-      margin-bottom: 2rem;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-    }
-
-    .language-switcher {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      z-index: 10;
-      cursor: pointer;
-    }
-
-    .lang-toggle {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-      background: rgba(0,0,0,0.6);
-      padding: 0.6rem 1.2rem;
-      border-radius: 30px;
-      border: 1px solid rgba(192,132,252,0.5);
-      transition: all 0.3s;
-      backdrop-filter: blur(10px);
-    }
-
-    .lang-toggle:hover {
-      background: rgba(192,132,252,0.4);
-      transform: scale(1.05);
-    }
-
-    .lang-toggle .current-lang {
-      font-weight: 600;
-      color: #c084fc;
-      font-size: 0.95rem;
-    }
-
-    .lang-toggle .fa-globe {
-      color: #c084fc;
-      font-size: 1.1rem;
-    }
-
-    .post-title {
-      font-size: clamp(2.2rem, 6vw, 3.5rem);
-      color: #c084fc;
-      margin-bottom: 1rem;
-    }
-
-    .post-meta {
-      color: #b0b0ff;
-      font-size: 0.95rem;
-      margin-bottom: 2rem;
-    }
-
-    .post-body {
-      font-size: 1.1rem;
-      line-height: 1.8;
-      color: #d1d5ff;
-    }
-
-    .post-body h2, .post-body h3 {
-      color: #e0aaff;
-      margin: 2rem 0 1rem;
-    }
-
-    .post-body p { margin-bottom: 1.2rem; }
-
-    .post-body code {
-      background: rgba(192,132,252,0.15);
-      padding: 0.2rem 0.5rem;
-      border-radius: 4px;
-      font-family: monospace;
-    }
-
-    .post-body pre {
-      background: rgba(0,0,0,0.4);
-      padding: 1rem;
-      border-radius: 8px;
-      overflow-x: auto;
-      margin: 1.5rem 0;
-    }
-
-    @media (max-width: 768px) {
-      .content-container { margin-top: 2rem; padding: 0 5%; }
-      .featured-image { height: 250px; }
-      .post-title { font-size: 2rem; }
-      .language-switcher { top: 15px; right: 15px; }
-      .lang-toggle { padding: 0.5rem 1rem; font-size: 0.9rem; }
-    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:'Inter',sans-serif; background:#0d001f; color:#e0e0ff; min-height:100vh; overflow-x:hidden; }
+    #tsparticles { position:fixed; inset:0; z-index:-1; }
+    header { position:fixed; top:0; width:100%; padding:1.2rem 6%; display:flex; justify-content:space-between; align-items:center; background:rgba(30,10,60,0.55); backdrop-filter:blur(10px); z-index:1000; border-bottom:1px solid rgba(192,132,252,0.2); }
+    .logo { font-size:1.6rem; font-weight:700; color:#c084fc; }
+    nav a { color:#d1d5ff; text-decoration:none; margin-left:2rem; font-weight:500; transition:color 0.3s; }
+    nav a:hover { color:#c084fc; }
+    .hero { min-height:100vh; display:flex; align-items:center; padding:0 6%; max-width:1400px; margin:0 auto; }
+    .hero-content { display:flex; align-items:center; justify-content:space-between; width:100%; gap:4rem; flex-wrap:wrap; }
+    .left { flex:1; min-width:320px; }
+    .intro { font-size:1.5rem; color:#c084fc; margin-bottom:0.8rem; font-weight:500; }
+    .name { font-size:2.25rem; font-weight:800; line-height:1.05; background:linear-gradient(90deg,#a78bfa,#c084fc,#7c3aed); -webkit-background-clip:text; -webkit-text-fill-color:transparent; margin-bottom:0.8rem; }
+    .tagline-wrapper { font-size:clamp(1.9rem,5.5vw,3.2rem); font-weight:700; color:#c084fc; min-height:70px; display:flex; align-items:center; }
+    .cursor { display:inline-block; width:4px; height:1.2em; background:#c084fc; vertical-align:middle; margin-left:4px; animation:blink 0.75s step-end infinite; }
+    @keyframes blink { 0%,100% {opacity:1;} 50% {opacity:0;} }
+    .right { flex:1; display:flex; justify-content:center; min-width:300px; }
+    .profile-container { position:relative; width:clamp(260px,50vw,380px); height:clamp(260px,50vw,380px); }
+    .profile-img { width:100%; height:100%; border-radius:50%; object-fit:cover; border:6px solid rgba(192,132,252,0.6); box-shadow:0 0 70px rgba(192,132,252,0.45); transition:transform 0.4s ease; }
+    .profile-img:hover { transform:scale(1.05); }
+    .float-symbol { position:absolute; font-size:2.2rem; color:#c084fc; opacity:0.65; pointer-events:none; animation:floatSym 10s infinite ease-in-out; }
+    @keyframes floatSym { 0%,100% {transform:translate(0,0) rotate(0deg);} 50% {transform:translate(var(--dx),var(--dy)) rotate(360deg);} }
+    @media (max-width:1024px) { .hero-content {flex-direction:column-reverse; text-align:center;} .right {margin-bottom:3rem;} .left {padding:0 1rem;} }
+    @media (max-width:768px) { header {padding:1rem 5%; flex-direction:column; gap:1rem;} nav a {margin:0 0.8rem; font-size:0.95rem;} .profile-container {width:240px; height:240px;} }
   </style>
 </head>
 <body>
 
+  <div id="tsparticles"></div>
+
   <header>
     <div class="logo">Yasin</div>
-    <nav class="nav-links">
-      <a href="index.html">Home</a>
+    <nav>
+      <a href="#">Home</a>
       <a href="#">About</a>
       <a href="#">Skills</a>
       <a href="#">Projects</a>
@@ -172,130 +51,78 @@
     </nav>
   </header>
 
-  <div class="content-container">
-    <!-- Language Switcher - Featured image-এর ডান-উপর কোণায় -->
-    <div class="language-switcher" id="langSwitcher">
-      <div class="lang-toggle">
-        <i class="fas fa-globe"></i>
-        <span class="current-lang" id="currentLang">English</span>
+  <section class="hero">
+    <div class="hero-content">
+      <div class="left">
+        <p class="intro">Hello, I'm</p>
+        <h1 class="name">Mohammad Yasin</h1>
+        <div class="tagline-wrapper">
+          <span id="tagline"></span><span class="cursor">|</span>
+        </div>
+      </div>
+
+      <div class="right">
+        <div class="profile-container">
+          <img src="https://i.postimg.cc/9fL37KH6/Untitled-design-31.png" alt="Mohammad Yasin" class="profile-img"/>
+          <div class="float-symbol" style="--dx:-90px; --dy:-110px; animation-delay:0s;">⚛️</div>
+          <div class="float-symbol" style="--dx:100px; --dy:-70px; animation-delay:2s;">🌌</div>
+          <div class="float-symbol" style="--dx:-60px; --dy:90px; animation-delay:4s;">∞</div>
+          <div class="float-symbol" style="--dx:110px; --dy:60px; animation-delay:6s;">∇</div>
+          <div class="float-symbol" style="--dx:40px; --dy:-120px; animation-delay:1s;">ħ</div>
+          <div class="float-symbol" style="--dx:-80px; --dy:80px; animation-delay:3s;">λ</div>
+        </div>
       </div>
     </div>
-
-    <!-- Featured Image -->
-    <img 
-      src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1600" 
-      alt="Featured Image - Quantum Entanglement" 
-      class="featured-image"
-    />
-
-    <!-- Post Title -->
-    <h1 class="post-title" id="postTitle">কোয়ান্টাম এনট্যাঙ্গলমেন্টের রহস্য</h1>
-
-    <!-- Meta -->
-    <div class="post-meta" id="postMeta">১৮ ফেব্রুয়ারি, ২০২৬ • ৮ মিনিট পড়া</div>
-
-    <!-- Main Content -->
-    <div class="post-body" id="postBody">
-      <p>কোয়ান্টাম এনট্যাঙ্গলমেন্ট হলো কোয়ান্টাম মেকানিক্সের সবচেয়ে অদ্ভুত এবং আকর্ষণীয় ধারণাগুলোর একটা। আইনস্টাইন এটাকে "spooky action at a distance" বলে অভিহিত করেছিলেন।</p>
-
-      <h2>এনট্যাঙ্গলমেন্ট কী?</h2>
-      <p>দুটি কণা যদি এনট্যাঙ্গলড হয়, তাহলে একটির অবস্থা পরিমাপ করলে অন্যটির অবস্থা তাৎক্ষণিকভাবে নির্ধারিত হয়ে যায় — যত দূরেই থাকুক না কেন। এমনকি আলোর গতির চেয়ে দ্রুত কোনো তথ্য প্রেরণ না হলেও এটা ঘটে।</p>
-
-      <h2>বাস্তব উদাহরণ</h2>
-      <ul>
-        <li>দুটি কণা একই স্পিনের অবস্থায় থাকে</li>
-        <li>একটির স্পিন পরিমাপ করলে অন্যটির স্পিন তাৎক্ষণিকভাবে বিপরীত হয়ে যায়</li>
-        <li>এটা ক্লাসিক্যাল ফিজিক্স দিয়ে ব্যাখ্যা করা যায় না</li>
-      </ul>
-
-      <p>এই ধারণা কোয়ান্টাম কম্পিউটিং, ক্রিপ্টোগ্রাফি এবং টেলিপোর্টেশনের ভিত্তি।</p>
-
-      <h2>গাণিতিক রূপ</h2>
-      <p>দুটি এনট্যাঙ্গলড কণার যৌথ অবস্থা হতে পারে:</p>
-
-      $$ |\psi\rangle = \frac{1}{\sqrt{2}} \left( |0\rangle_A |1\rangle_B - |1\rangle_A |0\rangle_B \right) $$
-
-      <p>এখানে A এবং B দুটি কণা এনট্যাঙ্গলড।</p>
-
-      <p>আরেকটা উদাহরণ:</p>
-
-      $$ E = mc^2 $$
-
-      <p>ইনলাইন উদাহরণ: শক্তি হলো $E = mc^2$।</p>
-    </div>
-  </div>
+  </section>
 
   <script>
-    let currentLanguage = "en";
-
-    const content = {
-      en: {
-        title: "The Mystery of Quantum Entanglement",
-        meta: "February 18, 2026 • 8 min read",
-        body: `
-          <p>Quantum entanglement is one of the strangest and most fascinating concepts in quantum mechanics. Einstein famously called it "spooky action at a distance".</p>
-
-          <h2>What is Entanglement?</h2>
-          <p>When two particles become entangled, the state of one instantly influences the state of the other, no matter how far apart they are. Measuring one determines the other's state immediately — even faster than light could travel between them.</p>
-
-          <h2>Real-World Example</h2>
-          <ul>
-            <li>Two particles share the same spin state</li>
-            <li>Measuring one instantly sets the other's spin to opposite</li>
-            <li>This cannot be explained by classical physics</li>
-          </ul>
-
-          <p>This phenomenon forms the foundation of quantum computing, cryptography, and quantum teleportation research.</p>
-
-          <h2>Mathematical Form</h2>
-          <p>The joint state of two entangled particles can be:</p>
-
-          $$ |\psi\rangle = \frac{1}{\sqrt{2}} \left( |0\rangle_A |1\rangle_B - |1\rangle_A |0\rangle_B \right) $$
-
-          <p>Here A and B are two entangled particles.</p>
-
-          <p>Another example:</p>
-
-          $$ E = mc^2 $$
-
-          <p>Inline example: The energy is $E = mc^2$.</p>
-        `
+    tsParticles.load("tsparticles", {
+      particles: {
+        number: { value: 70 },
+        color: { value: ["#a78bfa","#c084fc","#7c3aed","#ffffff"] },
+        shape: { type: "circle" },
+        opacity: { value: 0.55, random: true },
+        size: { value: { min:1, max:4 } },
+        move: { enable:true, speed:0.7, random:true, outModes:"out" },
+        links: { enable:true, distance:140, color:"#c084fc", opacity:0.35, width:1 }
       },
-      bn: {
-        title: "কোয়ান্টাম এনট্যাঙ্গলমেন্টের রহস্য",
-        meta: "১৮ ফেব্রুয়ারি, ২০২৬ • ৮ মিনিট পড়া",
-        body: document.getElementById("postBody").innerHTML // বাংলা ডিফল্ট
+      interactivity: {
+        events: { onhover:{enable:true,mode:"grab"}, onclick:{enable:true,mode:"push"} },
+        modes: { grab:{distance:180,links:{opacity:0.6}}, push:{quantity:3} }
       }
-    };
-
-    // Language Switcher
-    document.getElementById("langSwitcher").addEventListener("click", () => {
-      currentLanguage = currentLanguage === "en" ? "bn" : "en";
-      document.getElementById("currentLang").textContent = currentLanguage === "en" ? "English" : "বাংলা";
-      document.getElementById("htmlRoot").lang = currentLanguage;
-
-      document.querySelector(".post-title").textContent = content[currentLanguage].title;
-      document.querySelector(".post-meta").textContent = content[currentLanguage].meta;
-      document.querySelector(".post-body").innerHTML = content[currentLanguage].body;
-
-      // Re-render KaTeX
-      renderMathInElement(document.getElementById("postBody"), {
-        delimiters: [
-          {left: "$$", right: "$$", display: true},
-          {left: "$", right: "$", display: false}
-        ],
-        throwOnError: false
-      });
     });
 
-    // Initial KaTeX render
-    renderMathInElement(document.body, {
-      delimiters: [
-        {left: "$$", right: "$$", display: true},
-        {left: "$", right: "$", display: false}
-      ],
-      throwOnError: false
-    });
+    const phrases = [
+      "I'm science enthusiast",
+      "I will become scientist"
+    ];
+
+    let phraseIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    const tagline = document.getElementById("tagline");
+
+    function animate() {
+      const current = phrases[phraseIndex];
+      tagline.textContent = current.substring(0, charIndex);
+
+      if (!isDeleting && charIndex < current.length) {
+        charIndex++;
+        setTimeout(animate, 80);
+      } else if (isDeleting && charIndex > 0) {
+        charIndex--;
+        setTimeout(animate, 40);
+      } else if (!isDeleting && charIndex === current.length) {
+        isDeleting = true;
+        setTimeout(animate, 2000);
+      } else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        phraseIndex = (phraseIndex + 1) % phrases.length;
+        setTimeout(animate, 600);
+      }
+    }
+
+    animate();
   </script>
 </body>
 </html>
