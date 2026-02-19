@@ -1,399 +1,140 @@
-<!DOCTYPE html>
-<html lang="en" id="htmlRoot">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>কোয়ান্টাম এনট্যাঙ্গলমেন্টের রহস্য | Mohammad Yasin</title>
-  
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  
-  <!-- KaTeX CSS + JS (ফাস্ট এবং লাইটওয়েট) -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV" crossorigin="anonymous">
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqz0ExqQ9z6u5qJ8YkM2k6Y8XJ8YkM2k6Y8XJ8" crossorigin="anonymous"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"
-    onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '$', right: '$', display: false}, {left: '\\(', right: '\\)', display: false}]});"></script>
+<script>
+  let currentLanguage = "en";
 
-  <style>
-    * { margin:0; padding:0; box-sizing:border-box; }
-    body {
-      font-family: 'Inter', sans-serif;
-      background: #0d001f;
-      color: #e0e0ff;
-      line-height: 1.7;
-      padding-bottom: 4rem;
+  const content = {
+    en: {
+      title: "The Mystery of Quantum Entanglement",
+      meta: "February 18, 2026 • 8 min read",
+      body: `
+        <p>Quantum entanglement is one of the strangest and most fascinating concepts in quantum mechanics. Einstein famously called it "spooky action at a distance".</p>
+
+        <h2>What is Entanglement?</h2>
+        <p>When two particles become entangled, the state of one instantly influences the state of the other, no matter how far apart they are. Measuring one determines the other's state immediately — even faster than light could travel between them.</p>
+
+        <h2>Real-World Example</h2>
+        <ul>
+          <li>Two particles share the same spin state</li>
+          <li>Measuring one instantly sets the other's spin to opposite</li>
+          <li>This cannot be explained by classical physics</li>
+        </ul>
+
+        <p>This phenomenon forms the foundation of quantum computing, cryptography, and quantum teleportation research.</p>
+
+        <h2>Mathematical Form</h2>
+        <p>The joint state of two entangled particles can be:</p>
+
+        $$ |\\psi\\rangle = \\frac{1}{\\sqrt{2}} \\left( |0\\rangle_A |1\\rangle_B - |1\\rangle_A |0\\rangle_B \\right) $$
+
+        <p>Here A and B are two entangled particles.</p>
+
+        <p>Another example:</p>
+
+        $$ E = mc^2 $$
+
+        <p>Inline example: The energy is $E = mc^2$.</p>
+      `
+    },
+    bn: {
+      title: "কোয়ান্টাম এনট্যাঙ্গলমেন্টের রহস্য",
+      meta: "১৮ ফেব্রুয়ারি, ২০২৬ • ৮ মিনিট পড়া",
+      body: `
+        <p>কোয়ান্টাম এনট্যাঙ্গলমেন্ট হলো কোয়ান্টাম মেকানিক্সের সবচেয়ে অদ্ভুত এবং আকর্ষণীয় ধারণাগুলোর একটা। আইনস্টাইন এটাকে "spooky action at a distance" বলে অভিহিত করেছিলেন।</p>
+
+        <h2>এনট্যাঙ্গলমেন্ট কী?</h2>
+        <p>দুটি কণা যদি এনট্যাঙ্গলড হয়, তাহলে একটির অবস্থা পরিমাপ করলে অন্যটির অবস্থা তাৎক্ষণিকভাবে নির্ধারিত হয়ে যায় — যত দূরেই থাকুক না কেন।</p>
+
+        <h2>বাস্তব উদাহরণ</h2>
+        <ul>
+          <li>দুটি কণা একই স্পিনের অবস্থায় থাকে</li>
+          <li>একটির স্পিন পরিমাপ করলে অন্যটির স্পিন তাৎক্ষণিকভাবে বিপরীত হয়ে যায়</li>
+          <li>এটা ক্লাসিক্যাল ফিজিক্স দিয়ে ব্যাখ্যা করা যায় না</li>
+        </ul>
+
+        <p>এই ধারণা কোয়ান্টাম কম্পিউটিং, ক্রিপ্টোগ্রাফি এবং টেলিপোর্টেশনের ভিত্তি।</p>
+
+        <h2>গাণিতিক রূপ</h2>
+        <p>দুটি এনট্যাঙ্গলড কণার যৌথ অবস্থা হতে পারে:</p>
+
+        $$ |\\psi\\rangle = \\frac{1}{\\sqrt{2}} \\left( |0\\rangle_A |1\\rangle_B - |1\\rangle_A |0\\rangle_B \\right) $$
+
+        <p>এখানে A এবং B দুটি কণা এনট্যাঙ্গলড।</p>
+
+        <p>আরেকটা উদাহরণ:</p>
+
+        $$ E = mc^2 $$
+
+        <p>ইনলাইন উদাহরণ: শক্তি হলো $E = mc^2$।</p>
+      `
     }
+  };
 
-    header {
-      background: rgba(30,10,60,0.7);
-      backdrop-filter: blur(10px);
-      padding: 1.2rem 5%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid rgba(192,132,252,0.2);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
+  // Language Switcher
+  document.getElementById("langSwitcher").addEventListener("click", () => {
+    currentLanguage = currentLanguage === "en" ? "bn" : "en";
+    document.getElementById("currentLang").textContent = currentLanguage === "en" ? "English" : "বাংলা";
+    document.getElementById("htmlRoot").lang = currentLanguage;
 
-    .logo { font-size: 1.6rem; font-weight:700; color: #c084fc; }
+    // Update content
+    document.querySelector(".post-title").textContent = content[currentLanguage].title;
+    document.querySelector(".post-meta").textContent = content[currentLanguage].meta;
+    document.querySelector(".post-body").innerHTML = content[currentLanguage].body;
 
-    .nav-links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
-    .nav-links a { color: #d1d5ff; text-decoration: none; font-weight: 500; transition: color 0.3s; }
-    .nav-links a:hover { color: #c084fc; }
-
-    .content-container {
-      max-width: 900px;
-      margin: 4rem auto;
-      padding: 0 5%;
-      position: relative;
-    }
-
-    .featured-image-container {
-      position: relative;
-      margin-bottom: 2rem;
-    }
-
-    .featured-image {
-      width: 100%;
-      height: 400px;
-      object-fit: cover;
-      border-radius: 16px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-    }
-
-    /* Language Switcher - Featured image-এর ডান-উপর কোণায় */
-    .language-switcher {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      z-index: 10;
-      cursor: pointer;
-    }
-
-    .lang-toggle {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-      background: rgba(0,0,0,0.6);
-      padding: 0.6rem 1.2rem;
-      border-radius: 30px;
-      border: 1px solid rgba(192,132,252,0.5);
-      transition: all 0.3s;
-      backdrop-filter: blur(10px);
-    }
-
-    .lang-toggle:hover {
-      background: rgba(192,132,252,0.4);
-      transform: scale(1.05);
-    }
-
-    .lang-toggle .current-lang {
-      font-weight: 600;
-      color: #c084fc;
-      font-size: 0.95rem;
-    }
-
-    .lang-toggle .fa-globe {
-      color: #c084fc;
-      font-size: 1.1rem;
-    }
-
-    .post-title {
-      font-size: clamp(2.2rem, 6vw, 3.5rem);
-      color: #c084fc;
-      margin-bottom: 1rem;
-    }
-
-    .post-meta {
-      color: #b0b0ff;
-      font-size: 0.95rem;
-      margin-bottom: 2rem;
-    }
-
-    .post-body {
-      font-size: 1.1rem;
-      line-height: 1.8;
-      color: #d1d5ff;
-    }
-
-    .post-body h2, .post-body h3 {
-      color: #e0aaff;
-      margin: 2rem 0 1rem;
-    }
-
-    .post-body p { margin-bottom: 1.2rem; }
-
-    .post-body code {
-      background: rgba(192,132,252,0.15);
-      padding: 0.2rem 0.5rem;
-      border-radius: 4px;
-      font-family: monospace;
-    }
-
-    .post-body pre {
-      background: rgba(0,0,0,0.4);
-      padding: 1rem;
-      border-radius: 8px;
-      overflow-x: auto;
-      margin: 1.5rem 0;
-    }
-
-    .related-section {
-      margin-top: 5rem;
-      padding: 3rem 5%;
-      background: rgba(30,20,60,0.3);
-      border-radius: 16px;
-    }
-
-    .related-section h2 {
-      color: #c084fc;
-      margin-bottom: 2rem;
-      text-align: center;
-    }
-
-    .related-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .related-card {
-      background: rgba(30,20,60,0.5);
-      border: 1px solid rgba(192,132,252,0.3);
-      border-radius: 12px;
-      padding: 1.2rem;
-      transition: all 0.3s;
-    }
-
-    .related-card:hover {
-      transform: translateY(-6px);
-      border-color: #c084fc;
-    }
-
-    .related-title a {
-      color: #e0aaff;
-      text-decoration: none;
-      font-size: 1.2rem;
-    }
-
-    .related-title a:hover { color: #c084fc; }
-
-    .related-excerpt {
-      color: #b0b0ff;
-      font-size: 0.9rem;
-      margin-top: 0.8rem;
-    }
-
-    @media (max-width: 768px) {
-      .content-container { padding: 0 5%; margin-top: 2rem; }
-      .featured-image { height: 250px; }
-      .post-title { font-size: 2rem; }
-      .language-switcher { top: 15px; right: 15px; }
-      .lang-toggle { padding: 0.5rem 1rem; font-size: 0.9rem; }
-      .related-section { padding: 2rem 5%; }
-    }
-  </style>
-</head>
-<body>
-
-  <header>
-    <div class="logo">Yasin</div>
-    <nav class="nav-links">
-      <a href="index.html">Home</a>
-      <a href="#">About</a>
-      <a href="#">Skills</a>
-      <a href="#">Projects</a>
-      <a href="#">Publications</a>
-      <a href="blog.html">Blog</a>
-      <a href="#">Contact</a>
-    </nav>
-  </header>
-
-  <div class="content-container">
-    <!-- Language Switcher - Featured image-এর ডান-উপর কোণায় -->
-    <div class="language-switcher" id="langSwitcher">
-      <div class="lang-toggle">
-        <i class="fas fa-globe"></i>
-        <span class="current-lang" id="currentLang">English</span>
-      </div>
-    </div>
-
-    <!-- Featured Image -->
-    <img 
-      src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" 
-      alt="Featured Image - Quantum Entanglement" 
-      class="featured-image"
-    />
-
-    <!-- Post Title -->
-    <h1 class="post-title" id="postTitle">কোয়ান্টাম এনট্যাঙ্গলমেন্টের রহস্য</h1>
-
-    <!-- Meta -->
-    <div class="post-meta" id="postMeta">
-      ১৮ ফেব্রুয়ারি, ২০২৬ • ৮ মিনিট পড়া
-    </div>
-
-    <!-- Main Content -->
-    <div class="post-body" id="postBody">
-      <p>কোয়ান্টাম এনট্যাঙ্গলমেন্ট হলো কোয়ান্টাম মেকানিক্সের সবচেয়ে অদ্ভুত এবং আকর্ষণীয় ধারণাগুলোর একটা। আইনস্টাইন এটাকে "spooky action at a distance" বলে অভিহিত করেছিলেন।</p>
-
-      <h2>এনট্যাঙ্গলমেন্ট কী?</h2>
-      <p>দুটি কণা যদি এনট্যাঙ্গলড হয়, তাহলে একটির অবস্থা পরিমাপ করলে অন্যটির অবস্থা তাৎক্ষণিকভাবে নির্ধারিত হয়ে যায় — যত দূরেই থাকুক না কেন। এমনকি আলোর গতির চেয়ে দ্রুত কোনো তথ্য প্রেরণ না হলেও এটা ঘটে।</p>
-
-      <h2>বাস্তব উদাহরণ</h2>
-      <ul>
-        <li>দুটি কণা একই স্পিনের অবস্থায় থাকে</li>
-        <li>একটির স্পিন পরিমাপ করলে অন্যটির স্পিন তাৎক্ষণিকভাবে বিপরীত হয়ে যায়</li>
-        <li>এটা ক্লাসিক্যাল ফিজিক্স দিয়ে ব্যাখ্যা করা যায় না</li>
-      </ul>
-
-      <p>এই ধারণা কোয়ান্টাম কম্পিউটিং, ক্রিপ্টোগ্রাফি এবং টেলিপোর্টেশনের ভিত্তি।</p>
-
-      <h2>গাণিতিক রূপ</h2>
-      <p>দুটি এনট্যাঙ্গলড কণার যৌথ অবস্থা হতে পারে:</p>
-
-       $$ \begin{align*}
-        \widetilde{f}(x) = fl(x) \otimes fl(x) &= (x(1+\epsilon_1) \times x(1+\epsilon_1))(1+\epsilon_2)\\
-        &= x^2(1+\epsilon_1)^2(1+\epsilon_2)\\
-        &= (x(1+\epsilon)\sqrt{1+\epsilon_2})^2\\
-        &= (\widetilde{x})^2 = f(\widetilde{x}) && \text{where, $\widetilde{x}=(x(1+\epsilon)\sqrt{1+\epsilon_2}) = x[1+O(\epsilon_{machine})]$}
-    \end{align*} $$
-
-      <p>এখানে A এবং B দুটি কণা এনট্যাঙ্গলড।</p>
-    </div>
-
-    <!-- Related Content -->
-    <div class="related-section">
-      <h2>Related Articles</h2>
-      <div class="related-grid">
-        <div class="related-card">
-          <h3 class="related-title">
-            <a href="#">ব্ল্যাক হোলের ইনফরমেশন প্যারাডক্স</a>
-          </h3>
-          <p class="related-excerpt">সাম্প্রতিক থিওরি এবং সমাধানের আলোচনা...</p>
-        </div>
-        <div class="related-card">
-          <h3 class="related-title">
-            <a href="#">ডার্ক ম্যাটারের প্রার্থী কণা</a>
-          </h3>
-          <p class="related-excerpt">WIMPs, axions এবং এক্সপেরিমেন্ট...</p>
-        </div>
-        <div class="related-card">
-          <h3 class="related-title">
-            <a href="#">স্পেশাল রিলেটিভিটির সহজ ব্যাখ্যা</a>
-          </h3>
-          <p class="related-excerpt">টাইম ডাইলেশন এবং E=mc²...</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <script>
-    let currentLanguage = "en";
-
-    const content = {
-      en: {
-        title: "The Mystery of Quantum Entanglement",
-        meta: "February 18, 2026 • 8 min read",
-        body: `
-          <p>Quantum entanglement is one of the strangest and most fascinating concepts in quantum mechanics. Einstein famously called it "spooky action at a distance".</p>
-
-          <h2>What is Entanglement?</h2>
-          <p>When two particles become entangled, the state of one instantly influences the state of the other, no matter how far apart they are. Measuring one determines the other's state immediately — even faster than light could travel between them.</p>
-
-          <h2>Real-World Example</h2>
-          <ul>
-            <li>Two particles share the same spin state</li>
-            <li>Measuring one instantly sets the other's spin to opposite</li>
-            <li>This cannot be explained by classical physics</li>
-          </ul>
-
-          <p>This phenomenon forms the foundation of quantum computing, cryptography, and quantum teleportation research.</p>
-
-          <h2>Mathematical Form</h2>
-          <p>The joint state of two entangled particles can be:</p>
-
-          $$\begin{align*}
-        \widetilde{f}(x) = fl(x) \otimes fl(x) &= (x(1+\epsilon_1) \times x(1+\epsilon_1))(1+\epsilon_2)\\
-        &= x^2(1+\epsilon_1)^2(1+\epsilon_2)\\
-        &= (x(1+\epsilon)\sqrt{1+\epsilon_2})^2\\
-        &= (\widetilde{x})^2 = f(\widetilde{x}) && \text{where, $\widetilde{x}=(x(1+\epsilon)\sqrt{1+\epsilon_2}) = x[1+O(\epsilon_{machine})]$}
-    \end{align*} $$
-
-          <p>Here A and B are two entangled particles.</p>
-        `
-      },
-      bn: {
-        title: "কোয়ান্টাম এনট্যাঙ্গলমেন্টের রহস্য",
-        meta: "১৮ ফেব্রুয়ারি, ২০২৬ • ৮ মিনিট পড়া",
-        body: `
-          <p>কোয়ান্টাম এনট্যাঙ্গলমেন্ট হলো কোয়ান্টাম মেকানিক্সের সবচেয়ে অদ্ভুত এবং আকর্ষণীয় ধারণাগুলোর একটা। আইনস্টাইন এটাকে "spooky action at a distance" বলে অভিহিত করেছিলেন।</p>
-
-          <h2>এনট্যাঙ্গলমেন্ট কী?</h2>
-          <p>দুটি কণা যদি এনট্যাঙ্গলড হয়, তাহলে একটির অবস্থা পরিমাপ করলে অন্যটির অবস্থা তাৎক্ষণিকভাবে নির্ধারিত হয়ে যায় — যত দূরেই থাকুক না কেন।</p>
-
-          <h2>বাস্তব উদাহরণ</h2>
-          <ul>
-            <li>দুটি কণা একই স্পিনের অবস্থায় থাকে</li>
-            <li>একটির স্পিন পরিমাপ করলে অন্যটির স্পিন তাৎক্ষণিকভাবে বিপরীত হয়ে যায়</li>
-            <li>এটা ক্লাসিক্যাল ফিজিক্স দিয়ে ব্যাখ্যা করা যায় না</li>
-          </ul>
-
-          <p>এই ধারণা কোয়ান্টাম কম্পিউটিং, ক্রিপ্টোগ্রাফি এবং টেলিপোর্টেশনের ভিত্তি।</p>
-
-          <h2>গাণিতিক রূপ</h2>
-          <p>দুটি এনট্যাঙ্গলড কণার যৌথ অবস্থা হতে পারে:</p>
-
-         \begin{align*}
-        \widetilde{f}(x) = fl(x) \otimes fl(x) &= (x(1+\epsilon_1) \times x(1+\epsilon_1))(1+\epsilon_2)\\
-        &= x^2(1+\epsilon_1)^2(1+\epsilon_2)\\
-        &= (x(1+\epsilon)\sqrt{1+\epsilon_2})^2\\
-        &= (\widetilde{x})^2 = f(\widetilde{x}) && \text{where, $\widetilde{x}=(x(1+\epsilon)\sqrt{1+\epsilon_2}) = x[1+O(\epsilon_{machine})]$}
-    \end{align*}
-          <p>এখানে A এবং B দুটি কণা এনট্যাঙ্গলড।</p>
-        `
-      }
-    };
-
-    // Language Switcher
-    document.getElementById("langSwitcher").addEventListener("click", () => {
-      currentLanguage = currentLanguage === "en" ? "bn" : "en";
-      document.getElementById("currentLang").textContent = currentLanguage === "en" ? "English" : "বাংলা";
-      document.getElementById("htmlRoot").lang = currentLanguage;
-
-      // Update content
-      document.querySelector(".post-title").textContent = content[currentLanguage].title;
-      document.querySelector(".post-meta").textContent = content[currentLanguage].meta;
-      document.querySelector(".post-body").innerHTML = content[currentLanguage].body;
-
-      // Re-render KaTeX after content change
+    // Re-render KaTeX after content change
+    if (typeof renderMathInElement !== 'undefined') {
       renderMathInElement(document.getElementById("postBody"), {
         delimiters: [
           {left: "$$", right: "$$", display: true},
           {left: "\\[", right: "\\]", display: true},
           {left: "$", right: "$", display: false},
           {left: "\\(", right: "\\)", display: false}
-        ]
+        ],
+        throwOnError: false
       });
-    });
+    } else {
+      console.warn("KaTeX auto-render not loaded yet. Waiting...");
+      // Fallback: Wait a bit and retry
+      setTimeout(() => {
+        if (typeof renderMathInElement !== 'undefined') {
+          renderMathInElement(document.getElementById("postBody"), {
+            delimiters: [
+              {left: "$$", right: "$$", display: true},
+              {left: "\\[", right: "\\]", display: true},
+              {left: "$", right: "$", display: false},
+              {left: "\\(", right: "\\)", display: false}
+            ],
+            throwOnError: false
+          });
+        }
+      }, 500);
+    }
+  });
 
-    // Initial content load (English)
-    document.querySelector(".post-title").textContent = content.en.title;
-    document.querySelector(".post-meta").textContent = content.en.meta;
-    document.querySelector(".post-body").innerHTML = content.en.body;
+  // Initial content load (English)
+  document.querySelector(".post-title").textContent = content.en.title;
+  document.querySelector(".post-meta").textContent = content.en.meta;
+  document.querySelector(".post-body").innerHTML = content.en.body;
 
-    // Initial KaTeX render
-    renderMathInElement(document.getElementById("postBody"), {
-      delimiters: [
-        {left: "$$", right: "$$", display: true},
-        {left: "\\[", right: "\\]", display: true},
-        {left: "$", right: "$", display: false},
-        {left: "\\(", right: "\\)", display: false}
-      ]
-    });
-  </script>
+  // Initial KaTeX render with fallback
+  function tryRenderMath() {
+    if (typeof renderMathInElement !== 'undefined') {
+      renderMathInElement(document.getElementById("postBody"), {
+        delimiters: [
+          {left: "$$", right: "$$", display: true},
+          {left: "\\[", right: "\\]", display: true},
+          {left: "$", right: "$", display: false},
+          {left: "\\(", right: "\\)", display: false}
+        ],
+        throwOnError: false
+      });
+      console.log("KaTeX rendered successfully");
+    } else {
+      console.warn("KaTeX not loaded yet, retrying...");
+      setTimeout(tryRenderMath, 300);
+    }
+  }
+
+  // Start trying to render
+  tryRenderMath();
+</script>
 </body>
 </html>
