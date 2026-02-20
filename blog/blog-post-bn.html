@@ -1,71 +1,215 @@
 <!DOCTYPE html>
-<html lang="bn">
+<html lang="bn" id="htmlRoot">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>কোয়ান্টাম এনট্যাঙ্গলমেন্টের রহস্য | Mohammad Yasin</title>
   
+  <!-- Meta Description (SEO-এর জন্য) -->
+  <meta name="description" content="কোয়ান্টাম এনট্যাঙ্গলমেন্টের রহস্য সহজ ভাষায় বোঝা যাক। স্পুকি অ্যাকশন, গাণিতিক রূপ এবং কোয়ান্টাম কম্পিউটিংয়ে এর ভূমিকা। লেখক: মোহাম্মদ ইয়াসিন।">
+
+  <!-- Open Graph for social sharing -->
+  <meta property="og:title" content="কোয়ান্টাম এনট্যাঙ্গলমেন্টের রহস্য | Mohammad Yasin">
+  <meta property="og:description" content="কোয়ান্টাম এনট্যাঙ্গলমেন্টের রহস্য সহজ ভাষায় বোঝা যাক। স্পুকি অ্যাকশন, গাণিতিক রূপ এবং কোয়ান্টাম কম্পিউটিংয়ে এর ভূমিকা। লেখক: মোহাম্মদ ইয়াসিন।">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200">
+  <meta property="og:url" content="https://yasin-physics.vercel.app/blog-post-bn.html">
+  <meta property="og:type" content="article">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="কোয়ান্টাম এনট্যাঙ্গলমেন্টের রহস্য | Mohammad Yasin">
+  <meta name="twitter:description" content="কোয়ান্টাম এনট্যাঙ্গলমেন্টের রহস্য সহজ ভাষায় বোঝা যাক। স্পুকি অ্যাকশন, গাণিতিক রূপ এবং কোয়ান্টাম কম্পিউটিংয়ে এর ভূমিকা। লেখক: মোহাম্মদ ইয়াসিন।">
+  <meta name="twitter:image" content="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200">
+
   <!-- hreflang -->
   <link rel="alternate" hreflang="en" href="https://yasin-physics.vercel.app/blog-post-en.html" />
   <link rel="alternate" hreflang="bn" href="https://yasin-physics.vercel.app/blog-post-bn.html" />
   <link rel="alternate" hreflang="x-default" href="https://yasin-physics.vercel.app/blog-post-en.html" />
 
-  <!-- Google Fonts + KaTeX + Font Awesome (একই) -->
-  <!-- ... (উপরের কোডের মতোই রাখো) -->
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <!-- ✅ KaTeX -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0d001f;
+      color: #e0e0ff;
+      line-height: 1.7;
+      margin: 0;
+      padding-bottom: 4rem;
+    }
+    header {
+      background: rgba(30,10,60,0.8);
+      padding: 1rem 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(192,132,252,0.3);
+    }
+    .logo {
+      font-size: 1.6rem;
+      color: #c084fc;
+      font-weight: bold;
+    }
+    nav a {
+      color: #d1d5ff;
+      margin-left: 1.5rem;
+      text-decoration: none;
+    }
+    .content-container {
+      max-width: 900px;
+      margin: 4rem auto;
+      padding: 0 5%;
+      position: relative;
+    }
+    .featured-image {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      border-radius: 16px;
+      margin-bottom: 2rem;
+    }
+    .language-switcher {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      cursor: pointer;
+    }
+    .lang-toggle {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: rgba(0,0,0,0.6);
+      padding: 0.6rem 1.2rem;
+      border-radius: 30px;
+      border: 1px solid #c084fc;
+      transition: 0.3s;
+    }
+    .lang-toggle:hover {
+      background: #c084fc;
+      color: black;
+    }
+    .post-title {
+      font-size: 2.8rem;
+      color: #c084fc;
+      margin-bottom: 1rem;
+    }
+    .post-meta {
+      color: #b0b0ff;
+      margin-bottom: 2rem;
+    }
+    .post-body {
+      font-size: 1.15rem;
+    }
+    .post-body h2 {
+      color: #e0aaff;
+      margin: 2rem 0 1rem;
+    }
+    .math {
+      background: rgba(192,132,252,0.1);
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+      text-align: center;
+      border-left: 4px solid #c084fc;
+      font-size: 1.2rem;
+    }
+  </style>
 </head>
 <body>
-
-  <header>
-    <div class="logo">Yasin</div>
-    <nav>
-      <a href="index.html">হোম</a>
-      <a href="blog.html">ব্লগ</a>
-    </nav>
-  </header>
-
-  <div class="content-container">
-    <img 
-      src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1600" 
-      alt="কোয়ান্টাম চিত্র" 
-      class="featured-image"
-    />
-
-    <h1 class="post-title">কোয়ান্টাম এনট্যাঙ্গলমেন্টের রহস্য</h1>
-
-    <div class="post-meta">১৮ ফেব্রুয়ারি, ২০২৬ • ৮ মিনিট পড়া</div>
-
-    <div class="post-body">
-      <p>কোয়ান্টাম এনট্যাঙ্গলমেন্ট হলো কোয়ান্টাম মেকানিক্সের সবচেয়ে অদ্ভুত ধারণা। আইনস্টাইন এটাকে "spooky action at a distance" বলেছিলেন।</p>
-
-      <h2>এনট্যাঙ্গলমেন্ট কী?</h2>
-      <p>দুটি কণা এনট্যাঙ্গলড হলে একটির অবস্থা পরিমাপ করলেই অন্যটির অবস্থা তাৎক্ষণিকভাবে ঠিক হয়ে যায়।</p>
-
-      <h2>গাণিতিক রূপ</h2>
+<header>
+  <div class="logo">Yasin</div>
+  <nav>
+    <a href="index.html">হোম</a>
+    <a href="blog.html">ব্লগ</a>
+  </nav>
+</header>
+<div class="content-container">
+  <div class="language-switcher" id="langSwitch">
+    <div class="lang-toggle">
+      <i class="fas fa-globe"></i>
+      <span id="langText">English</span>
+    </div>
+  </div>
+  <img
+    src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1600"
+    alt="কোয়ান্টাম চিত্র"
+    class="featured-image"
+  />
+  <h1 class="post-title" id="postTitle">কোয়ান্টাম এনট্যাঙ্গলমেন্টের রহস্য</h1>
+  <div class="post-meta" id="postMeta">১৮ ফেব্রুয়ারি, ২০২৬ • ৮ মিনিট পড়া</div>
+  <div class="post-body" id="postBody">
+    <p>কোয়ান্টাম এনট্যাঙ্গলমেন্ট হলো কোয়ান্টাম মেকানিক্সের সবচেয়ে অদ্ভুত এবং আকর্ষণীয় ধারণাগুলোর একটা। আইনস্টাইন এটাকে "spooky action at a distance" বলে অভিহিত করেছিলেন।</p>
+    <h2>এনট্যাঙ্গলমেন্ট কী?</h2>
+    <p>দুটি কণা যদি এনট্যাঙ্গলড হয়, তাহলে একটির অবস্থা পরিমাপ করলে অন্যটির অবস্থা তাৎক্ষণিকভাবে নির্ধারিত হয়ে যায়।</p>
+    <h2>গাণিতিক রূপ</h2>
+    <div class="math">
+      $$ |\psi\rangle = \frac{1}{\sqrt{2}} \left( |0\rangle_A |1\rangle_B - |1\rangle_A |0\rangle_B \right) $$
+    </div>
+    <p>এখানে A এবং B দুটি কণা এনট্যাঙ্গলড।</p>
+    <h2>আরেকটা উদাহরণ</h2>
+    <div class="math">
+      $$ E = mc^2 $$
+    </div>
+    <p>ইনলাইন উদাহরণ: শক্তি হলো $E = mc^2$।</p>
+  </div>
+</div>
+<script>
+let lang = "bn"; // ডিফল্ট বাংলা
+const texts = {
+  en: {
+    title: "The Mystery of Quantum Entanglement",
+    meta: "February 18, 2026 • 8 min read",
+    body: `
+      <p>Quantum entanglement is one of the strangest concepts in quantum mechanics. Einstein famously called it "spooky action at a distance".</p>
+      <h2>What is Entanglement?</h2>
+      <p>When two particles are entangled, measuring one instantly determines the state of the other.</p>
+      <h2>Mathematical Form</h2>
       <div class="math">
-        $$ |\psi\rangle = \frac{1}{\sqrt{2}} \left( |0\rangle_A |1\rangle_B - |1\rangle_A |0\rangle_B \right) $$
+        $$ |\\psi\\rangle = \\frac{1}{\\sqrt{2}} \\left( |0\\rangle_A |1\\rangle_B - |1\\rangle_A |0\\rangle_B \\right) $$
       </div>
-
-      <p>এখানে A এবং B দুটি কণা এনট্যাঙ্গলড।</p>
-
-      <h2>আরেকটা উদাহরণ</h2>
+      <p>Here A and B are two entangled particles.</p>
+      <h2>Another Example</h2>
       <div class="math">
         $$ E = mc^2 $$
       </div>
-      <p>ইনলাইন উদাহরণ: শক্তি হলো $E = mc^2$।</p>
-    </div>
-  </div>
-
-  <script>
-    // Initial KaTeX render
-    if (typeof renderMathInElement !== 'undefined') {
-      renderMathInElement(document.body, {
-        delimiters: [
-          {left: "$$", right: "$$", display: true},
-          {left: "$", right: "$", display: false}
-        ],
-        throwOnError: false
-      });
-    }
-  </script>
+      <p>Inline: The energy is $E = mc^2$.</p>
+    `
+  },
+  bn: {
+    title: "কোয়ান্টাম এনট্যাঙ্গলমেন্টের রহস্য",
+    meta: "১৮ ফেব্রুয়ারি, ২০২৬ • ৮ মিনিট পড়া",
+    body: document.getElementById("postBody").innerHTML
+  }
+};
+function renderMath() {
+  renderMathInElement(document.getElementById("postBody"), {
+    delimiters: [
+      { left: "$$", right: "$$", display: true },
+      { left: "$", right: "$", display: false }
+    ],
+    throwOnError: false
+  });
+}
+document.addEventListener("DOMContentLoaded", () => {
+  renderMath();
+});
+document.getElementById("langSwitch").addEventListener("click", () => {
+  lang = lang === "en" ? "bn" : "en";
+  document.getElementById("langText").textContent =
+    lang === "en" ? "বাংলা" : "English";
+  document.getElementById("htmlRoot").lang = lang;
+  document.getElementById("postTitle").textContent = texts[lang].title;
+  document.getElementById("postMeta").textContent = texts[lang].meta;
+  document.getElementById("postBody").innerHTML = texts[lang].body;
+  renderMath(); // 🔥 important
+});
+</script>
 </body>
 </html>
