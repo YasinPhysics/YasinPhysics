@@ -1,1 +1,153 @@
+<!DOCTYPE html>
+<html lang="bn" id="htmlRoot">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>কোয়ান্টাম মেকানিক্স সিরিজ | Mohammad Yasin</title>
 
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    body { font-family: 'Inter', sans-serif; background: #0d001f; color: #e0e0ff; line-height: 1.7; margin: 0; padding: 0; }
+    header { background: rgba(30,10,60,0.8); padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(192,132,252,0.3); position: sticky; top: 0; z-index: 100; }
+    .logo { font-size: 1.8rem; color: #c084fc; font-weight: bold; }
+    nav a { color: #d1d5ff; margin-left: 1.5rem; text-decoration: none; }
+    .content-container { max-width: 1100px; margin: 4rem auto; padding: 0 5%; position: relative; }
+    .series-title { font-size: 2.8rem; color: #c084fc; margin-bottom: 1rem; text-align: center; }
+    .series-intro { font-size: 1.15rem; text-align: center; margin-bottom: 3rem; max-width: 800px; margin-left: auto; margin-right: auto; }
+    .episodes-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 2rem; }
+    .episode-card {
+      background: rgba(30,20,60,0.5);
+      border: 1px solid rgba(192,132,252,0.3);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: all 0.3s;
+      backdrop-filter: blur(8px);
+    }
+    .episode-card:hover { transform: translateY(-8px); box-shadow: 0 15px 40px rgba(192,132,252,0.25); border-color: #c084fc; }
+    .episode-thumbnail { height: 180px; overflow: hidden; }
+    .episode-thumbnail img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; }
+    .episode-card:hover .episode-thumbnail img { transform: scale(1.08); }
+    .episode-content { padding: 1.5rem; }
+    .episode-title { font-size: 1.35rem; margin-bottom: 0.6rem; }
+    .episode-title a { color: #e0aaff; text-decoration: none; }
+    .episode-title a:hover { color: #c084fc; }
+    .episode-desc { color: #d1d5ff; font-size: 0.95rem; margin-bottom: 1rem; }
+    .episode-meta { color: #b0b0ff; font-size: 0.85rem; }
+    .language-switcher { position: absolute; top: 20px; right: 20px; z-index: 10; cursor: pointer; }
+    .lang-toggle { display: flex; align-items: center; gap: 0.6rem; background: rgba(0,0,0,0.6); padding: 0.6rem 1.2rem; border-radius: 30px; border: 1px solid #c084fc; transition: all 0.3s; }
+    .lang-toggle:hover { background: #c084fc; }
+    @media (max-width: 768px) { .content-container { margin-top: 2rem; padding: 0 5%; } .series-title { font-size: 2.2rem; } .episodes-grid { gap: 1rem; } .language-switcher { top: 15px; right: 15px; } }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">Yasin</div>
+    <nav>
+      <a href="index.html">হোম</a>
+      <a href="blog.html">ব্লগ</a>
+    </nav>
+  </header>
+
+  <div class="content-container">
+    <!-- Language Switcher -->
+    <div class="language-switcher" id="langSwitch">
+      <div class="lang-toggle">
+        <i class="fas fa-globe"></i>
+        <span id="langText">English</span>
+      </div>
+    </div>
+
+    <h1 class="series-title" id="seriesTitle">কোয়ান্টাম মেকানিক্স সিরিজ</h1>
+
+    <p class="series-intro" id="seriesIntro">
+      এই সিরিজে কোয়ান্টাম মেকানিক্সের সম্পূর্ণ যাত্রা — মৌলিক ধারণা থেকে অ্যাডভান্সড টপিক যেমন অপারেটর, ওয়েভ ফাংশন, এনট্যাঙ্গলমেন্ট এবং কোয়ান্টাম কম্পিউটিং। বিশ্ববিদ্যালয়ের ছাত্র এবং বিজ্ঞানপ্রেমীদের জন্য উপযুক্ত।
+    </p>
+
+    <div class="episodes-grid" id="episodesGrid"></div>
+  </div>
+
+  <script>
+    let lang = "bn"; // ডিফল্ট বাংলা
+
+    const series = {
+      en: {
+        title: "Quantum Mechanics Series",
+        intro: "This series covers the complete journey of Quantum Mechanics — from basic concepts to advanced topics like operators, wave functions, entanglement, and quantum computing. Suitable for university students and science enthusiasts.",
+        episodes: [
+          { number: 1, title: "Introduction to Quantum Mechanics", desc: "What is quantum mechanics? Wave-particle duality and historical overview.", link: "qm-episode-1.html", duration: "10 min" },
+          { number: 2, title: "Wave Functions and Probability", desc: "Understanding wave functions, probability density, and normalization.", link: "qm-episode-2.html", duration: "12 min" },
+          { number: 3, title: "Operators and Expectation Values", desc: "Hermitian operators, eigenvalues, and expectation values in quantum systems.", link: "qm-episode-3.html", duration: "15 min" },
+          { number: 4, title: "Quantum Entanglement", desc: "Bell's theorem, EPR paradox, and spooky action at a distance.", link: "qm-episode-4.html", duration: "18 min" },
+          { number: 5, title: "Quantum Computing Basics", desc: "Qubits, superposition, entanglement, and quantum gates.", link: "qm-episode-5.html", duration: "20 min" }
+        ]
+      },
+      bn: {
+        title: "কোয়ান্টাম মেকানিক্স সিরিজ",
+        intro: "এই সিরিজে কোয়ান্টাম মেকানিক্সের সম্পূর্ণ যাত্রা — মৌলিক ধারণা থেকে অ্যাডভান্সড টপিক যেমন অপারেটর, ওয়েভ ফাংশন, এনট্যাঙ্গলমেন্ট এবং কোয়ান্টাম কম্পিউটিং। বিশ্ববিদ্যালয়ের ছাত্র এবং বিজ্ঞানপ্রেমীদের জন্য উপযুক্ত।",
+        episodes: [
+          { number: "১", title: "কোয়ান্টাম মেকানিক্সের পরিচিতি", desc: "কোয়ান্টাম মেকানিক্স কী? ওয়েভ-পার্টিকল ডুয়ালিটি এবং ঐতিহাসিক ওভারভিউ।", link: "qm-episode-1-bn.html", duration: "১০ মিনিট" },
+          { number: "২", title: "ওয়েভ ফাংশন এবং সম্ভাবনা", desc: "ওয়েভ ফাংশন, সম্ভাবনা ঘনত্ব এবং নর্মালাইজেশন বোঝা।", link: "qm-episode-2-bn.html", duration: "১২ মিনিট" },
+          { number: "৩", title: "অপারেটর এবং এক্সপেকটেশন ভ্যালু", desc: "হার্মিশিয়ান অপারেটর, আইজেনভ্যালু এবং কোয়ান্টাম সিস্টেমে এক্সপেকটেশন।", link: "qm-episode-3-bn.html", duration: "১৫ মিনিট" },
+          { number: "৪", title: "কোয়ান্টাম এনট্যাঙ্গলমেন্ট", desc: "বেলের থিওরেম, EPR প্যারাডক্স এবং দূরত্বে ভুতুড়ে ক্রিয়া।", link: "qm-episode-4-bn.html", duration: "১৮ মিনিট" },
+          { number: "৫", title: "কোয়ান্টাম কম্পিউটিংয়ের বেসিকস", desc: "কিউবিট, সুপারপজিশন, এনট্যাঙ্গলমেন্ট এবং কোয়ান্টাম গেট।", link: "qm-episode-5-bn.html", duration: "২০ মিনিট" }
+        ]
+      }
+    };
+
+    document.getElementById("langSwitch").addEventListener("click", () => {
+      lang = lang === "en" ? "bn" : "en";
+      document.getElementById("langText").textContent = lang === "en" ? "বাংলা" : "English";
+      document.getElementById("htmlRoot").lang = lang;
+
+      document.getElementById("seriesTitle").textContent = series[lang].title;
+      document.getElementById("seriesIntro").textContent = series[lang].intro;
+
+      const grid = document.getElementById("episodesGrid");
+      grid.innerHTML = "";
+      series[lang].episodes.forEach(ep => {
+        const card = document.createElement("div");
+        card.className = "episode-card";
+        card.innerHTML = `
+          <div class="episode-thumbnail">
+            <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800" alt="${ep.title}" />
+          </div>
+          <div class="episode-content">
+            <h3 class="episode-title">
+              <a href="${ep.link}">${ep.number}. ${ep.title}</a>
+            </h3>
+            <p class="episode-desc">${ep.desc}</p>
+            <p class="episode-meta">${ep.duration}</p>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    });
+
+    // Initial render (বাংলা ডিফল্ট)
+    document.getElementById("seriesTitle").textContent = series.bn.title;
+    document.getElementById("seriesIntro").textContent = series.bn.intro;
+
+    const grid = document.getElementById("episodesGrid");
+    series.bn.episodes.forEach(ep => {
+      const card = document.createElement("div");
+      card.className = "episode-card";
+      card.innerHTML = `
+        <div class="episode-thumbnail">
+          <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800" alt="${ep.title}" />
+        </div>
+        <div class="episode-content">
+          <h3 class="episode-title">
+            <a href="${ep.link}">${ep.number}. ${ep.title}</a>
+          </h3>
+          <p class="episode-desc">${ep.desc}</p>
+          <p class="episode-meta">${ep.duration}</p>
+        </div>
+      `;
+      grid.appendChild(card);
+    });
+  </script>
+</body>
+</html>
