@@ -1,34 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" id="htmlRoot">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>The Mystery of Quantum Entanglement | Mohammad Yasin</title>
   
-  <!-- hreflang -->
-  <link rel="alternate" hreflang="en" href="https://yasin-physics.vercel.app/blog-post-en.html" />
-  <link rel="alternate" hreflang="bn" href="https://yasin-physics.vercel.app/blog-post-bn.html" />
-  <link rel="alternate" hreflang="x-default" href="https://yasin-physics.vercel.app/blog-post-en.html" />
-
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-  <!-- KaTeX -->
+  <!-- KaTeX CSS + JS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
 
   <style>
-    body { font-family: 'Inter', sans-serif; background: #0d001f; color: #e0e0ff; line-height: 1.7; margin: 0; padding: 0; }
-    header { background: rgba(30,10,60,0.8); padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; }
-    .logo { font-size: 1.8rem; color: #c084fc; font-weight: bold; }
+    body { font-family: 'Inter', sans-serif; background: #0d001f; color: #e0e0ff; line-height: 1.7; margin: 0; padding-bottom: 4rem; }
+    header { background: rgba(30,10,60,0.8); padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(192,132,252,0.3); }
+    .logo { font-size: 1.6rem; color: #c084fc; font-weight: bold; }
     nav a { color: #d1d5ff; margin-left: 1.5rem; text-decoration: none; }
-    .content { max-width: 900px; margin: 4rem auto; padding: 0 5%; }
-    .featured { width: 100%; height: 400px; object-fit: cover; border-radius: 16px; margin-bottom: 2rem; }
-    h1 { font-size: 2.8rem; color: #c084fc; margin-bottom: 1rem; }
-    .meta { color: #b0b0ff; margin-bottom: 2rem; }
-    .body-text { font-size: 1.15rem; }
-    .body-text h2 { color: #e0aaff; margin: 2rem 0 1rem; }
+    .content-container { max-width: 900px; margin: 4rem auto; padding: 0 5%; position: relative; }
+    .featured-image { width: 100%; height: 400px; object-fit: cover; border-radius: 16px; margin-bottom: 2rem; }
+    .language-switcher { position: absolute; top: 20px; right: 20px; z-index: 10; cursor: pointer; }
+    .lang-toggle { display: flex; align-items: center; gap: 0.6rem; background: rgba(0,0,0,0.6); padding: 0.6rem 1.2rem; border-radius: 30px; border: 1px solid #c084fc; transition: all 0.3s; }
+    .lang-toggle:hover { background: #c084fc; }
+    .post-title { font-size: 2.8rem; color: #c084fc; margin-bottom: 1rem; }
+    .post-meta { color: #b0b0ff; margin-bottom: 2rem; }
+    .post-body { font-size: 1.15rem; }
+    .post-body h2 { color: #e0aaff; margin: 2rem 0 1rem; }
     .math { background: rgba(192,132,252,0.1); padding: 1rem; border-radius: 8px; margin: 1.5rem 0; text-align: center; border-left: 4px solid #c084fc; font-size: 1.2rem; }
   </style>
 </head>
@@ -42,18 +44,25 @@
     </nav>
   </header>
 
-  <div class="content">
+  <div class="content-container">
+    <div class="language-switcher" id="langSwitch">
+      <div class="lang-toggle">
+        <i class="fas fa-globe"></i>
+        <span id="langText">English</span>
+      </div>
+    </div>
+
     <img 
       src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1600" 
       alt="Quantum Illustration" 
-      class="featured"
+      class="featured-image"
     />
 
-    <h1 class="post-title">The Mystery of Quantum Entanglement</h1>
+    <h1 class="post-title" id="postTitle">The Mystery of Quantum Entanglement</h1>
 
-    <div class="meta">February 18, 2026 • 8 min read</div>
+    <div class="post-meta" id="postMeta">February 18, 2026 • 8 min read</div>
 
-    <div class="body-text">
+    <div class="post-body" id="postBody">
       <p>Quantum entanglement is one of the strangest concepts in quantum mechanics. Einstein called it "spooky action at a distance".</p>
 
       <h2>What is Entanglement?</h2>
@@ -75,17 +84,47 @@
   </div>
 
   <script>
-    // KaTeX auto-render
-    document.addEventListener("DOMContentLoaded", function() {
-      if (typeof renderMathInElement !== 'undefined') {
-        renderMathInElement(document.body, {
-          delimiters: [
-            {left: "$$", right: "$$", display: true},
-            {left: "$", right: "$", display: false}
-          ],
-          throwOnError: false
-        });
+    let lang = "en"; // Default English
+
+    const texts = {
+      en: {
+        title: "The Mystery of Quantum Entanglement",
+        meta: "February 18, 2026 • 8 min read",
+        body: document.getElementById("postBody").innerHTML // English default
+      },
+      bn: {
+        title: "কোয়ান্টাম এনট্যাঙ্গলমেন্টের রহস্য",
+        meta: "১৮ ফেব্রুয়ারি, ২০২৬ • ৮ মিনিট পড়া",
+        body: `
+          <p>কোয়ান্টাম এনট্যাঙ্গলমেন্ট হলো কোয়ান্টাম মেকানিক্সের সবচেয়ে অদ্ভুত ধারণা। আইনস্টাইন এটাকে "spooky action at a distance" বলেছিলেন।</p>
+
+          <h2>এনট্যাঙ্গলমেন্ট কী?</h2>
+          <p>দুটি কণা এনট্যাঙ্গলড হলে একটির অবস্থা পরিমাপ করলেই অন্যটির অবস্থা তাৎক্ষণিকভাবে ঠিক হয়ে যায়।</p>
+
+          <h2>গাণিতিক রূপ</h2>
+          <div class="math">
+            $$ |\\psi\\rangle = \\frac{1}{\\sqrt{2}} \\left( |0\\rangle_A |1\\rangle_B - |1\\rangle_A |0\\rangle_B \\right) $$
+          </div>
+
+          <p>এখানে A এবং B দুটি কণা এনট্যাঙ্গলড।</p>
+
+          <h2>আরেকটা উদাহরণ</h2>
+          <div class="math">
+            $$ E = mc^2 $$
+          </div>
+          <p>ইনলাইন উদাহরণ: শক্তি হলো $E = mc^2$।</p>
+        `
       }
+    };
+
+    document.getElementById("langSwitch").addEventListener("click", () => {
+      lang = lang === "en" ? "bn" : "en";
+      document.getElementById("langText").textContent = lang === "en" ? "English" : "বাংলা";
+      document.getElementById("htmlRoot").lang = lang;
+
+      document.getElementById("postTitle").textContent = texts[lang].title;
+      document.getElementById("postMeta").textContent = texts[lang].meta;
+      document.getElementById("postBody").innerHTML = texts[lang].body;
     });
   </script>
 </body>
