@@ -10,38 +10,35 @@
   <link rel="alternate" hreflang="bn" href="https://yasin-physics.vercel.app/blog-post-bn.html" />
   <link rel="alternate" hreflang="x-default" href="https://yasin-physics.vercel.app/blog-post-en.html" />
 
-  <!-- বাকি সব লিঙ্ক একই (Google Fonts, KaTeX, Font Awesome) -->
+  <!-- Google Fonts + KaTeX + Font Awesome (একই) -->
   <!-- ... (উপরের কোডের মতোই রাখো) -->
 </head>
 <body>
 
-  <!-- Header একই রাখো -->
+  <header>
+    <div class="logo">Yasin</div>
+    <nav>
+      <a href="index.html">হোম</a>
+      <a href="blog.html">ব্লগ</a>
+    </nav>
+  </header>
 
   <div class="content-container">
-    <!-- Language Switcher -->
-    <div class="language-switcher" id="langSwitch">
-      <div class="lang-toggle">
-        <i class="fas fa-globe"></i>
-        <span id="langText">বাংলা</span>
-      </div>
-    </div>
-
-    <!-- Featured Image -->
     <img 
       src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1600" 
-      alt="কোয়ান্টাম এনট্যাঙ্গলমেন্টের চিত্র" 
+      alt="কোয়ান্টাম চিত্র" 
       class="featured-image"
     />
 
-    <h1 class="post-title" id="postTitle">কোয়ান্টাম এনট্যাঙ্গলমেন্টের রহস্য</h1>
+    <h1 class="post-title">কোয়ান্টাম এনট্যাঙ্গলমেন্টের রহস্য</h1>
 
-    <div class="post-meta" id="postMeta">১৮ ফেব্রুয়ারি, ২০২৬ • ৮ মিনিট পড়া</div>
+    <div class="post-meta">১৮ ফেব্রুয়ারি, ২০২৬ • ৮ মিনিট পড়া</div>
 
-    <div class="post-body" id="postBody">
-      <p>কোয়ান্টাম এনট্যাঙ্গলমেন্ট হলো কোয়ান্টাম মেকানিক্সের সবচেয়ে অদ্ভুত এবং আকর্ষণীয় ধারণাগুলোর একটা। আইনস্টাইন এটাকে "spooky action at a distance" বলে অভিহিত করেছিলেন।</p>
+    <div class="post-body">
+      <p>কোয়ান্টাম এনট্যাঙ্গলমেন্ট হলো কোয়ান্টাম মেকানিক্সের সবচেয়ে অদ্ভুত ধারণা। আইনস্টাইন এটাকে "spooky action at a distance" বলেছিলেন।</p>
 
       <h2>এনট্যাঙ্গলমেন্ট কী?</h2>
-      <p>দুটি কণা যদি এনট্যাঙ্গলড হয়, তাহলে একটির অবস্থা পরিমাপ করলে অন্যটির অবস্থা তাৎক্ষণিকভাবে নির্ধারিত হয়ে যায় — যত দূরেই থাকুক না কেন।</p>
+      <p>দুটি কণা এনট্যাঙ্গলড হলে একটির অবস্থা পরিমাপ করলেই অন্যটির অবস্থা তাৎক্ষণিকভাবে ঠিক হয়ে যায়।</p>
 
       <h2>গাণিতিক রূপ</h2>
       <div class="math">
@@ -58,6 +55,17 @@
     </div>
   </div>
 
-  <!-- স্ক্রিপ্ট অংশ একই রাখো (উপরের কোডের মতো) -->
+  <script>
+    // Initial KaTeX render
+    if (typeof renderMathInElement !== 'undefined') {
+      renderMathInElement(document.body, {
+        delimiters: [
+          {left: "$$", right: "$$", display: true},
+          {left: "$", right: "$", display: false}
+        ],
+        throwOnError: false
+      });
+    }
+  </script>
 </body>
 </html>
