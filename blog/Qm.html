@@ -7,8 +7,8 @@
   
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  
-  <!-- KaTeX -->
+
+  <!-- KaTeX for LaTeX -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
@@ -28,8 +28,22 @@
       z-index: 100;
     }
     .logo { font-size: 1.8rem; color: #c084fc; font-weight: bold; }
-    nav a { color: #d1d5ff; margin-left: 1.5rem; text-decoration: none; }
-    .hamburger { display: none; font-size: 1.8rem; color: #c084fc; cursor: pointer; }
+    .nav-right { display: flex; align-items: center; gap: 1.5rem; }
+    nav a { color: #d1d5ff; text-decoration: none; font-weight: 500; }
+    nav a:hover { color: #c084fc; }
+    .hamburger { font-size: 1.8rem; color: #c084fc; cursor: pointer; }
+    .language-switcher { cursor: pointer; }
+    .lang-toggle {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: rgba(192,132,252,0.2);
+      padding: 0.5rem 1rem;
+      border-radius: 30px;
+      border: 1px solid rgba(192,132,252,0.4);
+      transition: all 0.3s;
+    }
+    .lang-toggle:hover { background: #c084fc; color: black; }
     .container { display: flex; min-height: calc(100vh - 70px); }
     .sidebar {
       width: 300px;
@@ -50,12 +64,11 @@
       cursor: pointer;
       border-radius: 8px;
       transition: all 0.3s;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
     }
-    .episode-list li:hover { background: rgba(192,132,252,0.2); }
+    .episode-list li:hover { background: rgba(192,132,252,0.15); }
     .episode-list li.active {
-      background: rgba(192,132,252,0.4);
-      box-shadow: 0 4px 15px rgba(192,132,252,0.5);
+      background: rgba(192,132,252,0.35);
+      box-shadow: 0 0 15px rgba(192,132,252,0.4);
       border-left: 4px solid #c084fc;
     }
     .episode-list li a { color: #e0aaff; text-decoration: none; display: block; }
@@ -66,14 +79,12 @@
     .body-text { font-size: 1.15rem; }
     .body-text h2 { color: #e0aaff; margin: 2rem 0 1rem; }
     .math { background: rgba(192,132,252,0.1); padding: 1rem; border-radius: 8px; margin: 1.5rem 0; text-align: center; border-left: 4px solid #c084fc; font-size: 1.2rem; }
-    .language-switcher { position: absolute; top: 20px; right: 20px; z-index: 10; cursor: pointer; }
-    .lang-toggle { display: flex; align-items: center; gap: 0.6rem; background: rgba(0,0,0,0.6); padding: 0.6rem 1.2rem; border-radius: 30px; border: 1px solid #c084fc; transition: all 0.3s; }
-    .lang-toggle:hover { background: #c084fc; }
     @media (max-width: 1024px) {
       .sidebar { transform: translateX(-100%); }
       .sidebar.active { transform: translateX(0); }
       .main-content { margin-left: 0; }
       .hamburger { display: block; }
+      .nav-right { gap: 1rem; }
     }
   </style>
 </head>
@@ -81,11 +92,19 @@
 
   <header>
     <div class="logo">Yasin</div>
-    <nav>
-      <a href="index.html">হোম</a>
-      <a href="blog.html">ব্লগ</a>
+    <div class="nav-right">
+      <nav>
+        <a href="index.html">হোম</a>
+        <a href="blog.html">ব্লগ</a>
+      </nav>
+      <div class="language-switcher" id="langSwitch">
+        <div class="lang-toggle">
+          <i class="fas fa-globe"></i>
+          <span id="langText">English</span>
+        </div>
+      </div>
       <i class="fas fa-bars hamburger" id="hamburger"></i>
-    </nav>
+    </div>
   </header>
 
   <div class="container">
@@ -95,13 +114,6 @@
     </div>
 
     <div class="main-content">
-      <div class="language-switcher" id="langSwitch">
-        <div class="lang-toggle">
-          <i class="fas fa-globe"></i>
-          <span id="langText">English</span>
-        </div>
-      </div>
-
       <img 
         src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1600" 
         alt="কোয়ান্টাম সিরিজ" 
@@ -160,7 +172,7 @@
       episodeList.appendChild(li);
     });
 
-    // Hamburger menu (সব ডিভাইসে)
+    // Hamburger menu (সব ডিভাইসে বাটন)
     hamburger.addEventListener("click", () => {
       sidebar.classList.toggle("active");
     });
@@ -172,6 +184,7 @@
       document.getElementById("htmlRoot").lang = lang;
 
       // Update content (যদি ভবিষ্যতে ভাষা চেঞ্জ লজিক যোগ করো)
+      // এখানে শুধু টেক্সট চেঞ্জের উদাহরণ
       currentTitle.textContent = lang === "en" ? "Introduction to Quantum Mechanics" : "কোয়ান্টাম মেকানিক্সের পরিচিতি";
     });
 
