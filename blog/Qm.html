@@ -83,8 +83,6 @@
       .sidebar { transform: translateX(-100%); }
       .sidebar.active { transform: translateX(0); }
       .main-content { margin-left: 0; }
-      .hamburger { display: block; }
-      .nav-right { gap: 1rem; }
     }
   </style>
 </head>
@@ -172,7 +170,7 @@
       episodeList.appendChild(li);
     });
 
-    // Hamburger menu (সব ডিভাইসে বাটন)
+    // Hamburger menu (সব ডিভাইসে বাম পাশে header-এর নিচে)
     hamburger.addEventListener("click", () => {
       sidebar.classList.toggle("active");
     });
