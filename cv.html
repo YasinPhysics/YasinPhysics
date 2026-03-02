@@ -28,6 +28,27 @@
       padding: 0 5%;
     }
 
+    .back-link {
+      display: block;
+      text-align: center;
+      margin-bottom: 3rem;
+      font-size: 1.1rem;
+    }
+
+    .back-link a {
+      color: #c084fc;
+      text-decoration: none;
+      padding: 0.6rem 1.5rem;
+      border: 1px solid #c084fc;
+      border-radius: 8px;
+      transition: all 0.3s;
+    }
+
+    .back-link a:hover {
+      background: #c084fc;
+      color: white;
+    }
+
     header {
       text-align: center;
       margin-bottom: 4rem;
@@ -125,12 +146,38 @@
       color: #d1d5ff;
     }
 
+    .print-btn-container {
+      text-align: center;
+      margin-top: 4rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(192,132,252,0.2);
+    }
+
+    .print-btn {
+      display: inline-block;
+      background: #c084fc;
+      color: white;
+      padding: 1rem 2.5rem;
+      border-radius: 50px;
+      font-size: 1.2rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.4s ease;
+      box-shadow: 0 8px 25px rgba(192,132,252,0.4);
+    }
+
+    .print-btn:hover {
+      background: #a05bf5;
+      transform: translateY(-4px);
+      box-shadow: 0 15px 40px rgba(192,132,252,0.5);
+    }
+
     @media print {
       body {
         background: white;
         color: black;
       }
-      h1, h2, .highlight, .tagline {
+      h1, h2, .highlight, .tagline, .back-link, .print-btn-container {
         color: black;
       }
       .container {
@@ -140,6 +187,9 @@
       a {
         color: black;
         text-decoration: none;
+      }
+      .back-link, .print-btn-container {
+        display: none; /* প্রিন্টে Back এবং Print বাটন লুকানো */
       }
     }
 
@@ -157,12 +207,21 @@
         flex-direction: column;
         gap: 0.8rem;
       }
+      .print-btn {
+        font-size: 1.1rem;
+        padding: 0.8rem 2rem;
+      }
     }
   </style>
 </head>
 <body>
 
   <div class="container">
+    <!-- Back to Home Link -->
+    <div class="back-link">
+      <a href="index.html">← Back to Main Website</a>
+    </div>
+
     <header>
       <h1>Mohammad Yasin</h1>
       <div class="tagline">Physics Undergraduate • Quantum Enthusiast • Science Communicator</div>
@@ -213,7 +272,7 @@
       <h2>Book Publications</h2>
       <ul>
         <li class="book-item">
-          <span class="highlight">অণুপরমাণুর রহস্যময় জগৎ</span> (202X)<br>
+          <span class="highlight">অণুপরমাণুর রহস্যময় জগৎ</span> (2020)<br>
           A popular science book on quantum mechanics and atomic physics, explained in simple, story-based language for students and enthusiasts.
         </li>
         <li class="book-item">
@@ -266,7 +325,21 @@
         <li>YouTube: <a href="https://www.youtube.com/@ScientophileAcademy" target="_blank">Scientophile Academy</a> — Educational courses & tutorials</li>
       </ul>
     </section>
+
+    <!-- Print Button (শেষে যোগ করা হয়েছে) -->
+    <div class="print-btn-container">
+      <br><br>
+      <a href="your-cv.pdf" class="print-btn" style="background:#a05bf5;">
+        <i class="fas fa-download"></i> Download PDF
+      </a>
+    </div>
   </div>
+
+  <script>
+    // Print বাটন ক্লিক করলে ব্রাউজারের প্রিন্ট ডায়ালগ খুলবে
+    // এতে PDF সেভ করা যাবে
+  </script>
 
 </body>
 </html>
+
