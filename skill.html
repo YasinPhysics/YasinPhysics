@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Skills & Interests | Mohammad Yasin</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- KaTeX -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0d001f;
+      color: #e0e0ff;
+      margin: 0;
+      padding: 0;
+      line-height: 1.7;
+    }
+
+    header {
+      background: rgba(30,10,60,0.8);
+      padding: 1rem 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(192,132,252,0.3);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo a {
+      color: #c084fc;
+      font-size: 1.8rem;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    nav a {
+      color: #d1d5ff;
+      margin-left: 1.5rem;
+      text-decoration: none;
+    }
+
+    .main-container {
+      max-width: 1000px;
+      margin: 4rem auto;
+      padding: 0 5%;
+    }
+
+    h1 {
+      color: #c084fc;
+      font-size: 2.8rem;
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .section {
+      margin-bottom: 5rem;
+    }
+
+    .section h2 {
+      color: #e0aaff;
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      border-left: 5px solid #c084fc;
+      padding-left: 1rem;
+    }
+
+    .card {
+      background: rgba(30,20,60,0.6);
+      border-radius: 12px;
+      padding: 1.8rem;
+      margin-bottom: 1.5rem;
+      border-left: 5px solid #c084fc;
+      transition: transform 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+    }
+
+    .card-title {
+      font-size: 1.4rem;
+      color: #e0aaff;
+      margin-bottom: 0.8rem;
+    }
+
+    .proof-link {
+      display: inline-block;
+      margin-top: 1rem;
+      color: #c084fc;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .proof-link:hover {
+      text-decoration: underline;
+      color: #e0aaff;
+    }
+
+    .math {
+      background: rgba(192,132,252,0.1);
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0;
+      text-align: center;
+      border-left: 4px solid #c084fc;
+      font-size: 1.2rem;
+    }
+
+    .summary {
+      margin-top: 1.5rem;
+      padding: 1rem;
+      background: rgba(192,132,252,0.08);
+      border-radius: 10px;
+      font-style: italic;
+      color: #b0b0ff;
+      border-left: 4px solid #c084fc;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo"><a href="/">Yasin</a></div>
+    <nav>
+      <a href="index.html">হোম</a>
+      <a href="blog.html">ব্লগ</a>
+    </nav>
+  </header>
+
+  <div class="main-container">
+    <h1>Skills & Research Interests</h1>
+
+    <!-- ১. Research Interest -->
+    <div class="section">
+      <h2>Research Interests</h2>
+      <div class="card">
+        <div class="card-title">কোয়ান্টাম মেকানিক্স ও কোয়ান্টাম কম্পিউটিং</div>
+        <p>কোয়ান্টাম মেকানিক্সের অসম্পূর্ণ ও ফাউন্ডেশনাল বিষয় নিয়ে কাজ করতে চাই। কোয়ান্টাম কম্পিউটিং-এ অ্যালগরিদম, সিমুলেশন এবং কোয়ান্টাম ইনফরমেশন নিয়ে রিসার্চ করার পরিকল্পনা আছে।</p>
+        <div class="summary">
+          লক্ষ্য: কোয়ান্টাম তত্ত্বের খোলা প্রশ্নের সমাধান এবং কোয়ান্টাম কম্পিউটিং-এ অবদান রাখা।
+        </div>
+      </div>
+    </div>
+
+    <!-- ২. Programming -->
+    <div class="section">
+      <h2>Programming</h2>
+      <div class="card">
+        <div class="card-title">Python</div>
+        <p>পাইথন আমার প্রধান প্রোগ্রামিং ভাষা। বিজ্ঞান, ডেটা বিশ্লেষণ, অটোমেশন ও ফিজিক্স সিমুলেশনে ব্যবহার করি।</p>
+        <p><strong>গুরুত্বপূর্ণ মডিউল যেগুলো নিয়মিত ব্যবহার করি:</strong></p>
+        <ul>
+          <li>NumPy, SciPy, Matplotlib, Pandas</li>
+          <li>SymPy (সিম্বলিক গণিত)</li>
+          <li>QuTiP (কোয়ান্টাম অপটিক্স ও কোয়ান্টাম ইনফরমেশন)</li>
+          <li>Qiskit (কোয়ান্টাম কম্পিউটিং)</li>
+        </ul>
+        <div class="math">
+          $$ |\psi\rangle = \begin{pmatrix} \alpha \\ \beta \end{pmatrix} \quad \text{(কোয়ান্টাম স্টেট ভেক্টর – QuTiP/Qiskit-এ ব্যবহৃত)} $$
+        </div>
+        <a href="#" class="proof-link">→ GitHub repositories / কোডের লিঙ্ক</a>
+      </div>
+    </div>
+
+    <!-- ৩. গণিত -->
+    <div class="section">
+      <h2>Mathematics</h2>
+      <div class="card">
+        <div class="card-title">যেসব গণিত শিখেছি</div>
+        <ul>
+          <li>Linear Algebra (ম্যাট্রিক্স, Eigenvalues, Hilbert Space)</li>
+          <li>Linear Programming (Simplex method, Duality)</li>
+          <li>Game Theory (Nash Equilibrium, Mixed Strategies)</li>
+          <li>Ordinary Differential Equations (ODE)</li>
+        </ul>
+        <div class="math">
+          $$ Ax = \lambda x \quad \text{(Eigenvalue সমীকরণ)} $$
+        </div>
+        <div class="summary">
+          এই বিষয়গুলো কোয়ান্টাম মেকানিক্স, অপটিমাইজেশন ও রিসার্চের জন্য খুব গুরুত্বপূর্ণ ভিত্তি।
+        </div>
+        <a href="#" class="proof-link">→ Coursera / edX / YouTube কোর্স লিঙ্ক</a>
+      </div>
+    </div>
+
+    <!-- ৪. পরিসংখ্যান -->
+    <div class="section">
+      <h2>Statistics</h2>
+      <div class="card">
+        <div class="card-title">পরিসংখ্যানের কোর্স ও জ্ঞান</div>
+        <p>পরিসংখ্যানের কিছু কোর্স করেছি এবং ডেটা বিশ্লেষণে ব্যবহার করি।</p>
+        <ul>
+          <li>Basic & Inferential Statistics</li>
+          <li>Probability Distributions</li>
+          <li>Hypothesis Testing</li>
+          <li>Regression Analysis</li>
+        </ul>
+        <div class="summary">
+          ডেটা থেকে অর্থপূর্ণ সিদ্ধান্ত নেওয়ার জন্য পরিসংখ্যান অত্যন্ত গুরুত্বপূর্ণ।
+        </div>
+        <a href="#" class="proof-link">→ Certificate link / কোর্স লিঙ্ক</a>
+      </div>
+    </div>
+
+    <!-- ৫. প্রযুক্তি -->
+    <div class="section">
+      <h2>Technology</h2>
+      <div class="card">
+        <div class="card-title">প্রযুক্তি যেখানে কাজ করেছি</div>
+        <ul>
+          <li>Cryptography (basic concepts & tools)</li>
+          <li>WordPress (website building & customization)</li>
+          <li>Web Development basics (HTML, CSS, JavaScript)</li>
+          <li>Git & GitHub for version control</li>
+        </ul>
+        <div class="summary">
+          এই প্রযুক্তিগুলো দিয়ে প্রজেক্ট তৈরি করেছি এবং বাস্তব কাজে ব্যবহার করেছি।
+        </div>
+        <a href="#" class="proof-link">→ GitHub projects / WordPress sites / Certificate links</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // প্রোগ্রেস বার অ্যানিমেশন
+    document.addEventListener("DOMContentLoaded", () => {
+      const progressBars = document.querySelectorAll(".progress");
+      progressBars.forEach(bar => {
+        const percent = bar.getAttribute("data-percent") || 90;
+        setTimeout(() => {
+          bar.style.width = percent + "%";
+        }, 400);
+      });
+
+      // KaTeX render
+      renderMathInElement(document.body, {
+        delimiters: [
+          {left: "$$", right: "$$", display: true},
+          {left: "$", right: "$", display: false}
+        ],
+        throwOnError: false
+      });
+    });
+  </script>
+</body>
+</html>
