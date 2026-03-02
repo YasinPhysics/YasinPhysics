@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Projects | Mohammad Yasin</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0d001f;
+      color: #e0e0ff;
+      margin: 0;
+      padding: 0;
+      line-height: 1.7;
+    }
+
+    header {
+      background: rgba(30,10,60,0.8);
+      padding: 1rem 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(192,132,252,0.3);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo a {
+      color: #c084fc;
+      font-size: 1.8rem;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    nav a {
+      color: #d1d5ff;
+      margin-left: 1.5rem;
+      text-decoration: none;
+    }
+
+    .main-container {
+      max-width: 1100px;
+      margin: 4rem auto;
+      padding: 0 5%;
+    }
+
+    h1 {
+      color: #c084fc;
+      font-size: 2.8rem;
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .project {
+      background: rgba(30,20,60,0.6);
+      border-radius: 16px;
+      padding: 2rem;
+      margin-bottom: 3rem;
+      border-left: 5px solid #c084fc;
+      transition: transform 0.3s;
+    }
+
+    .project:hover {
+      transform: translateY(-8px);
+    }
+
+    .project-title {
+      font-size: 1.9rem;
+      color: #e0aaff;
+      margin-bottom: 1rem;
+    }
+
+    .project-desc {
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .gallery img {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+      transition: transform 0.3s;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+
+    .laptop-mockup {
+      position: relative;
+      max-width: 600px; /* small size*/
+      margin: 2rem auto;
+      text-align: center;
+    }
+
+    .laptop-mockup img {
+      width: 100%;
+      border-radius: 24px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.7);
+    }
+
+    .laptop-screen {
+      position: absolute;
+      top: 3%;          /*  */
+      left: 13%;        /* */
+      width: 70.4%;       /*  */
+      height: 70.8%;      /*  */
+      overflow: auto;
+      border-radius: 10px;
+      background: #000;
+      border: 2px solid #1a1a1a;
+      box-shadow: inset 0 0 15px rgba(0,0,0,0.9);
+    }
+
+    .laptop-screen iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  transform-origin: top left;
+  transform: scale(1);  /* zoom initial scale */
+  transition: transform 20s ease;  /* smooth zoom */
+   }
+
+    .upcoming {
+      background: rgba(192,132,252,0.08);
+      padding: 2rem;
+      border-radius: 16px;
+      text-align: center;
+      font-style: italic;
+      color: #b0b0ff;
+      margin: 4rem 0;
+      border: 1px dashed rgba(192,132,252,0.3);
+    }
+
+    .upcoming h3 {
+      color: #c084fc;
+      margin-bottom: 1.5rem;
+    }
+
+    .upcoming ul {
+      list-style: none;
+      padding: 0;
+      text-align: left;
+      max-width: 600px;
+      margin: 1rem auto;
+    }
+
+    .upcoming li {
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo"><a href="/">Yasin</a></div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="blog.html">Blog</a>
+      <a href="skills.html">Skills</a>
+    </nav>
+  </header>
+
+  <div class="main-container">
+    <h1>My Projects</h1>
+
+    <!-- Project 1: Scientophile -->
+    <div class="project">
+      <div class="project-title">Scientophile</div>
+      <p class="project-desc">
+        A platform for science enthusiasts, researchers, and students to share knowledge, articles, and discussions.
+      </p>
+      <div class="gallery">
+        <img src="https://images.unsplash.com/photo-1516321310769-5db6d1d0d8e0?w=800" alt="Scientophile Dashboard">
+        <img src="https://images.unsplash.com/photo-1555066931-bf19c9d1089f?w=800" alt="Article Reading">
+        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800" alt="Community Features">
+      </div>
+      <a href="https://scientophile.org" target="_blank" style="color: #c084fc; text-decoration: none; display: block; margin-top: 1rem;">Visit Scientophile →</a>
+    </div>
+
+    <!-- Project 2: Scientophile Academy -->
+    <div class="project">
+      <div class="project-title">Scientophile Academy</div>
+      <p class="project-desc">
+        Educational platform offering structured courses, tutorials, and learning paths in science and technology.
+      </p>
+      <div class="gallery">
+        <img src="https://images.unsplash.com/photo-1522202176988-66273c2b033f?w=800" alt="Course Catalog">
+        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800" alt="Video Lesson">
+        <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=800" alt="Interactive Quiz">
+      </div>
+      <a href="#" target="_blank" style="color: #c084fc; text-decoration: none; display: block; margin-top: 1rem;">Visit Scientophile Academy → (update link)</a>
+    </div>
+
+    <!-- Project 3: AI Doctor  -->
+    <div class="project">
+      <div class="project-title">AI Doctor</div>
+      <p class="project-desc">
+        AI-powered healthcare assistant with blockchain integration for secure medical records and preliminary diagnosis support.
+      </p>
+      <div class="laptop-mockup">
+        <!-- image size (499 × 321 px ) -->
+        <img src="https://mdrakibhassan.vercel.app/images/macbook-mockup.png" alt="MacBook Mockup" style="max-width: 100%;">
+        <div class="laptop-screen">
+          <iframe src="https://ai-doctor-blockchain.vercel.app/ChatBot.html" title="AI Doctor ChatBot" frameborder="0" allowfullscreen></iframe>
+        </div>
+      </div>
+      <a href="https://ai-doctor-blockchain.vercel.app/ChatBot.html" target="_blank" style="color: #c084fc; text-decoration: none; display: block; margin-top: 1rem;">Visit AI Doctor →</a>
+    </div>
+
+    <!-- Upcoming Projects -->
+    <div class="upcoming">
+      <h3>Upcoming / In Progress Projects</h3>
+      <ul>
+        <li>
+          <strong>Blockchain Journal</strong><br>
+          A decentralized, transparent scientific publishing platform using blockchain for peer review and immutable records.
+        </li>
+        <li>
+          <strong>Blockchain + Quantum Computing Integration</strong><br>
+          Exploring how quantum-resistant cryptography and quantum algorithms can bring transparency, security, and scalability to blockchain systems simultaneously.
+        </li>
+      </ul>
+      <p style="font-style: italic; margin-top: 2rem;">More details, demos, and live links coming soon...</p>
+    </div>
+  </div>
+
+  <script>
+    // KaTeX render ()
+    document.addEventListener("DOMContentLoaded", () => {
+      renderMathInElement(document.body, {
+        delimiters: [
+          {left: "$$", right: "$$", display: true},
+          {left: "$", right: "$", display: false}
+        ],
+        throwOnError: false
+      });
+    });
+    
+  </script>
+</body>
+</html>
