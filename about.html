@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About | Mohammad Yasin</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0d001f;
+      color: #e0e0ff;
+      margin: 0;
+      padding: 0;
+      line-height: 1.7;
+    }
+
+    header {
+      background: rgba(30,10,60,0.8);
+      padding: 1rem 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(192,132,252,0.3);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo a {
+      color: #c084fc;
+      font-size: 1.8rem;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    nav a {
+      color: #d1d5ff;
+      margin-left: 1.5rem;
+      text-decoration: none;
+    }
+
+    .main-container {
+      max-width: 1100px;
+      margin: 4rem auto;
+      padding: 0 5%;
+    }
+
+    h1 {
+      color: #c084fc;
+      font-size: 3rem;
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    .about-section {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 3rem;
+      align-items: flex-start;
+      margin-bottom: 5rem;
+    }
+
+    .profile-image-container {
+      flex: 1;
+      min-width: 350px;
+      position: sticky;
+      top: 120px;
+      align-self: flex-start;
+      text-align: center;
+    }
+
+    .profile-image {
+      width: 100%;
+      max-width: 500px;
+      border-radius: 16px;
+      box-shadow: 0 10px 40px rgba(192,132,252,0.4);
+      transition: transform 0.4s ease;
+    }
+
+    .profile-image:hover {
+      transform: scale(1.05);
+    }
+
+    .profile-details {
+      flex: 2;
+      min-width: 400px;
+    }
+
+    .identity-heading {
+      color: #c084fc;
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      text-align: left;
+      border-left: 6px solid #c084fc;
+      padding-left: 1rem;
+    }
+
+    .profile-details h2 {
+      color: #e0aaff;
+      font-size: 2.2rem;
+      margin: 2rem 0 1rem;
+      border-left: 5px solid #c084fc;
+      padding-left: 1rem;
+    }
+
+    .profile-details p {
+      font-size: 1.15rem;
+      margin-bottom: 1.5rem;
+      color: #d1d5ff;
+    }
+
+    .highlight {
+      color: #c084fc;
+      font-weight: bold;
+    }
+
+    /* Publications Section (Common for Books & Research) */
+    .publications-section {
+      margin-top: 5rem;
+      margin-bottom: 5rem;
+    }
+
+    .publications-section h2 {
+      color: #c084fc;
+      font-size: 2.5rem;
+      text-align: center;
+      margin-bottom: 3rem;
+      border-bottom: 3px solid #c084fc;
+      padding-bottom: 0.8rem;
+      display: inline-block;
+    }
+
+    .book-grid, .research-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2.5rem;
+    }
+
+    .card {
+      background: rgba(30,20,60,0.6);
+      border-radius: 16px;
+      padding: 1.8rem;
+      border-left: 5px solid #c084fc;
+      transition: transform 0.3s, box-shadow 0.3s;
+      text-align: center;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 40px rgba(192,132,252,0.25);
+    }
+
+    .card-cover {
+      width: 100%;
+      max-width: 220px;
+      border-radius: 12px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+      margin: 0 auto 1.2rem;
+    }
+
+    .card-title {
+      font-size: 1.5rem;
+      color: #e0aaff;
+      margin-bottom: 0.8rem;
+    }
+
+    .card-desc {
+      font-size: 1rem;
+      color: #d1d5ff;
+      margin-bottom: 1rem;
+    }
+
+    .card-link {
+      color: #c084fc;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .card-link:hover {
+      color: #e0aaff;
+      text-decoration: underline;
+    }
+
+    /* Research Timeline Style (মাঝের লাইন বাদ দেওয়া হয়েছে) */
+    .research-timeline {
+      position: relative;
+      padding: 2rem 0;
+    }
+
+    .research-item {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 3rem;
+      position: relative;
+    }
+
+    .research-item.left-time {
+      flex-direction: row-reverse;
+      text-align: right;
+    }
+
+    .time-block {
+      flex: 0 0 120px;
+      padding: 1rem;
+      background: rgba(192,132,252,0.15);
+      border-radius: 12px;
+      text-align: center;
+      margin: 0 1.5rem;
+    }
+
+    .time-block .year {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #c084fc;
+      display: block;
+    }
+
+    .time-block .month {
+      font-size: 1rem;
+      color: #b0b0ff;
+    }
+
+    .content-block {
+      flex: 1;
+      background: rgba(30,20,60,0.6);
+      border-radius: 16px;
+      padding: 1.8rem;
+      border-left: 5px solid #c084fc;
+    }
+
+    .paper-title a {
+      color: #e0aaff;
+      text-decoration: none;
+      font-size: 1.4rem;
+      font-weight: 600;
+    }
+
+    .paper-title a:hover {
+      color: #c084fc;
+      text-decoration: underline;
+    }
+
+    .authors, .venue {
+      color: #b0b0ff;
+      font-size: 1rem;
+      margin: 0.5rem 0;
+    }
+
+    .description {
+      color: #d1d5ff;
+      font-size: 1.05rem;
+    }
+
+    @media (max-width: 768px) {
+      .about-section {
+        flex-direction: column;
+      }
+      .profile-image-container {
+        position: static;
+        text-align: center;
+      }
+      .profile-image {
+        max-width: 350px;
+      }
+      .identity-heading {
+        font-size: 2rem;
+      }
+      .research-item {
+        flex-direction: column;
+      }
+      .time-block {
+        margin: 0 0 1rem 0;
+      }
+      .research-item.left-time {
+        flex-direction: column;
+        text-align: left;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo"><a href="/">Yasin</a></div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="blog.html">Blog</a>
+      <a href="skills.html">Skills</a>
+      <a href="projects.html">Projects</a>
+    </nav>
+  </header>
+
+  <div class="main-container">
+    <h1>About Me</h1>
+
+    <!-- About Section -->
+    <div class="about-section">
+      <div class="profile-image-container">
+        <img src="https://i.postimg.cc/9fL37KH6/Untitled-design-(31).png" alt="Mohammad Yasin" class="profile-image">
+      </div>
+
+      <div class="profile-details">
+        <h2 class="identity-heading">Writer, Researcher, Science Enthusiast</h2>
+        <h2>Mohammad Yasin</h2>
+
+        <p>
+          When I was in ninth grade, I started tutoring my friend, and that marks the beginning of my teaching experience of 6 years. Commercially, I have been tutoring since 2020.
+        </p>
+
+        <p>
+          I explain science through stories, teach hands-on, and break down complex topics using animations. I share the backstory behind every formula and discovery. Making science fun and easy to understand is my goal.
+        </p>
+
+        <p class="highlight">
+          Currently, I am deeply studying and researching Quantum Mechanics, Quantum Computing, Mathematics, and Programming.
+        </p>
+
+        <p>
+          My aim: To make science accessible to everyone, work on unsolved aspects of quantum theory, and contribute to the field of quantum computing.
+        </p>
+      </div>
+    </div>
+
+    <!-- Book Publications Section -->
+    <div class="publications-section">
+      <h2>Book Publications</h2>
+
+      <div class="book-grid">
+        <div class="card">
+          <img src="https://i.postimg.cc/Your-Book-Cover-1-Link" alt="Book Cover 1" class="card-cover">
+          <div class="card-title">The Mysterious World of Atoms and Molecules</div>
+          <p class="card-desc">
+            A book on quantum mechanics and atomic physics, explained in an easy and story-based way for students and science lovers.
+          </p>
+          <a href="#" class="card-link">Buy / Read More →</a>
+        </div>
+
+        <div class="card">
+          <img src="https://i.postimg.cc/Your-Book-Cover-2-Link" alt="Book Cover 2" class="card-cover">
+          <div class="card-title">Fun Stories of Quantum Mechanics</div>
+          <p class="card-desc">
+            Fun stories and explanations of quantum mechanics concepts, making complex topics simple and enjoyable.
+          </p>
+          <a href="#" class="card-link">Buy / Read More →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Research Publications Section -->
+    <div class="publications-section">
+      <h2>Research Publications</h2>
+
+      <!-- Brief Intro -->
+      <div class="brief-intro" style="text-align: center; max-width: 800px; margin: 0 auto 2rem; color: #d1d5ff;">
+        <p>
+          My research focuses on theoretical and computational aspects of quantum mechanics, cosmology, and gravitational physics. I explore foundational questions in quantum foundations, dark matter models, and black hole thermodynamics, often using numerical simulations and analytical methods. Below are selected publications with links (where available).
+        </p>
+      </div>
+
+      <!-- Timeline-style alternating layout (মাঝের লাইন বাদ দেওয়া হয়েছে) -->
+      <div class="research-timeline">
+        <!-- Item 1 -->
+        <div class="research-item left-time">
+          <div class="time-block">
+            <span class="year">2025</span>
+            <span class="month">March</span>
+          </div>
+          <div class="content-block">
+            <h3 class="paper-title">
+              <a href="https://arxiv.org/abs/2503.XXXXX" target="_blank">
+                Quantum Entanglement in Cosmological Spacetimes
+              </a>
+            </h3>
+            <p class="authors">Mohammad Yasin, A. Rahman</p>
+            <p class="venue">Physical Review D (under review)</p>
+            <p class="description">
+              This paper investigates entanglement entropy in expanding universes, proposing a novel measure for quantum correlations across cosmic horizons. We demonstrate that entanglement can serve as a probe for dark energy dynamics.
+            </p>
+          </div>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="research-item right-time">
+          <div class="time-block">
+            <span class="year">2024</span>
+            <span class="month">November</span>
+          </div>
+          <div class="content-block">
+            <h3 class="paper-title">
+              <a href="https://doi.org/10.XXXX/XXXX" target="_blank">
+                Modified Gravity Models for Galactic Rotation Curves
+              </a>
+            </h3>
+            <p class="authors">Mohammad Yasin</p>
+            <p class="venue">Journal of Astrophysics and Astronomy</p>
+            <p class="description">
+              We propose a scalar-tensor gravity extension that reproduces flat rotation curves without dark matter. The model is tested against SPARC database and shows consistency with observational data at galactic scales.
+            </p>
+          </div>
+        </div>
+
+        <!-- Item 3 -->
+        <div class="research-item left-time">
+          <div class="time-block">
+            <span class="year">2024</span>
+            <span class="month">June</span>
+          </div>
+          <div class="content-block">
+            <h3 class="paper-title">
+              <a href="#" target="_blank">
+                Black Hole Information Paradox Revisited
+              </a>
+            </h3>
+            <p class="authors">Mohammad Yasin, S. Karim</p>
+            <p class="venue">Conference Proceedings, International Conference on Quantum Gravity</p>
+            <p class="description">
+              A semi-classical approach combining Hawking radiation with quantum hair is presented, offering a potential resolution to the information loss problem without invoking firewalls or non-locality.
+            </p>
+          </div>
+        </div>
+
+        <!-- Item 4 -->
+        <div class="research-item right-time">
+          <div class="time-block">
+            <span class="year">2023</span>
+            <span class="month">October</span>
+          </div>
+          <div class="content-block">
+            <h3 class="paper-title">
+              <a href="#" target="_blank">
+                Numerical Simulation of Bose-Einstein Condensates in Rotating Traps
+              </a>
+            </h3>
+            <p class="authors">Mohammad Yasin</p>
+            <p class="venue">Journal of Low Temperature Physics</p>
+            <p class="description">
+              Using Gross-Pitaevskii equation simulations, we study vortex lattice formation in rotating BECs. The results reveal new stable configurations at high angular momentum, with implications for superfluid turbulence.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Certificates Section -->
+<div class="publications-section">
+  <h2>Certificates</h2>
+
+  <div class="certificate-gallery">
+    <!-- Certificate 1 -->
+    <div class="cert-item">
+      <img src="https://coursera.org/share/b8f854d6f7e719a0bedc98e3a9d3fb51" alt="Certificate 1" class="cert-img">
+      <div class="cert-overlay">
+        <div class="cert-info">
+          <h3>Python for Data Science</h3>
+          <p>IBM • Coursera • 2023</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Certificate 2 -->
+    <div class="cert-item">
+      <img src="https://coursera.org/share/b8f854d6f7e719a0bedc98e3a9d3fb51" alt="Certificate 2" class="cert-img">
+      <div class="cert-overlay">
+        <div class="cert-info">
+          <h3>Quantum Computing Fundamentals</h3>
+          <p>IBM Qiskit • edX • 2024</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Certificate 3 -->
+    <div class="cert-item">
+      <img src="https://coursera.org/share/b8f854d6f7e719a0bedc98e3a9d3fb51" alt="Certificate 3" class="cert-img">
+      <div class="cert-overlay">
+        <div class="cert-info">
+          <h3>Linear Algebra for Machine Learning</h3>
+          <p>Imperial College London • Coursera • 2022</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- আরও সার্টিফিকেট চাইলে এই ব্লক কপি করে পেস্ট করো -->
+  </div>
+</div>
+
+<style>
+  .certificate-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  .cert-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 16px;
+    background: rgba(30,20,60,0.6);
+    border: 1px solid rgba(192,132,252,0.3);
+    transition: all 0.4s ease;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+  }
+
+  .cert-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 50px rgba(192,132,252,0.3);
+  }
+
+  .cert-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.5s ease;
+  }
+
+  .cert-item:hover .cert-img {
+    transform: scale(1.08);
+  }
+
+  .cert-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.85), transparent);
+    color: white;
+    padding: 1.2rem;
+    transform: translateY(100%);
+    transition: transform 0.4s ease;
+    opacity: 0;
+  }
+
+  .cert-item:hover .cert-overlay {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  .cert-info h3 {
+    margin: 0 0 0.5rem;
+    font-size: 1.3rem;
+    color: #c084fc;
+  }
+
+  .cert-info p {
+    margin: 0;
+    font-size: 0.95rem;
+    color: #d1d5ff;
+  }
+
+  @media (max-width: 768px) {
+    .certificate-gallery {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+</body>
+</html>
