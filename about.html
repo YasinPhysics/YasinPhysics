@@ -65,7 +65,7 @@
     }
 
     .profile-image-container {
-      flex: 1;
+      flex: 1.6;
       min-width: 350px;
       position: sticky;
       top: 120px;
@@ -297,7 +297,7 @@
   </header>
 
   <div class="main-container">
-    <h1>About Me</h1>
+    <!-- <h1>About Me</h1> -->
 
     <!-- About Section -->
     <div class="about-section">
@@ -446,16 +446,16 @@
         </div>
       </div>
     </div>
-  </div>
 
-  <!-- Certificates Section -->
+
+    <!-- Certificates Section -->
 <div class="publications-section">
   <h2>Certificates</h2>
 
   <div class="certificate-gallery">
     <!-- Certificate 1 -->
     <div class="cert-item">
-      <img src="https://coursera.org/share/b8f854d6f7e719a0bedc98e3a9d3fb51" alt="Certificate 1" class="cert-img">
+      <img src="https://i.postimg.cc/T2krMfBc/Coursera-B6LQ3WL9C8RA.jpg" alt="Certificate 1" class="cert-img">
       <div class="cert-overlay">
         <div class="cert-info">
           <h3>Python for Data Science</h3>
@@ -466,7 +466,7 @@
 
     <!-- Certificate 2 -->
     <div class="cert-item">
-      <img src="https://coursera.org/share/b8f854d6f7e719a0bedc98e3a9d3fb51" alt="Certificate 2" class="cert-img">
+      <img src="https://i.postimg.cc/T2krMfBc/Coursera-B6LQ3WL9C8RA.jpg" alt="Certificate 2" class="cert-img">
       <div class="cert-overlay">
         <div class="cert-info">
           <h3>Quantum Computing Fundamentals</h3>
@@ -477,7 +477,7 @@
 
     <!-- Certificate 3 -->
     <div class="cert-item">
-      <img src="https://coursera.org/share/b8f854d6f7e719a0bedc98e3a9d3fb51" alt="Certificate 3" class="cert-img">
+      <img src="https://i.postimg.cc/T2krMfBc/Coursera-B6LQ3WL9C8RA.jpg" alt="Certificate 3" class="cert-img">
       <div class="cert-overlay">
         <div class="cert-info">
           <h3>Linear Algebra for Machine Learning</h3>
@@ -545,13 +545,13 @@
   .cert-info h3 {
     margin: 0 0 0.5rem;
     font-size: 1.3rem;
-    color: #c084fc;
+    color: #030303;
   }
 
   .cert-info p {
     margin: 0;
     font-size: 0.95rem;
-    color: #d1d5ff;
+    color: #000000;
   }
 
   @media (max-width: 768px) {
@@ -560,6 +560,620 @@
     }
   }
 </style>
+
+
+
+<!-- skill section start -->
+
+
+<!-- My Skills Section -->
+<div class="publications-section">
+  <h2>My Skills</h2>
+
+  <div class="skills-grid">
+    <!-- Programming -->
+    <div class="skill-card">
+      <i class="fas fa-code skill-icon"></i>
+      <h3>Programming</h3>
+      <ul>
+        <li>Python (Advanced) – NumPy, SciPy, Pandas, Matplotlib, SymPy</li>
+        <li>QuTiP & Qiskit for Quantum Simulations</li>
+        <li>Git & GitHub for Version Control</li>
+        <li>Basic Web: HTML, CSS, JavaScript</li>
+      </ul>
+    </div>
+
+    <!-- Mathematics -->
+    <div class="skill-card">
+      <i class="fas fa-square-root-variable skill-icon"></i>
+      <h3>Mathematics</h3>
+      <ul>
+        <li>Linear Algebra (Matrices, Eigenvalues, Hilbert Spaces)</li>
+        <li>Linear Programming & Optimization</li>
+        <li>Game Theory (Nash Equilibrium, Mixed Strategies)</li>
+        <li>Ordinary Differential Equations (ODE)</li>
+        <li>Linear Algebra (Matrices, Eigenvalues, Hilbert Spaces)</li>
+        <li>Linear Programming & Optimization</li>
+        <li>Game Theory (Nash Equilibrium, Mixed Strategies)</li>
+        <li>Ordinary Differential Equations (ODE)</li>
+      </ul>
+    </div>
+
+    <!-- Physics & Research -->
+    <div class="skill-card">
+      <i class="fas fa-atom skill-icon"></i>
+      <h3>Physics & Research</h3>
+      <ul>
+        <li>Quantum Mechanics (Foundations & Simulations)</li>
+        <li>Quantum Computing Concepts</li>
+        <li>Computational Physics (QuTiP, Numerical Methods)</li>
+        <li>Cosmology & Gravitational Physics Basics</li>
+      </ul>
+    </div>
+
+    <!-- Teaching & Communication -->
+    <div class="skill-card">
+      <i class="fas fa-chalkboard-teacher skill-icon"></i>
+      <h3>Teaching & Communication</h3>
+      <ul>
+        <li>6+ years of tutoring experience</li>
+        <li>Science storytelling & animation explanations</li>
+        <li>Hands-on learning methods</li>
+        <li>Breaking down complex topics for beginners</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- css skill section -->
+ <style>
+  .skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.skill-card {
+  background: rgba(30,20,60,0.6);
+  border-radius: 16px;
+  padding: 2rem;
+  border-left: 5px solid #c084fc;
+  transition: transform 0.3s, box-shadow 0.3s;
+  text-align: left;
+}
+
+.skill-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 40px rgba(192,132,252,0.25);
+}
+
+.skill-icon {
+  font-size: 2.5rem;
+  color: #c084fc;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.skill-card h3 {
+  color: #e0aaff;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.skill-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.skill-card li {
+  font-size: 1.05rem;
+  margin-bottom: 0.8rem;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.skill-card li::before {
+  content: "→";
+  color: #c084fc;
+  position: absolute;
+  left: 0;
+  font-weight: bold;
+}
+ </style>
+ <!-- end skill section -->
+
+
+
+
+
+   <!-- start video section -->
+    <!-- Video Section -->
+<div class="publications-section">
+  <h2>My Videos & Talks</h2>
+
+  <p style="text-align: center; max-width: 800px; margin: 0 auto 2rem; color: #d1d5ff; font-size: 1.1rem;">
+    বিজ্ঞানকে সহজ, মজার এবং গভীরভাবে বোঝানোর জন্য আমি YouTube-এ নিয়মিত ভিডিও আপলোড করি। কোয়ান্টাম মেকানিক্স, পাইথন, গণিত, ফিজিক্সের গল্প — সবই পাবে।
+  </p>
+
+  <!-- YouTube Channels -->
+  <div class="channel-links" style="text-align: center; margin: 2rem 0;">
+    <a href="https://www.youtube.com/@Scientophile" target="_blank" class="channel-btn">
+      <i class="fab fa-youtube"></i> Scientophile
+    </a>
+    <a href="https://www.youtube.com/@ScientophileAcademy" target="_blank" class="channel-btn">
+      <i class="fab fa-youtube"></i> Scientophile Academy
+    </a>
+  </div>
+
+  <!-- 3 Video Cards -->
+  <div class="video-grid">
+    <!-- Video 1 -->
+    <div class="video-card">
+      <div class="video-thumbnail">
+        <img src="https://i.ytimg.com/vi/dQw4w9WgXcQ/maxresdefault.jpg" alt="Quantum Mechanics Intro">
+        <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" class="play-button">
+          <i class="fas fa-play"></i>
+        </a>
+      </div>
+      <div class="video-info">
+        <h3>Quantum Mechanics for Beginners</h3>
+        <p>কোয়ান্টাম মেকানিক্সের মৌলিক ধারণা সহজ ভাষায় ব্যাখ্যা।</p>
+        <span class="video-date">Duration: 18 min • 2024</span>
+      </div>
+    </div>
+
+    <!-- Video 2 -->
+    <div class="video-card">
+      <div class="video-thumbnail">
+        <img src="https://i.ytimg.com/vi/VIDEO_ID_2/maxresdefault.jpg" alt="Python for Science">
+        <a href="https://www.youtube.com/watch?v=VIDEO_ID_2" target="_blank" class="play-button">
+          <i class="fas fa-play"></i>
+        </a>
+      </div>
+      <div class="video-info">
+        <h3>Python for Scientific Computing</h3>
+        <p>NumPy, SciPy দিয়ে বিজ্ঞানের হিসাব-নিকাশ।</p>
+        <span class="video-date">Duration: 25 min • 2023</span>
+      </div>
+    </div>
+
+    <!-- Video 3 -->
+    <div class="video-card">
+      <div class="video-thumbnail">
+        <img src="https://i.ytimg.com/vi/VIDEO_ID_3/maxresdefault.jpg" alt="Why Quantum Computing">
+        <a href="https://www.youtube.com/watch?v=VIDEO_ID_3" target="_blank" class="play-button">
+          <i class="fas fa-play"></i>
+        </a>
+      </div>
+      <div class="video-info">
+        <h3>Why Quantum Computing Matters</h3>
+        <p>কোয়ান্টাম কম্পিউটিং কেন ভবিষ্যতের জন্য গুরুত্বপূর্ণ।</p>
+        <span class="video-date">Duration: 12 min • 2025</span>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+
+<style>
+  .channel-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+  }
+
+  .channel-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    background: #c084fc;
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.4s ease;
+    box-shadow: 0 8px 25px rgba(192,132,252,0.4);
+  }
+
+  .channel-btn:hover {
+    background: #a05bf5;
+    transform: translateY(-4px);
+    box-shadow: 0 15px 40px rgba(192,132,252,0.5);
+  }
+
+  .channel-btn i {
+    font-size: 1.8rem;
+  }
+
+  .video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2.5rem;
+    margin-top: 1rem;
+  }
+
+  .video-card {
+    background: rgba(30,20,60,0.6);
+    border-radius: 16px;
+    overflow: hidden;
+    border-left: 5px solid #c084fc;
+    transition: all 0.4s ease;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+  }
+
+  .video-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 50px rgba(192,132,252,0.3);
+  }
+
+  .video-thumbnail {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .video-thumbnail img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.5s ease;
+  }
+
+  .video-card:hover .video-thumbnail img {
+    transform: scale(1.08);
+  }
+
+  .play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70px;
+    height: 70px;
+    background: rgba(192,132,252,0.85);
+    border-radius: 50%;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    opacity: 0.9;
+    transition: all 0.3s;
+  }
+
+  .video-card:hover .play-button {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.15);
+  }
+
+  .video-info {
+    padding: 1.5rem;
+    text-align: center;
+  }
+
+  .video-info h3 {
+    color: #e0aaff;
+    font-size: 1.4rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .video-info p {
+    font-size: 1rem;
+    color: #d1d5ff;
+    margin-bottom: 0.8rem;
+  }
+
+  .video-date {
+    font-size: 0.9rem;
+    color: #b0b0ff;
+  }
+
+  .more-btn {
+    display: inline-block;
+    background: #c084fc;
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.4s;
+    margin: 0.5rem;
+  }
+
+  .more-btn:hover {
+    background: #a05bf5;
+    transform: translateY(-4px);
+  }
+
+  @media (max-width: 768px) {
+    .video-grid {
+      grid-template-columns: 1fr;
+    }
+    .channel-links {
+      flex-direction: column;
+      gap: 1rem;
+    }
+  }
+</style>
+    <!-- end video section -->
+
+
+    <!-- project section start  -->
+     <!-- Projects Section -->
+<div class="publications-section">
+  <h2>Projects</h2>
+
+  <div class="project-grid">
+    <!-- Project 1: Scientophile -->
+    <div class="project-card">
+      <div class="project-thumbnail">
+        <img src="https://images.unsplash.com/photo-1516321310769-5db6d1d0d8e0?w=800" alt="Scientophile">
+      </div>
+      <div class="project-info">
+        <h3>Scientophile</h3>
+        <p>বিজ্ঞানপ্রেমীদের জন্য একটি প্ল্যাটফর্ম — আর্টিকেল, আলোচনা, রিসার্চ শেয়ারিং।</p>
+        <a href="https://scientophile.org" target="_blank" class="project-link">Visit Project →</a>
+      </div>
+    </div>
+
+    <!-- Project 2: Scientophile Academy -->
+    <div class="project-card">
+      <div class="project-thumbnail">
+        <img src="https://images.unsplash.com/photo-1522202176988-66273c2b033f?w=800" alt="Scientophile Academy">
+      </div>
+      <div class="project-info">
+        <h3>Scientophile Academy</h3>
+        <p>বিজ্ঞান ও প্রযুক্তির স্ট্রাকচার্ড কোর্স, টিউটোরিয়াল এবং লার্নিং পাথ।</p>
+        <a href="#" target="_blank" class="project-link">Visit Project → (update link)</a>
+      </div>
+    </div>
+
+    <!-- Project 3: AI Doctor -->
+    <div class="project-card">
+      <div class="project-thumbnail">
+        <img src="https://images.unsplash.com/photo-1576092768241-dec2310b9f46?w=800" alt="AI Doctor">
+      </div>
+      <div class="project-info">
+        <h3>AI Doctor</h3>
+        <p>AI-ভিত্তিক হেলথকেয়ার অ্যাসিস্ট্যান্ট — ব্লকচেইন দিয়ে নিরাপদ মেডিকেল রেকর্ড।</p>
+        <a href="https://ai-doctor-blockchain.vercel.app/ChatBot.html" target="_blank" class="project-link">Visit Project →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- More Projects Link -->
+  <div style="text-align: center; margin-top: 3rem;">
+    <a href="projects.html" class="more-btn">
+      আরও প্রজেক্ট দেখুন → Full Projects Page
+    </a>
+  </div>
+</div>
+
+<style>
+  .project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2.5rem;
+    margin-top: 2rem;
+  }
+
+  .project-card {
+    background: rgba(30,20,60,0.6);
+    border-radius: 16px;
+    overflow: hidden;
+    border-left: 5px solid #c084fc;
+    transition: all 0.4s ease;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+  }
+
+  .project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 50px rgba(192,132,252,0.3);
+  }
+
+  .project-thumbnail {
+    overflow: hidden;
+  }
+
+  .project-thumbnail img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.5s ease;
+  }
+
+  .project-card:hover .project-thumbnail img {
+    transform: scale(1.08);
+  }
+
+  .project-info {
+    padding: 1.5rem;
+    text-align: center;
+  }
+
+  .project-info h3 {
+    color: #e0aaff;
+    font-size: 1.5rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .project-info p {
+    font-size: 1rem;
+    color: #d1d5ff;
+    margin-bottom: 1rem;
+  }
+
+  .project-link {
+    color: #c084fc;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s;
+  }
+
+  .project-link:hover {
+    color: #e0aaff;
+    text-decoration: underline;
+  }
+
+  .more-btn {
+    display: inline-block;
+    background: #c084fc;
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.4s;
+  }
+
+  .more-btn:hover {
+    background: #a05bf5;
+    transform: translateY(-4px);
+  }
+
+  @media (max-width: 768px) {
+    .project-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+     <!-- end project section -->
+
+
+
+     <!-- start image  -->
+      <!-- Moments & Memories Section (Academic & Professional Only) -->
+<div class="publications-section">
+  <h2>Moments & Memories</h2>
+
+  <p style="text-align: center; max-width: 800px; margin: 0 auto 2rem; color: #d1d5ff; font-size: 1.1rem;">
+    This is moment of lab & science experience
+  </p>
+
+  <div class="memory-gallery">
+    <!-- Lab / Research Moment 1 -->
+    <div class="memory-item">
+      <img src="https://i.postimg.cc/your-lab-photo-1.jpg" alt="In the Physics Lab">
+      <div class="memory-caption">Working on quantum simulation setup</div>
+    </div>
+
+    <!-- Lab / Research Moment 2 -->
+    <div class="memory-item">
+      <img src="https://i.postimg.cc/your-lab-photo-2.jpg" alt="Conducting Experiment">
+      <div class="memory-caption">Running numerical simulations for entanglement study</div>
+    </div>
+
+    <!-- Conference / Presentation Moment -->
+    <div class="memory-item">
+      <img src="https://i.postimg.cc/your-conference-photo.jpg" alt="Presenting at Conference">
+      <div class="memory-caption">Presenting research poster at conference</div>
+    </div>
+
+    <!-- Teaching / Classroom Moment -->
+    <div class="memory-item">
+      <img src="https://i.postimg.cc/your-teaching-photo.jpg" alt="Teaching Session">
+      <div class="memory-caption">Explaining quantum concepts to students</div>
+    </div>
+
+    <!--  .memory-item  -->
+  </div>
+</div>
+<style>
+  .memory-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.memory-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+  background: rgba(30,20,60,0.6);
+  border: 1px solid rgba(192,132,252,0.3);
+  transition: all 0.4s ease;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+}
+
+.memory-item:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 50px rgba(192,132,252,0.3);
+}
+
+.memory-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.memory-item:hover img {
+  transform: scale(1.08);
+}
+
+.memory-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.85), transparent);
+  color: white;
+  padding: 1.2rem;
+  transform: translateY(100%);
+  transition: transform 0.4s ease;
+  opacity: 0;
+  text-align: center;
+  font-weight: 500;
+}
+
+.memory-item:hover .memory-caption {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .memory-gallery {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+      <!-- end image -->
+
+
+      <!-- academic start -->
+       <!-- Education Section – ছোট করে রাখা -->
+<div class="publications-section">
+  <h2>Education</h2>
+
+  <div class="education-item">
+    <h3>B.Sc. in Physics (Ongoing)</h3>
+    <p>University of Dhaka, Dhaka, Bangladesh</p>
+    <p>Expected Graduation: 2025 • Current CGPA: 3.XX / 4.00 (4th Year)</p>
+  </div>
+
+  <div class="education-item">
+    <h3>Higher Secondary Certificate (HSC)</h3>
+    <p>[College Name], Dhaka</p>
+    <p>GPA: 4.00 / 5.00 • Year: 2019</p>
+  </div>
+
+  <div class="education-item">
+    <h3>Secondary School Certificate (SSC)</h3>
+    <p>[School Name], Dhaka</p>
+    <p>GPA: 4.00 / 5.00 • Year: 2017</p>
+  </div>
+</div>
+       <!-- academic end -->
+  </div>
+
+  
 
 </body>
 </html>
