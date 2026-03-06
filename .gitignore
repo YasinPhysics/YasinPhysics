@@ -1,0 +1,13 @@
+# Ignore environment variables (sensitive data)
+.env
+
+# Ignore Composer dependencies
+vendor/
+
+# Ignore node_modules (if you use any frontend)
+node_modules/
+
+# Ignore temporary files
+*.log
+.DS_Store
+Thumbs.db
