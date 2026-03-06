@@ -259,8 +259,8 @@
     messageDiv.textContent = 'Sending...';
     messageDiv.className = '';
 
-    // ডেবাগ: কী পাঠানো হচ্ছে দেখা
-    console.log('Form data entries:');
+    // ডেবাগ: Console-এ দেখা যাবে কী পাঠানো হচ্ছে
+    console.log('Form data being sent:');
     for (let [key, value] of formData.entries()) {
       console.log(key + ': ' + value);
     }
@@ -270,7 +270,7 @@
         method: 'POST',
         body: formData,
         headers: {
-          'Accept': 'application/json' // এটা যোগ করো
+          'Accept': 'application/json'
         }
       });
 
