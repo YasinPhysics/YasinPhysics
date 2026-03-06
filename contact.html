@@ -270,13 +270,13 @@
         if (response.ok) {
           messageDiv.textContent = result.message || 'Message sent successfully!';
           messageDiv.className = 'success';
-          this.reset(); // ফর্ম ক্লিয়ার
+          this.reset();
         } else {
           messageDiv.textContent = result.error || 'Failed to send message';
           messageDiv.className = 'error';
         }
       } catch (err) {
-        messageDiv.textContent = 'Network error: Could not connect to server';
+        messageDiv.textContent = 'Network error: ' + err.message;
         messageDiv.className = 'error';
       }
     });
