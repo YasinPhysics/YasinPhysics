@@ -1,12 +1,11 @@
 const nodemailer = require('nodemailer');
 
 module.exports = async (req, res) => {
-  // CORS হেডার যোগ করো যাতে ফর্ম থেকে কল করা যায়
+  // CORS হেডার (ফর্ম থেকে কল করার জন্য)
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
-  // OPTIONS রিকোয়েস্ট হ্যান্ডেল করো (CORS preflight)
   if (req.method === 'OPTIONS') {
     return res.status(200).end();
   }
@@ -22,10 +21,13 @@ module.exports = async (req, res) => {
 
   req.on('end', async () => {
     try {
-      const data = new URLSearchParams(body);
-      const name = data.get('name');
-      const email = data.get('email');
-      const message = data.get('message');
+      // raw body থেকে পার্স করো (application/x-www-form-urlencoded)
+      const params = new URLSearchParams(body);
+      const name = params.get('name');
+      const email = params.get('email');
+      const message = params.get('message');
+
+      console.log('Received data:', { name, email, message }); // Vercel Logs-এ দেখতে পাবে
 
       if (!name || !email || !message) {
         return res.status(400).json({ error: 'All fields are required' });
