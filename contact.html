@@ -232,55 +232,61 @@
 
     <div class="contact-form">
       <h2>Send a Message</h2>
-      <form id="contact-form">
-        <label for="name">Your Name</label>
-        <input type="text" id="name" name="name" required>
+<form id="contact-form">
+  <label for="name">Your Name</label>
+  <input type="text" id="name" name="name" required placeholder="Enter your name">
 
-        <label for="email">Your Email</label>
-        <input type="email" id="email" name="email" required>
+  <label for="email">Your Email</label>
+  <input type="email" id="email" name="email" required placeholder="Enter your email">
 
-        <label for="message">Message</label>
-        <textarea id="message" name="message" rows="6" required></textarea>
+  <label for="message">Message</label>
+  <textarea id="message" name="message" rows="6" required placeholder="Type your message here"></textarea>
 
-        <button type="submit">Send Message</button>
-      </form>
+  <button type="submit">Send Message</button>
+</form>
 
       <div id="form-message"></div>
     </div>
   </div>
 
-  <script>
-    document.getElementById('contact-form').addEventListener('submit', async function(e) {
-      e.preventDefault();
+<script>
+  document.getElementById('contact-form').addEventListener('submit', async function(e) {
+    e.preventDefault();
 
-      const formData = new FormData(this);
-      const messageDiv = document.getElementById('form-message');
-      messageDiv.style.display = 'block';
-      messageDiv.textContent = 'Sending...';
-      messageDiv.className = '';
+    const formData = new FormData(this);
+    const messageDiv = document.getElementById('form-message');
+    messageDiv.style.display = 'block';
+    messageDiv.textContent = 'Sending...';
+    messageDiv.className = '';
 
-      try {
-        const response = await fetch('/api/send-email', {
-          method: 'POST',
-          body: formData
-        });
+    // ডেবাগের জন্য: কী কী পাঠানো হচ্ছে দেখা
+    console.log('Form data being sent:');
+    for (let [key, value] of formData.entries()) {
+      console.log(key + ': ' + value);
+    }
 
-        const result = await response.json();
+    try {
+      const response = await fetch('/api/send-email', {
+        method: 'POST',
+        body: formData
+      });
 
-        if (response.ok) {
-          messageDiv.textContent = result.message || 'Message sent successfully!';
-          messageDiv.className = 'success';
-          this.reset();
-        } else {
-          messageDiv.textContent = result.error || 'Failed to send message';
-          messageDiv.className = 'error';
-        }
-      } catch (err) {
-        messageDiv.textContent = 'Network error: Could not connect to server';
+      const result = await response.json();
+
+      if (response.ok) {
+        messageDiv.textContent = result.message || 'Message sent successfully!';
+        messageDiv.className = 'success';
+        this.reset();
+      } else {
+        messageDiv.textContent = result.error || 'Failed to send message';
         messageDiv.className = 'error';
       }
-    });
-  </script>
+    } catch (err) {
+      messageDiv.textContent = 'Network error: ' + err.message;
+      messageDiv.className = 'error';
+    }
+  });
+</script>
 
 </body>
 </html>
