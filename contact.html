@@ -108,12 +108,15 @@
       border-radius: 16px;
       padding: 2.5rem;
       border-left: 5px solid #c084fc;
+      max-width: 600px;
+      margin: 0 auto;
     }
 
     .contact-form h2 {
       color: #e0aaff;
       font-size: 1.8rem;
       margin-bottom: 1.5rem;
+      text-align: center;
     }
 
     .contact-form label {
@@ -135,9 +138,10 @@
     }
 
     .contact-form button {
+      width: 100%;
       background: #c084fc;
       color: white;
-      padding: 1rem 2.5rem;
+      padding: 1rem;
       border: none;
       border-radius: 50px;
       font-size: 1.2rem;
@@ -153,12 +157,29 @@
       box-shadow: 0 15px 40px rgba(192,132,252,0.5);
     }
 
+    #form-message {
+      margin-top: 1rem;
+      text-align: center;
+      font-size: 1.1rem;
+      padding: 1rem;
+      border-radius: 8px;
+    }
+
+    .success {
+      background: rgba(0,255,0,0.2);
+      color: #0f0;
+      border: 1px solid #0f0;
+    }
+
+    .error {
+      background: rgba(255,0,0,0.2);
+      color: #f00;
+      border: 1px solid #f00;
+    }
+
     @media (max-width: 768px) {
       .contact-info {
         grid-template-columns: 1fr;
-      }
-      .contact-form input, .contact-form textarea {
-        font-size: 0.95rem;
       }
     }
   </style>
@@ -172,6 +193,7 @@
       <a href="blog.html">Blog</a>
       <a href="skills.html">Skills</a>
       <a href="projects.html">Projects</a>
+      <a href="cv.html">CV</a>
     </nav>
   </header>
 
@@ -182,7 +204,7 @@
       <div class="info-card">
         <i class="fas fa-envelope info-icon"></i>
         <h3>Email</h3>
-        <p><a href="mailto: [your.email@example.com]"> [your.email@example.com]</a></p>
+        <p><a href="mailto:your.email@example.com">your.email@example.com</a></p>
       </div>
 
       <div class="info-card">
@@ -199,27 +221,64 @@
 
       <div class="info-card">
         <i class="fas fa-globe info-icon"></i>
-        <h3>Social Media</h3>
-        <p><a href="https://linkedin.com/in/yourprofile">LinkedIn</a> • <a href="https://github.com/yourusername">GitHub</a> • <a href="https://twitter.com/yourhandle">Twitter</a></p>
+        <h3>Social</h3>
+        <p>
+          <a href="https://linkedin.com/in/yourprofile">LinkedIn</a> • 
+          <a href="https://github.com/yourusername">GitHub</a>
+        </p>
       </div>
     </div>
 
     <div class="contact-form">
       <h2>Send a Message</h2>
-        <form action="/api/send-email" method="POST">
-          <label for="name">Your Name</label>
-          <input type="text" id="name" name="name" required>
-        
-          <label for="email">Your Email</label>
-          <input type="email" id="email" name="email" required>
-        
-          <label for="message">Message</label>
-          <textarea id="message" name="message" rows="6" required></textarea>
-        
-          <button type="submit">Send Message</button>
-        </form>
+      <form id="contact-form">
+        <label for="name">Your Name</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Your Email</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="6" required></textarea>
+
+        <button type="submit">Send Message</button>
+      </form>
+
+      <div id="form-message"></div>
     </div>
   </div>
+
+  <script>
+    document.getElementById('contact-form').addEventListener('submit', async function(e) {
+      e.preventDefault();
+
+      const formData = new FormData(this);
+      const messageDiv = document.getElementById('form-message');
+      messageDiv.textContent = '';
+      messageDiv.className = '';
+
+      try {
+        const response = await fetch('/api/send-email', {
+          method: 'POST',
+          body: formData
+        });
+
+        const result = await response.json();
+
+        if (response.ok) {
+          messageDiv.textContent = result.message || 'Message sent successfully!';
+          messageDiv.className = 'success';
+          this.reset(); // ফর্ম ক্লিয়ার
+        } else {
+          messageDiv.textContent = result.error || 'Failed to send message';
+          messageDiv.className = 'error';
+        }
+      } catch (err) {
+        messageDiv.textContent = 'Network error: ' + err.message;
+        messageDiv.className = 'error';
+      }
+    });
+  </script>
 
 </body>
 </html>
