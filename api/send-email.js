@@ -1,7 +1,7 @@
 const nodemailer = require('nodemailer');
 
 module.exports = async (req, res) => {
-  // CORS হেডার (ফর্ম থেকে কল করার জন্য)
+  // CORS headers
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
@@ -14,20 +14,23 @@ module.exports = async (req, res) => {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
+  // Raw body পড়ার জন্য
   let body = '';
   req.on('data', chunk => {
-    body += chunk.toString();
+    body += chunk;
   });
 
   req.on('end', async () => {
     try {
-      // raw body থেকে পার্স করো (application/x-www-form-urlencoded)
+      // body পার্স করা
       const params = new URLSearchParams(body);
       const name = params.get('name');
       const email = params.get('email');
       const message = params.get('message');
 
-      console.log('Received data:', { name, email, message }); // Vercel Logs-এ দেখতে পাবে
+      // ডেবাগ লগ (Vercel Logs-এ দেখতে পাবে)
+      console.log('Raw body received:', body);
+      console.log('Parsed data:', { name, email, message });
 
       if (!name || !email || !message) {
         return res.status(400).json({ error: 'All fields are required' });
@@ -57,7 +60,7 @@ module.exports = async (req, res) => {
 
       res.status(200).json({ message: 'Message sent successfully!' });
     } catch (error) {
-      console.error(error);
+      console.error('Email error:', error);
       res.status(500).json({ error: 'Failed to send message' });
     }
   });
