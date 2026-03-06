@@ -158,11 +158,12 @@
     }
 
     #form-message {
-      margin-top: 1rem;
+      margin-top: 1.5rem;
       text-align: center;
       font-size: 1.1rem;
       padding: 1rem;
       border-radius: 8px;
+      display: none;
     }
 
     .success {
@@ -254,7 +255,8 @@
 
       const formData = new FormData(this);
       const messageDiv = document.getElementById('form-message');
-      messageDiv.textContent = '';
+      messageDiv.style.display = 'block';
+      messageDiv.textContent = 'Sending...';
       messageDiv.className = '';
 
       try {
@@ -274,7 +276,7 @@
           messageDiv.className = 'error';
         }
       } catch (err) {
-        messageDiv.textContent = 'Network error: ' + err.message;
+        messageDiv.textContent = 'Network error: Could not connect to server';
         messageDiv.className = 'error';
       }
     });
