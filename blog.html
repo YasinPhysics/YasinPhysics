@@ -405,7 +405,7 @@
     // Language Switcher
     document.getElementById("langSwitcher").addEventListener("click", () => {
       currentLanguage = currentLanguage === "en" ? "bn" : "en";
-      currentLangDisplay.textContent = currentLanguage === "en" ? "English" : "বাংলা";
+      currentLangDisplay.textContent = currentLanguage === "en" ? "বাংলা" : "English";
       htmlRoot.lang = currentLanguage;
       updateCategories();
       renderBlogs();
